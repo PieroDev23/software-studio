@@ -108,6 +108,22 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
+.loader-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--border) 22%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--border) 22%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: clamp(4.5rem, 8vw, 8rem) clamp(4.5rem, 8vw, 8rem);
+  opacity: 0.28;
+}
+
 .loader-emoji {
   display: inline-block;
   margin-left: 0.08em;

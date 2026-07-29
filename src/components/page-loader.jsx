@@ -210,6 +210,11 @@ function PageLoader({ onComplete }) {
           "reveal",
         )
         .to(
+          "[data-loader-grid]",
+          { autoAlpha: 0, duration: 0.3, ease: "power2.out" },
+          "reveal",
+        )
+        .to(
           "[data-loader-panel]",
           {
             yPercent: -101,
@@ -241,12 +246,15 @@ function PageLoader({ onComplete }) {
     >
       <div className="absolute inset-0 grid grid-cols-3" aria-hidden="true">
         <span data-loader-panel className="bg-background" />
-        <span
-          data-loader-panel
-          className="border-x border-border bg-background"
-        />
+        <span data-loader-panel className="bg-background" />
         <span data-loader-panel className="bg-background" />
       </div>
+
+      <div
+        data-loader-grid
+        className="loader-grid pointer-events-none absolute inset-0 z-[1]"
+        aria-hidden="true"
+      />
 
       <div
         data-loader-content
