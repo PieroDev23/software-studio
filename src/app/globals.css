@@ -124,16 +124,6 @@ html {
   opacity: 0.28;
 }
 
-.loader-emoji {
-  display: inline-block;
-  margin-left: 0.08em;
-  color: initial;
-  font-size: 0.65em;
-  line-height: 1;
-  vertical-align: 0.06em;
-  -webkit-text-fill-color: initial;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

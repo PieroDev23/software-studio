@@ -28,7 +28,7 @@ function PageLoader({ onComplete }) {
       const originalOverflow = document.documentElement.style.overflow;
       document.documentElement.style.overflow = "hidden";
 
-      const swapWord = contextSafe((word, emoji = "") => {
+      const swapWord = contextSafe((word) => {
         const wordElement = wordRef.current;
         const wrapperElement = wordWrapperRef.current;
 
@@ -38,13 +38,6 @@ function PageLoader({ onComplete }) {
 
         const currentWidth = wrapperElement.getBoundingClientRect().width;
         wordElement.textContent = word;
-
-        if (emoji) {
-          const emojiElement = document.createElement("span");
-          emojiElement.className = "loader-emoji";
-          emojiElement.textContent = emoji;
-          wordElement.append(emojiElement);
-        }
 
         gsap.set(wrapperElement, { width: "auto" });
         const targetWidth = wrapperElement.getBoundingClientRect().width;
@@ -58,14 +51,19 @@ function PageLoader({ onComplete }) {
         });
       });
 
-      const revealWord = contextSafe(() => {
+      const revealWord = contextSafe((withTracking = false) => {
         gsap.fromTo(
           wordRef.current,
-          { autoAlpha: 0, scale: 1.025 },
+          {
+            autoAlpha: 0,
+            scale: 1.015,
+            letterSpacing: withTracking ? "0.02em" : "-0.055em",
+          },
           {
             autoAlpha: 1,
             scale: 1,
-            duration: 0.65,
+            letterSpacing: "-0.055em",
+            duration: 0.55,
             ease: "power3.out",
           },
         );
@@ -84,7 +82,7 @@ function PageLoader({ onComplete }) {
           { backgroundPosition: "100% 50%" },
           {
             backgroundPosition: "0% 50%",
-            duration: 1.15,
+            duration: 0.85,
             ease: "power1.inOut",
           },
         );
@@ -117,7 +115,17 @@ function PageLoader({ onComplete }) {
           0.12,
         )
         .addLabel("hold")
-        .call(sweepWord, [], "hold+=0.08")
+        .fromTo(
+          "[data-loader-rule]",
+          { scaleX: 0, autoAlpha: 0 },
+          {
+            scaleX: 1,
+            autoAlpha: 1,
+            duration: 0.55,
+            transformOrigin: "left center",
+          },
+          "hold+=0.05",
+        )
         .to(
           wordRef.current,
           {
@@ -126,15 +134,39 @@ function PageLoader({ onComplete }) {
             duration: 0.4,
             ease: "power2.inOut",
           },
-          "hold+=1.1",
+          "hold+=0.65",
+        )
+        .to(
+          "[data-loader-rule]",
+          { scaleX: 0, autoAlpha: 0, duration: 0.3 },
+          "hold+=0.65",
         )
         .call(
           () => {
-            swapWord("engineers");
+            swapWord("Design deliberately.");
             revealWord();
           },
           [],
-          "hold+=1.55",
+          "hold+=0.95",
+        )
+        .call(sweepWord, [], "hold+=1.55")
+        .to(
+          wordRef.current,
+          {
+            autoAlpha: 0,
+            scale: 0.975,
+            duration: 0.4,
+            ease: "power2.inOut",
+          },
+          "hold+=2.45",
+        )
+        .call(
+          () => {
+            swapWord("Build properly.");
+            revealWord(true);
+          },
+          [],
+          "hold+=2.75",
         )
         .to(
           wordRef.current,
@@ -144,53 +176,29 @@ function PageLoader({ onComplete }) {
             duration: 0.4,
             ease: "power2.inOut",
           },
-          "hold+=3.1",
-        )
-        .call(
-          () => {
-            swapWord("crafters");
-            revealWord();
-          },
-          [],
           "hold+=3.55",
         )
-        .to(
-          wordRef.current,
-          {
-            autoAlpha: 0,
-            scale: 0.975,
-            duration: 0.4,
-            ease: "power2.inOut",
-          },
-          "hold+=5.1",
-        )
         .call(
           () => {
-            swapWord("designers");
+            swapWord("Manyas®");
             revealWord();
           },
           [],
-          "hold+=5.55",
+          "hold+=3.85",
         )
-        .to(
-          wordRef.current,
+        .fromTo(
+          "[data-loader-signoff]",
           {
             autoAlpha: 0,
-            scale: 0.975,
-            duration: 0.4,
-            ease: "power2.inOut",
+            y: 10,
           },
-          "hold+=7.1",
-        )
-        .call(
-          () => {
-            swapWord("all in ", "❤️");
-            revealWord();
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.45,
           },
-          [],
-          "hold+=7.55",
+          "hold+=4.05",
         )
-        .call(sweepWord, [], "hold+=8.65")
         .to(
           "[data-loader-content]",
           {
@@ -199,7 +207,7 @@ function PageLoader({ onComplete }) {
             duration: 0.35,
             ease: "power2.in",
           },
-          "hold+=10",
+          "hold+=4.75",
         )
         .addLabel("reveal")
         .call(
@@ -262,27 +270,37 @@ function PageLoader({ onComplete }) {
       >
         <div className="flex items-start justify-between gap-6 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm">
           <p data-loader-meta>Manyas®</p>
-          <p data-loader-meta>Senior product studio</p>
+          <p data-loader-meta>Lima / Worldwide</p>
         </div>
 
-        <div className="overflow-visible py-[0.16em]">
+        <div className="flex flex-col items-center overflow-visible py-[0.16em]">
           <p
             data-loader-phrase
-            className="flex flex-col items-center justify-center text-center text-[clamp(3.25rem,11vw,10rem)] font-medium leading-[0.9] tracking-[-0.055em] sm:flex-row sm:items-baseline sm:gap-0"
+            className="flex items-center justify-center text-center text-[clamp(2.75rem,8.5vw,8rem)] font-medium leading-[0.95] tracking-[-0.055em]"
           >
-            <span className="shrink-0">We are</span>
             <span
               ref={wordWrapperRef}
-              className="inline-block min-w-0 shrink-0 overflow-visible px-[0.08em] pb-[0.12em] text-center sm:pl-[calc(0.08em+0.5px)]"
+              className="inline-block min-w-0 shrink-0 overflow-visible px-[0.08em] pb-[0.12em] text-center"
             >
               <span
                 ref={wordRef}
                 data-loader-word
                 className="loader-spectrum -mb-[0.18em] inline-block whitespace-nowrap px-[0.06em] pb-[0.18em]"
               >
-                smart
+                Think clearly.
               </span>
             </span>
+          </p>
+          <span
+            data-loader-rule
+            className="mt-5 h-px w-20 bg-foreground sm:mt-7 sm:w-28"
+            aria-hidden="true"
+          />
+          <p
+            data-loader-signoff
+            className="mt-5 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm"
+          >
+            Senior product studio.
           </p>
         </div>
 
