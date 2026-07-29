@@ -1,65 +1,117 @@
-import Image from "next/image";
+import Beams from "@/components/Beams";
+import CompanyGrid from "@/components/company-grid";
+import ContactSection from "@/components/contact-section";
+import MetricsSection from "@/components/metrics-section";
+import MotionShell from "@/components/motion-shell";
+import PremiseSection from "@/components/premise-section";
+import TeamSection from "@/components/team-section";
+import TestimonialsCarousel from "@/components/testimonials-carousel";
+import { CtaLink } from "@/components/ui/cta-link";
+import {
+  TypographyDisplay,
+  TypographyEyebrow,
+  TypographyLead,
+} from "@/components/ui/typography";
+import WorkGrid from "@/components/work-grid";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <MotionShell>
+      <main className="flex flex-1 flex-col bg-background text-foreground">
+        <section
+          id="top"
+          data-hero
+          className="relative isolate flex min-h-svh overflow-hidden"
+        >
+          <div className="absolute inset-0" aria-hidden="true">
+            {" "}
+            <Beams
+              beamWidth={2.2}
+              beamHeight={15}
+              beamNumber={10}
+              lightColor="#ffffff"
+              speed={1.2}
+              noiseIntensity={2.2}
+              scale={0.22}
+              rotation={-30}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          </div>
+
+          <div className="hero-scrim absolute inset-0" aria-hidden="true" />
+
+          <div className="content-container relative flex min-h-svh flex-col px-5 py-5 sm:px-8 sm:py-7 lg:px-12 lg:py-10">
+            <header
+              data-hero-chrome
+              className="flex items-start justify-between gap-3 sm:gap-6"
+            >
+              <a
+                className="whitespace-nowrap font-mono text-xs font-medium uppercase leading-none tracking-[0.16em] text-foreground transition-opacity hover:opacity-70 sm:text-sm sm:tracking-[0.18em]"
+                href="#top"
+                aria-label="Software Studio, inicio"
+              >
+                Manyas <span className="align-super text-xs">®</span>
+              </a>
+
+              <p className="flex max-w-40 items-start gap-2 font-mono text-xs font-normal uppercase leading-4 tracking-[0.14em] text-muted-foreground sm:max-w-none sm:items-center sm:text-sm sm:leading-none sm:tracking-[0.16em]">
+                <span
+                  className="size-1.5 rounded-full bg-white"
+                  aria-hidden="true"
+                />
+                Select engagements only
+              </p>
+            </header>
+
+            <section className="flex flex-1 items-center">
+              <div className="flex max-w-6xl flex-col gap-6 sm:gap-10">
+                <TypographyEyebrow data-reveal>
+                  Independent senior product studio
+                </TypographyEyebrow>
+
+                <TypographyDisplay className="flex max-w-5xl flex-col items-start">
+                  <span>High-stakes products.</span>
+                  <span>Senior judgment.</span>
+                  <span>Built without compromise.</span>
+                </TypographyDisplay>
+
+                <div
+                  data-reveal
+                  className="flex max-w-4xl flex-col items-start gap-5 sm:flex-row sm:items-end sm:gap-12"
+                >
+                  <TypographyLead className="max-w-xl">
+                    Strategy, design and engineering for ambitious teams
+                    navigating consequential decisions.
+                  </TypographyLead>
+
+                  <CtaLink
+                    href="#contacto"
+                    className="shrink-0 border-0 bg-foreground px-5 py-3.5 text-background shadow-lg hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground sm:px-6 sm:py-4"
+                  >
+                    Discuss a project
+                  </CtaLink>
+                </div>
+              </div>
+            </section>
+
+            <footer
+              data-hero-chrome
+              className="flex items-end justify-between gap-3 font-mono text-[0.6875rem] font-normal uppercase leading-none tracking-[0.08em] text-muted-foreground sm:text-sm sm:leading-normal sm:tracking-[0.12em]"
+            >
+              <p className="whitespace-nowrap">
+                Lima, PE 🇵🇪 · Working globally
+              </p>
+              <p className="hidden shrink-0 text-right sm:block">© 2026</p>
+            </footer>
+          </div>
+        </section>
+
+        <CompanyGrid />
+        <PremiseSection />
+        <MetricsSection />
+        <WorkGrid />
+        <TestimonialsCarousel />
+        <TeamSection />
+        <ContactSection />
       </main>
-    </div>
+    </MotionShell>
   );
 }
