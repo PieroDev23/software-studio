@@ -18,9 +18,26 @@ export async function generateMetadata({ params }) {
     return {};
   }
 
+  const title = `${study.client} — ${study.title}`;
+
   return {
-    title: `${study.client} — ${study.title} | Manyas`,
+    title,
     description: study.description,
+    alternates: {
+      canonical: `/work/${study.slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: `${title} | Manyas`,
+      description: study.description,
+      siteName: "Manyas",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Manyas`,
+      description: study.description,
+    },
   };
 }
 

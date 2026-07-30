@@ -18,14 +18,49 @@ const dmMono = DM_Mono({
 });
 
 export const metadata = {
-  title: "Software Studio",
-  description: "Diseñamos y construimos productos digitales con intención.",
+  metadataBase: new URL("https://manyas.dev"),
+  title: {
+    default: "Manyas — Senior Product Studio",
+    template: "%s | Manyas",
+  },
+  description:
+    "Senior product partners for consequential work. Strategy, design and engineering for high-stakes digital products.",
+  applicationName: "Manyas",
+  authors: [{ name: "Manyas" }],
+  creator: "Manyas",
+  publisher: "Manyas",
+  keywords: [
+    "product studio",
+    "product strategy",
+    "product design",
+    "software engineering",
+    "digital products",
+    "Lima",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Manyas",
+    title: "Manyas — Senior Product Studio",
+    description:
+      "Strategy, design and engineering for high-stakes digital products.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manyas — Senior Product Studio",
+    description:
+      "Strategy, design and engineering for high-stakes digital products.",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="es"
+      lang="en"
       className={`${interTight.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
