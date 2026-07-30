@@ -16,7 +16,7 @@ const capabilities = [
   {
     number: "02",
     label: "Design",
-    titleLines: ["Make complexity", "feel obvious."],
+    titleLines: ["Complexity,", "made clear."],
     services: [
       "Product experience & interaction",
       "Systems that scale decisions",
