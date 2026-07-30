@@ -16,18 +16,19 @@ function CaseStudyMotionShell({ children }) {
   const t = useTranslations("Navigation");
   const contentRef = useRef(null);
   const [canScrollUp, setCanScrollUp] = useState(false);
-  const [transitionReady, setTransitionReady] = useState(
-    () => !isNavigationTransitionActive(),
-  );
+  const [transitionReady, setTransitionReady] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
-    if (transitionReady) return;
+    if (!isNavigationTransitionActive()) {
+      setTransitionReady(true);
+      return;
+    }
 
     const reveal = () => setTransitionReady(true);
     window.addEventListener("manyas:navigation-reveal", reveal, { once: true });
     return () => window.removeEventListener("manyas:navigation-reveal", reveal);
-  }, [transitionReady]);
+  }, []);
 
   useEffect(() => {
     const updateNavigation = () => {
@@ -144,7 +145,12 @@ function CaseStudyMotionShell({ children }) {
 
   return (
     <>
-      <div ref={contentRef}>{children}</div>
+      <div
+        ref={contentRef}
+        style={{ visibility: transitionReady ? "visible" : "hidden" }}
+      >
+        {children}
+      </div>
 
       <nav
         className="fixed right-4 bottom-4 z-50 sm:right-8 sm:bottom-8"

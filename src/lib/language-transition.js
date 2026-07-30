@@ -8,8 +8,6 @@ function finishActiveTransition() {
 
   transition.isExiting = true;
   clearTimeout(transition.safetyTimeout);
-  window.__manyasNavigationTransitionActive = false;
-  window.dispatchEvent(new CustomEvent("manyas:navigation-reveal"));
 
   gsap
     .timeline({
@@ -17,6 +15,8 @@ function finishActiveTransition() {
       onComplete: () => {
         document.documentElement.style.overflow = transition.originalOverflow;
         transition.loader.remove();
+        window.__manyasNavigationTransitionActive = false;
+        window.dispatchEvent(new CustomEvent("manyas:navigation-reveal"));
         activeTransition = null;
         transition.onComplete?.();
       },
@@ -33,7 +33,9 @@ function finishActiveTransition() {
       {
         yPercent: -101,
         duration: 0.48,
-        stagger: 0.045,
+        stagger: (_index, panel) =>
+          (2 - Number(panel.dataset.layer)) * 0.12 +
+          (2 - Number(panel.dataset.column)) * 0.035,
       },
       "-=0.24",
     );
@@ -90,11 +92,21 @@ export function playNavigationTransition({
   panels.className = "absolute inset-0 grid grid-cols-3";
   panels.setAttribute("aria-hidden", "true");
 
-  for (let index = 0; index < 3; index += 1) {
-    const panel = document.createElement("span");
-    panel.className = "bg-background";
-    panel.dataset.languagePanel = "";
-    panels.append(panel);
+  for (let columnIndex = 0; columnIndex < 3; columnIndex += 1) {
+    const column = document.createElement("div");
+    column.className = "navigation-transition-column relative";
+
+    for (let layerIndex = 0; layerIndex < 3; layerIndex += 1) {
+      const panel = document.createElement("span");
+      panel.className =
+        "navigation-transition-layer absolute inset-y-0 -left-px -right-px";
+      panel.dataset.languagePanel = "";
+      panel.dataset.column = String(columnIndex);
+      panel.dataset.layer = String(layerIndex);
+      column.append(panel);
+    }
+
+    panels.append(column);
   }
 
   grid.className = "loader-grid pointer-events-none absolute inset-0 z-[1]";
@@ -113,7 +125,13 @@ export function playNavigationTransition({
   document.documentElement.style.overflow = "hidden";
   window.__manyasNavigationTransitionActive = true;
 
-  const panelElements = loader.querySelectorAll("[data-language-panel]");
+  const panelElements = Array.from(
+    loader.querySelectorAll("[data-language-panel]"),
+  ).sort(
+    (first, second) =>
+      Number(first.dataset.layer) - Number(second.dataset.layer) ||
+      Number(first.dataset.column) - Number(second.dataset.column),
+  );
 
   activeTransition = {
     targetKey,
@@ -152,8 +170,10 @@ export function playNavigationTransition({
       { yPercent: 101 },
       {
         yPercent: 0,
-        duration: 0.48,
-        stagger: 0.045,
+        duration: 0.52,
+        stagger: (_index, panel) =>
+          Number(panel.dataset.layer) * 0.12 +
+          Number(panel.dataset.column) * 0.035,
       },
     )
     .fromTo(

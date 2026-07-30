@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import PageLoader from "@/components/page-loader";
+import { isNavigationTransitionActive } from "@/lib/language-transition";
 import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 gsap.registerPlugin(useGSAP, SplitText);
@@ -20,7 +21,19 @@ function MotionShell({ children, showLoader = true }) {
       (typeof window === "undefined" || !window.__manyasPageLoaderShown),
   ).current;
   const [canScrollUp, setCanScrollUp] = useState(false);
+  const [transitionReady, setTransitionReady] = useState(false);
   const lenis = useLenis();
+
+  useEffect(() => {
+    if (!isNavigationTransitionActive()) {
+      setTransitionReady(true);
+      return;
+    }
+
+    const reveal = () => setTransitionReady(true);
+    window.addEventListener("manyas:navigation-reveal", reveal, { once: true });
+    return () => window.removeEventListener("manyas:navigation-reveal", reveal);
+  }, []);
 
   useEffect(() => {
     if (shouldShowLoader) {
@@ -45,7 +58,7 @@ function MotionShell({ children, showLoader = true }) {
     (_context, contextSafe) => {
       const root = contentRef.current;
 
-      if (!root) {
+      if (!root || !transitionReady) {
         return;
       }
 
@@ -228,7 +241,7 @@ function MotionShell({ children, showLoader = true }) {
     },
     {
       scope: contentRef,
-      dependencies: [shouldShowLoader],
+      dependencies: [shouldShowLoader, transitionReady],
       revertOnUpdate: true,
     },
   );
@@ -241,7 +254,12 @@ function MotionShell({ children, showLoader = true }) {
   return (
     <>
       {shouldShowLoader ? <PageLoader /> : null}
-      <div ref={contentRef}>{children}</div>
+      <div
+        ref={contentRef}
+        style={{ visibility: transitionReady ? "visible" : "hidden" }}
+      >
+        {children}
+      </div>
 
       <nav
         className="fixed right-4 bottom-4 z-50 sm:right-8 sm:bottom-8"

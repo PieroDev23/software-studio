@@ -60,13 +60,19 @@ function TransitionLink({
       targetKey: `path:${targetPath}`,
       phrase: pickTransitionPhrase(transitionLabel),
       onCovered: () => {
-        if (lenis) {
-          lenis.scrollTo(0, { immediate: true, force: true });
-        } else {
-          window.scrollTo({ top: 0, behavior: "auto" });
-        }
+        window.setTimeout(() => {
+          if (lenis) {
+            lenis.scrollTo(0, { immediate: true, force: true });
+          } else {
+            window.scrollTo({ top: 0, behavior: "auto" });
+          }
 
-        router.push(href, { scroll: false });
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              router.push(href, { scroll: false });
+            });
+          });
+        }, 180);
       },
       onComplete: () => setIsPending(false),
     });

@@ -271,6 +271,18 @@ h4 {
   animation: company-marquee 32s linear infinite;
 }
 
+.navigation-transition-layer[data-layer="0"] {
+  background: var(--accent);
+}
+
+.navigation-transition-layer[data-layer="1"] {
+  background: color-mix(in srgb, var(--accent) 62%, var(--background));
+}
+
+.navigation-transition-layer[data-layer="2"] {
+  background: var(--background);
+}
+
 @keyframes company-marquee {
   to {
     transform: translateX(-50%);
