@@ -18,6 +18,7 @@ function LanguageSwitcher({ className = "" }) {
 
     setPendingLocale(nextLocale);
     playLanguageTransition({
+      targetLocale: nextLocale,
       phrase: t(`languageTransition.${nextLocale}`),
       onCovered: () => {
         router.replace(pathname, { locale: nextLocale });

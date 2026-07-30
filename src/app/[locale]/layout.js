@@ -9,6 +9,7 @@ import {
 import "lenis/dist/lenis.css";
 import "../globals.css";
 
+import LanguageTransitionObserver from "@/components/language-transition-observer";
 import SmoothScrollProvider from "@/components/smooth-scroll-provider";
 import WebVitals from "@/components/web-vitals";
 import { routing } from "@/i18n/routing";
@@ -101,6 +102,7 @@ export default async function LocaleLayout({ children, params }) {
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <LanguageTransitionObserver />
           <WebVitals />
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </NextIntlClientProvider>

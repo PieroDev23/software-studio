@@ -37,12 +37,22 @@ function CtaLink({
 
     event.preventDefault();
 
-    if (lenis) {
-      lenis.scrollTo(target, { duration: 0.85 });
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (lenis && !reducedMotion) {
+      lenis.scrollTo(target, {
+        duration: 2,
+        easing: (progress) => (1 - Math.cos(Math.PI * progress)) / 2,
+      });
       return;
     }
 
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    target.scrollIntoView({
+      behavior: reducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
   };
 
   return (

@@ -2,10 +2,55 @@ import { gsap } from "gsap";
 
 let activeTransition = null;
 
-export function playLanguageTransition({ phrase, onCovered, onComplete }) {
-  if (activeTransition) {
-    return;
-  }
+function finishActiveTransition() {
+  const transition = activeTransition;
+  if (!transition || transition.isExiting) return;
+
+  transition.isExiting = true;
+  clearTimeout(transition.safetyTimeout);
+
+  gsap
+    .timeline({
+      defaults: { ease: "power3.inOut" },
+      onComplete: () => {
+        document.documentElement.style.overflow = transition.originalOverflow;
+        transition.loader.remove();
+        activeTransition = null;
+        transition.onComplete?.();
+      },
+    })
+    .to({}, { duration: 0.16 })
+    .to(transition.text, {
+      yPercent: -110,
+      autoAlpha: 0,
+      duration: 0.5,
+      ease: "power3.in",
+    })
+    .to(
+      transition.panelElements,
+      {
+        yPercent: -101,
+        duration: 0.48,
+        stagger: 0.045,
+      },
+      "-=0.24",
+    );
+}
+
+export function completeLanguageTransition(locale) {
+  if (!activeTransition || activeTransition.targetLocale !== locale) return;
+
+  activeTransition.destinationReady = true;
+  if (activeTransition.covered) finishActiveTransition();
+}
+
+export function playLanguageTransition({
+  targetLocale,
+  phrase,
+  onCovered,
+  onComplete,
+}) {
+  if (activeTransition) return;
 
   const originalOverflow = document.documentElement.style.overflow;
   const loader = document.createElement("div");
@@ -46,17 +91,37 @@ export function playLanguageTransition({ phrase, onCovered, onComplete }) {
 
   const panelElements = loader.querySelectorAll("[data-language-panel]");
 
-  const cleanup = () => {
-    document.documentElement.style.overflow = originalOverflow;
-    loader.remove();
-    activeTransition = null;
-    onComplete?.();
+  activeTransition = {
+    targetLocale,
+    loader,
+    text,
+    panelElements,
+    originalOverflow,
+    onComplete,
+    covered: false,
+    destinationReady: false,
+    isExiting: false,
+    safetyTimeout: null,
   };
 
-  activeTransition = gsap
+  activeTransition.safetyTimeout = window.setTimeout(
+    finishActiveTransition,
+    15000,
+  );
+
+  gsap
     .timeline({
       defaults: { ease: "power3.inOut" },
-      onComplete: cleanup,
+      onComplete: () => {
+        if (!activeTransition) return;
+
+        activeTransition.covered = true;
+        onCovered?.();
+
+        if (activeTransition.destinationReady) {
+          finishActiveTransition();
+        }
+      },
     })
     .fromTo(
       panelElements,
@@ -77,22 +142,5 @@ export function playLanguageTransition({ phrase, onCovered, onComplete }) {
         ease: "power3.out",
       },
       "-=0.14",
-    )
-    .call(onCovered)
-    .to({}, { duration: 0.42 })
-    .to(text, {
-      yPercent: -110,
-      autoAlpha: 0,
-      duration: 0.5,
-      ease: "power3.in",
-    })
-    .to(
-      panelElements,
-      {
-        yPercent: -101,
-        duration: 0.48,
-        stagger: 0.045,
-      },
-      "-=0.24",
     );
 }
