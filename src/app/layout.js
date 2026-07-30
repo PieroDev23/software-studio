@@ -1,5 +1,8 @@
 import { DM_Mono, Inter_Tight } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
+
+import SmoothScrollProvider from "@/components/smooth-scroll-provider";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -25,7 +28,9 @@ export default function RootLayout({ children }) {
       lang="es"
       className={`${interTight.variable} ${dmMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }

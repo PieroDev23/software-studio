@@ -3,6 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { useLenis } from "lenis/react";
 import { useEffect, useRef, useState } from "react";
 
 gsap.registerPlugin(useGSAP, SplitText);
@@ -10,6 +11,7 @@ gsap.registerPlugin(useGSAP, SplitText);
 function CaseStudyMotionShell({ children }) {
   const contentRef = useRef(null);
   const [canScrollUp, setCanScrollUp] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const updateNavigation = () => {
@@ -120,8 +122,15 @@ function CaseStudyMotionShell({ children }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
+    const target = position === 0 ? 0 : document.documentElement.scrollHeight;
+
+    if (lenis && !reducedMotion) {
+      lenis.scrollTo(target, { duration: 0.85 });
+      return;
+    }
+
     window.scrollTo({
-      top: position === 0 ? 0 : document.documentElement.scrollHeight,
+      top: target,
       behavior: reducedMotion ? "auto" : "smooth",
     });
   };

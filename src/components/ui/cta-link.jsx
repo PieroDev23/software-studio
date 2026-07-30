@@ -1,5 +1,6 @@
 "use client";
 
+import { useLenis } from "lenis/react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -17,6 +18,7 @@ function CtaLink({
   tone = "default",
   ...props
 }) {
+  const lenis = useLenis();
   const isPageAnchor = typeof href === "string" && href.startsWith("#");
   const Component = isPageAnchor ? "a" : Link;
 
@@ -34,6 +36,11 @@ function CtaLink({
     }
 
     event.preventDefault();
+
+    if (lenis) {
+      lenis.scrollTo(target, { duration: 0.85 });
+      return;
+    }
 
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   };
