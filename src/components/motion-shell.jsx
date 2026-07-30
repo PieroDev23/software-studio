@@ -224,7 +224,10 @@ function MotionShell({ children, showLoader = true }) {
     const target = position === 0 ? 0 : document.documentElement.scrollHeight;
 
     if (lenis && !reducedMotion) {
-      lenis.scrollTo(target, { lerp: 0.075 });
+      lenis.scrollTo(target, {
+        duration: 2,
+        easing: (progress) => (1 - Math.cos(Math.PI * progress)) / 2,
+      });
       return;
     }
 
