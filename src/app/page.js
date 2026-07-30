@@ -1,6 +1,8 @@
 import Beams from "@/components/Beams";
 import CompanyGrid from "@/components/company-grid";
 import ContactSection from "@/components/contact-section";
+import EngagementSection from "@/components/engagement-section";
+import FaqSection from "@/components/faq-section";
 import MetricsSection from "@/components/metrics-section";
 import MotionShell from "@/components/motion-shell";
 import PremiseSection from "@/components/premise-section";
@@ -110,6 +112,8 @@ export default function Home() {
         <WorkGrid />
         <TestimonialsCarousel />
         <TeamSection />
+        <EngagementSection />
+        <FaqSection />
         <ContactSection />
       </main>
     </MotionShell>

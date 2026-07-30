@@ -3,7 +3,6 @@ import Link from "next/link";
 import CapabilitiesGrid from "@/components/capabilities-section";
 import Silk from "@/components/Silk";
 import { TerminalMeta } from "@/components/terminal-slash";
-import { CtaLink } from "@/components/ui/cta-link";
 import {
   TypographyDisplay,
   TypographyEyebrow,
@@ -23,6 +22,7 @@ function CardMeta({ client, year, service }) {
 function WorkGrid() {
   return (
     <section
+      id="selected-work"
       className="section-frame bg-inverse text-inverse-foreground"
       aria-labelledby="work-title"
     >
@@ -84,9 +84,11 @@ function WorkGrid() {
             </article>
           </Link>
 
-          <article
+          <Link
             data-reveal
-            className="case-card case-card-northstar flex min-h-72 flex-col justify-between p-5 text-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
+            href="/work/northstar"
+            className="case-card case-card-northstar flex min-h-72 cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
+            aria-label="View Northstar case study"
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
@@ -115,13 +117,17 @@ function WorkGrid() {
                 Critical planning moved from scattered tools into one decisive
                 workspace.
               </p>
-              <CtaLink href="/work/northstar">View case study</CtaLink>
+              <span className="inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
+                View case study <span aria-hidden="true">↗</span>
+              </span>
             </div>
-          </article>
+          </Link>
 
-          <article
+          <Link
             data-reveal
-            className="case-card case-card-prism flex min-h-72 flex-col justify-between p-5 sm:min-h-96 sm:p-8 lg:col-span-5"
+            href="/work/prism"
+            className="case-card case-card-prism flex min-h-72 cursor-pointer flex-col justify-between p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
+            aria-label="View Prism case study"
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
@@ -146,11 +152,11 @@ function WorkGrid() {
                 Cash, commitments and runway turned into decisions teams can
                 trust.
               </p>
-              <CtaLink href="/work/prism" tone="inverse">
-                View case study
-              </CtaLink>
+              <span className="inline-flex w-fit items-center gap-4 border-b border-inverse-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
+                View case study <span aria-hidden="true">↗</span>
+              </span>
             </div>
-          </article>
+          </Link>
         </div>
 
         <CapabilitiesGrid />

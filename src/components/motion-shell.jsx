@@ -2,254 +2,236 @@
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import PageLoader from "@/components/page-loader";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, SplitText);
+gsap.registerPlugin(useGSAP, SplitText);
 
-function MotionShell({ children }) {
-  const wrapperRef = useRef(null);
+function MotionShell({ children, showLoader = true }) {
   const contentRef = useRef(null);
   const [canScrollUp, setCanScrollUp] = useState(false);
 
+  useEffect(() => {
+    const updateNavigation = () => {
+      setCanScrollUp(window.scrollY > 24);
+    };
+
+    updateNavigation();
+    window.addEventListener("scroll", updateNavigation, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateNavigation);
+    };
+  }, []);
+
+  useGSAP(
+    (_context, contextSafe) => {
+      const root = contentRef.current;
+
+      if (!root) {
+        return;
+      }
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (reducedMotion) {
+        gsap.set(root.querySelectorAll("[data-reveal]"), {
+          clearProps: "all",
+        });
+        return;
+      }
+
+      const headingAnimations = new Map();
+      const revealAnimations = new Map();
+      const splits = [];
+      const createObserver = (animations, rootMargin) =>
+        new IntersectionObserver(
+          contextSafe((entries, observer) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) {
+                continue;
+              }
+
+              animations.get(entry.target)?.();
+              animations.delete(entry.target);
+              observer.unobserve(entry.target);
+            }
+          }),
+          { rootMargin, threshold: 0.01 },
+        );
+      const headingObserver = createObserver(
+        headingAnimations,
+        "0px 0px -12% 0px",
+      );
+      const revealObserver = createObserver(
+        revealAnimations,
+        "0px 0px -10% 0px",
+      );
+
+      const hero = root.querySelector("[data-hero]");
+      const heroHeading = hero?.querySelector("h1");
+      const heroRevealElements = hero
+        ? gsap.utils.toArray(hero.querySelectorAll("[data-reveal]"))
+        : [];
+      const heroChrome = hero
+        ? gsap.utils.toArray(hero.querySelectorAll("[data-hero-chrome]"))
+        : [];
+      const heroTimeline = gsap.timeline({ paused: true });
+
+      if (heroHeading) {
+        const heroSplit = SplitText.create(heroHeading, {
+          type: "words",
+          mask: "words",
+          wordsClass: "motion-word",
+          aria: "auto",
+        });
+        splits.push(heroSplit);
+
+        heroTimeline
+          .from(heroChrome, {
+            y: 14,
+            autoAlpha: 0,
+            duration: 0.55,
+            stagger: 0.12,
+            ease: "power3.out",
+          })
+          .from(
+            heroRevealElements[0],
+            { y: 20, autoAlpha: 0, duration: 0.55, ease: "power3.out" },
+            0.08,
+          )
+          .from(
+            heroSplit.words,
+            {
+              yPercent: 115,
+              autoAlpha: 0,
+              duration: 0.85,
+              stagger: 0.045,
+              ease: "power3.out",
+            },
+            0.15,
+          )
+          .from(
+            heroRevealElements.slice(1),
+            {
+              y: 28,
+              autoAlpha: 0,
+              duration: 0.65,
+              stagger: 0.08,
+              ease: "power3.out",
+            },
+            0.42,
+          );
+      }
+
+      const playHero = contextSafe(() => {
+        heroTimeline.play(0);
+      });
+
+      if (showLoader) {
+        window.addEventListener("manyas:loader-reveal", playHero, {
+          once: true,
+        });
+      } else {
+        playHero();
+      }
+
+      const headings = gsap.utils
+        .toArray(root.querySelectorAll("h1, h2, h3, [data-motion-heading]"))
+        .filter((heading) => !heading.closest("[data-hero]"));
+
+      for (const heading of headings) {
+        const split = SplitText.create(heading, {
+          type: "words",
+          mask: "words",
+          wordsClass: "motion-word",
+          aria: "auto",
+        });
+        splits.push(split);
+
+        const highlights = gsap.utils.toArray(
+          heading.querySelectorAll("[data-highlight], .text-impact-gradient"),
+        );
+        gsap.set(split.words, { yPercent: 115, autoAlpha: 0 });
+        gsap.set(highlights, { "--highlight-progress": "0%" });
+
+        headingAnimations.set(heading, () => {
+          const timeline = gsap.timeline();
+          timeline.to(split.words, {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 0.85,
+            ease: "power3.out",
+            stagger: 0.045,
+          });
+
+          if (highlights.length > 0) {
+            timeline.to(
+              highlights,
+              {
+                "--highlight-progress": "100%",
+                duration: 0.45,
+                ease: "power3.out",
+              },
+              ">-=0.32",
+            );
+          }
+        });
+        headingObserver.observe(heading);
+      }
+
+      const reveals = gsap.utils
+        .toArray(root.querySelectorAll("[data-reveal]"))
+        .filter((element) => !element.closest("[data-hero]"));
+
+      for (const element of reveals) {
+        gsap.set(element, { y: 36, autoAlpha: 0 });
+        revealAnimations.set(element, () => {
+          gsap.to(element, {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            clearProps: "transform,visibility,opacity",
+          });
+        });
+        revealObserver.observe(element);
+      }
+
+      return () => {
+        window.removeEventListener("manyas:loader-reveal", playHero);
+        headingObserver.disconnect();
+        revealObserver.disconnect();
+        splits.forEach((split) => {
+          split.revert();
+        });
+      };
+    },
+    { scope: contentRef, dependencies: [showLoader], revertOnUpdate: true },
+  );
+
   const scrollTo = (position) => {
-    const smoother = ScrollSmoother.get();
-    const target = position === 0 ? 0 : document.documentElement.scrollHeight;
-
-    if (smoother) {
-      smoother.scrollTo(target, true);
-      return;
-    }
-
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+
     window.scrollTo({
-      top: target,
+      top: position === 0 ? 0 : document.documentElement.scrollHeight,
       behavior: reducedMotion ? "auto" : "smooth",
     });
   };
 
-  useGSAP(
-    () => {
-      const media = gsap.matchMedia();
-      const navigationTrigger = ScrollTrigger.create({
-        start: 0,
-        end: "max",
-        onUpdate: (self) => {
-          setCanScrollUp(self.scroll() > 24);
-        },
-        onRefresh: (self) => {
-          setCanScrollUp(self.scroll() > 24);
-        },
-      });
-
-      media.add(
-        {
-          motion: "(prefers-reduced-motion: no-preference)",
-          reduced: "(prefers-reduced-motion: reduce)",
-        },
-        ({ conditions }) => {
-          if (conditions.reduced) {
-            gsap.set("[data-reveal]", { clearProps: "all" });
-            return;
-          }
-
-          const smoother = ScrollSmoother.create({
-            wrapper: wrapperRef.current,
-            content: contentRef.current,
-            smooth: 0.35,
-            smoothTouch: 0,
-            effects: false,
-          });
-
-          const hero = contentRef.current.querySelector("[data-hero]");
-          const heroHeading = hero?.querySelector("h1");
-          const heroRevealElements = hero
-            ? gsap.utils.toArray(hero.querySelectorAll("[data-reveal]"))
-            : [];
-          const heroChrome = hero
-            ? gsap.utils.toArray(hero.querySelectorAll("[data-hero-chrome]"))
-            : [];
-
-          const heroTimeline = gsap.timeline({ paused: true });
-
-          if (heroHeading) {
-            const heroSplit = SplitText.create(heroHeading, {
-              type: "words",
-              mask: "words",
-              wordsClass: "motion-word",
-              aria: "auto",
-            });
-
-            heroTimeline
-              .from(
-                heroChrome,
-                {
-                  y: 14,
-                  autoAlpha: 0,
-                  duration: 0.55,
-                  stagger: 0.12,
-                  ease: "power3.out",
-                },
-                0,
-              )
-              .from(
-                heroRevealElements[0],
-                {
-                  y: 20,
-                  autoAlpha: 0,
-                  duration: 0.55,
-                  ease: "power3.out",
-                },
-                0.08,
-              )
-              .from(
-                heroSplit.words,
-                {
-                  yPercent: 115,
-                  autoAlpha: 0,
-                  duration: 0.85,
-                  stagger: 0.045,
-                  ease: "power3.out",
-                },
-                0.15,
-              )
-              .from(
-                heroRevealElements.slice(1),
-                {
-                  y: 28,
-                  autoAlpha: 0,
-                  duration: 0.65,
-                  stagger: 0.08,
-                  ease: "power3.out",
-                },
-                0.42,
-              );
-          }
-
-          const playHero = () => {
-            heroTimeline.play(0);
-          };
-          window.addEventListener("manyas:loader-reveal", playHero, {
-            once: true,
-          });
-
-          const headings = gsap.utils
-            .toArray("h1, h2, h3")
-            .filter((heading) => !heading.closest("[data-hero]"));
-
-          for (const heading of headings) {
-            SplitText.create(heading, {
-              type: "words",
-              mask: "words",
-              wordsClass: "motion-word",
-              aria: "auto",
-              autoSplit: true,
-              onSplit(self) {
-                return gsap.from(self.words, {
-                  yPercent: 115,
-                  autoAlpha: 0,
-                  duration: 0.85,
-                  ease: "power3.out",
-                  stagger: 0.045,
-                  scrollTrigger: {
-                    trigger: heading,
-                    start: "top 88%",
-                    once: true,
-                  },
-                });
-              },
-            });
-          }
-
-          const highlightedText = gsap.utils.toArray(
-            "[data-highlight], .text-impact-gradient",
-          );
-
-          for (const highlight of highlightedText) {
-            gsap.fromTo(
-              highlight,
-              { "--highlight-progress": "0%" },
-              {
-                "--highlight-progress": "100%",
-                duration: 1,
-                delay: 0.28,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: highlight,
-                  start: "top 88%",
-                  once: true,
-                },
-              },
-            );
-          }
-
-          const revealElements = gsap.utils
-            .toArray("[data-reveal]")
-            .filter((element) => !element.closest("[data-hero]"));
-          gsap.set(revealElements, { y: 36, autoAlpha: 0 });
-
-          const revealTriggers = ScrollTrigger.batch(revealElements, {
-            start: "top 90%",
-            once: true,
-            interval: 0.08,
-            batchMax: 6,
-            onEnter: (elements) => {
-              gsap.to(elements, {
-                y: 0,
-                autoAlpha: 1,
-                duration: 0.8,
-                ease: "power3.out",
-                stagger: 0.08,
-                overwrite: true,
-                clearProps: "transform,visibility,opacity",
-              });
-            },
-          });
-
-          let active = true;
-          document.fonts.ready.then(() => {
-            if (active) {
-              ScrollTrigger.refresh();
-            }
-          });
-
-          return () => {
-            active = false;
-            window.removeEventListener("manyas:loader-reveal", playHero);
-            revealTriggers.forEach((trigger) => {
-              trigger.kill();
-            });
-            smoother.kill();
-          };
-        },
-      );
-
-      return () => {
-        navigationTrigger.kill();
-        media.revert();
-      };
-    },
-    { scope: contentRef },
-  );
-
   return (
     <>
-      <PageLoader />
-
-      <div id="smooth-wrapper" ref={wrapperRef}>
-        <div id="smooth-content" ref={contentRef}>
-          {children}
-        </div>
-      </div>
+      {showLoader ? <PageLoader /> : null}
+      <div ref={contentRef}>{children}</div>
 
       <nav
-        className="fixed bottom-4 right-4 z-50 sm:bottom-8 sm:right-8"
+        className="fixed right-4 bottom-4 z-50 sm:right-8 sm:bottom-8"
         aria-label="Page navigation"
       >
         <button

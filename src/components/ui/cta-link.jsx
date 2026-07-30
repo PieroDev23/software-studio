@@ -1,6 +1,5 @@
 "use client";
 
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -35,12 +34,6 @@ function CtaLink({
     }
 
     event.preventDefault();
-
-    const smoother = ScrollSmoother.get();
-    if (smoother) {
-      smoother.scrollTo(target, true, "top top");
-      return;
-    }
 
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   };

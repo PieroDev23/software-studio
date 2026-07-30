@@ -2,10 +2,9 @@
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 function PageLoader({ onComplete }) {
   const loaderRef = useRef(null);
@@ -74,7 +73,6 @@ function PageLoader({ onComplete }) {
         document.documentElement.style.overflow = originalOverflow;
         setVisible(false);
         onComplete?.();
-        ScrollTrigger.refresh();
       });
 
       const sweepSpectrum = contextSafe(() => {
