@@ -1,34 +1,13 @@
+import { useTranslations } from "next-intl";
 import { TerminalMeta } from "@/components/terminal-slash";
 import {
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
 
-const stages = [
-  {
-    number: "01",
-    label: "Decide",
-    titleLines: ["Find the decision", "that matters."],
-    description:
-      "We isolate the real constraint, align the room and define what must be true.",
-  },
-  {
-    number: "02",
-    label: "Shape",
-    titleLines: ["Turn conviction", "into a system."],
-    description:
-      "Strategy, product and technology become one direction the team can act on.",
-  },
-  {
-    number: "03",
-    label: "Deliver",
-    titleLines: ["Stay until it works", "in the real world."],
-    description:
-      "Senior partners remain close through the hard tradeoffs, build and release.",
-  },
-];
-
 function EngagementSection() {
+  const t = useTranslations("Engagement");
+  const stages = t.raw("items");
   return (
     <section
       className="section-frame bg-inverse text-inverse-foreground"
@@ -37,7 +16,7 @@ function EngagementSection() {
       <div className="content-container">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-            How we engage
+            {t("eyebrow")}
           </TypographyEyebrow>
 
           <TypographyDisplay
@@ -47,7 +26,7 @@ function EngagementSection() {
             tone="inverse"
             className="max-w-6xl lg:col-span-10"
           >
-            From hard decision to shipped product.
+            {t("title")}
           </TypographyDisplay>
         </div>
 

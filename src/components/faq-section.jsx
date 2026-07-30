@@ -1,42 +1,12 @@
+import { useTranslations } from "next-intl";
 import {
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
 
-const questions = [
-  {
-    question: "What kind of work do you take on?",
-    answer:
-      "Consequential digital products: new ventures, complex platforms and critical product decisions where senior judgment changes the outcome.",
-  },
-  {
-    question: "When should we bring you in?",
-    answer:
-      "When the opportunity is real but the path is not. We are most useful before direction hardens—or when a product has lost momentum.",
-  },
-  {
-    question: "Do you replace an internal team?",
-    answer:
-      "No. We work with founders and product teams, bringing the senior strategy, design and engineering needed to move the hardest work forward.",
-  },
-  {
-    question: "How does an engagement begin?",
-    answer:
-      "With the decision in front of you. We establish the stakes, expose the real constraints and define the smallest meaningful way to start.",
-  },
-  {
-    question: "How long do engagements last?",
-    answer:
-      "Long enough to create a real outcome. Some begin as a focused strategic phase; others continue through design, build and release.",
-  },
-  {
-    question: "Can you work with teams outside Peru?",
-    answer:
-      "Yes. We are based in Lima and work globally, with deliberate overlap, direct communication and senior partners in every conversation.",
-  },
-];
-
 function FaqSection() {
+  const t = useTranslations("Faq");
+  const questions = t.raw("items");
   return (
     <section
       className="section-frame section-grid section-grid-dark bg-accent text-foreground"
@@ -44,14 +14,14 @@ function FaqSection() {
     >
       <div className="content-container grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
-          <TypographyEyebrow>Before we begin</TypographyEyebrow>
+          <TypographyEyebrow>{t("eyebrow")}</TypographyEyebrow>
           <TypographyDisplay
             id="faq-title"
             as="h2"
             size="statement"
             className="mt-8 max-w-[8ch] sm:mt-12"
           >
-            The questions worth asking.
+            {t("title")}
           </TypographyDisplay>
         </div>
 

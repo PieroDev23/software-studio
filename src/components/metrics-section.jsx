@@ -1,31 +1,12 @@
-const metrics = [
-  {
-    label: "Senior ownership",
-    value: "100%",
-    description: "The people in the room are the people doing the work.",
-  },
-  {
-    label: "One integrated team",
-    value: "03",
-    description: "Strategy, design and engineering moving as one system.",
-  },
-  {
-    label: "Lost in handoffs",
-    value: "00",
-    description: "Zero distance between the decision and the execution.",
-  },
-  {
-    label: "Operating range",
-    value: "Global",
-    description: "Rooted in Lima. Built to collaborate anywhere.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 function MetricsSection() {
+  const t = useTranslations("Metrics");
+  const metrics = t.raw("items");
   return (
     <section
       className="section-frame bg-inverse text-inverse-foreground"
-      aria-label="Studio impact metrics"
+      aria-label={t("aria")}
     >
       <dl className="content-container grid grid-cols-1 border-t border-inverse-border sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (

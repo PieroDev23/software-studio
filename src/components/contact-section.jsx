@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { sendContactInquiry } from "@/app/actions/contact";
@@ -20,7 +21,7 @@ import {
 } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
 import { TypographyEyebrow } from "@/components/ui/typography";
-import { countries, countriesByCode } from "@/lib/countries";
+import { countriesByCode, getLocalizedCountries } from "@/lib/countries";
 
 const initialFormState = {
   success: false,
@@ -29,6 +30,7 @@ const initialFormState = {
 };
 
 function SubmitButton() {
+  const t = useTranslations("Contact");
   const { pending } = useFormStatus();
 
   return (
@@ -38,13 +40,15 @@ function SubmitButton() {
       disabled={pending}
       className="h-16 w-full justify-between rounded-none px-6 text-base"
     >
-      {pending ? "Sending…" : "Send inquiry"}
+      {pending ? t("sending") : t("send")}
       <span aria-hidden="true">↗</span>
     </Button>
   );
 }
 
 function ContactSection() {
+  const t = useTranslations("Contact");
+  const locale = useLocale();
   const formRef = useRef(null);
   const [formState, formAction] = useActionState(
     sendContactInquiry,
@@ -53,9 +57,9 @@ function ContactSection() {
   const [countryCode, setCountryCode] = useState("PE");
   const [phone, setPhone] = useState("");
   const [errors, setErrors] = useState({});
-  const contactTitle = "Bring us the problem worth solving.";
-  const contactDescription =
-    "The unclear one. The consequential one. The one your next chapter depends on. We will bring senior attention and a way through.";
+  const contactTitle = t("title");
+  const contactDescription = t("description");
+  const localizedCountries = getLocalizedCountries(locale);
 
   useEffect(() => {
     let active = true;
@@ -176,7 +180,7 @@ function ContactSection() {
             </div>
 
             <TypographyEyebrow tone="inverse" className="mb-10 sm:mb-14">
-              Start a conversation
+              {t("eyebrow")}
             </TypographyEyebrow>
 
             <FieldGroup className="gap-8 sm:gap-10">
@@ -186,13 +190,13 @@ function ContactSection() {
                     htmlFor="contact-name"
                     className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
                   >
-                    Name
+                    {t("name")}
                   </FieldLabel>
                   <Input
                     id="contact-name"
                     name="name"
                     autoComplete="name"
-                    placeholder="Your name"
+                    placeholder={t("namePlaceholder")}
                     required
                     aria-invalid={Boolean(errors.name)}
                     onChange={() => clearError("name")}
@@ -208,7 +212,7 @@ function ContactSection() {
                     htmlFor="contact-email"
                     className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
                   >
-                    Email
+                    {t("email")}
                   </FieldLabel>
                   <Input
                     id="contact-email"
@@ -232,12 +236,12 @@ function ContactSection() {
                   htmlFor="contact-project"
                   className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
                 >
-                  Company / Project
+                  {t("project")}
                 </FieldLabel>
                 <Input
                   id="contact-project"
                   name="project"
-                  placeholder="What are you building?"
+                  placeholder={t("projectPlaceholder")}
                   required
                   aria-invalid={Boolean(errors.project)}
                   onChange={() => clearError("project")}
@@ -254,7 +258,7 @@ function ContactSection() {
                     htmlFor="contact-country"
                     className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
                   >
-                    Country
+                    {t("country")}
                   </FieldLabel>
                   <NativeSelect
                     id="contact-country"
@@ -264,7 +268,7 @@ function ContactSection() {
                     aria-invalid={Boolean(errors.country)}
                     className="w-full [&_[data-slot=native-select]]:h-12 [&_[data-slot=native-select]]:rounded-none [&_[data-slot=native-select]]:border-0 [&_[data-slot=native-select]]:border-b [&_[data-slot=native-select]]:border-inverse-border [&_[data-slot=native-select]]:px-4 [&_[data-slot=native-select]]:text-lg [&_[data-slot=native-select]]:text-inverse-foreground [&_[data-slot=native-select]]:shadow-none [&_[data-slot=native-select]]:focus-visible:ring-0"
                   >
-                    {countries.map((country) => (
+                    {localizedCountries.map((country) => (
                       <NativeSelectOption
                         key={country.code}
                         value={country.code}
@@ -283,7 +287,7 @@ function ContactSection() {
                     htmlFor="contact-phone"
                     className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
                   >
-                    Phone
+                    {t("phone")}
                   </FieldLabel>
                   <Input
                     id="contact-phone"
@@ -297,7 +301,7 @@ function ContactSection() {
                       clearError("phone");
                     }}
                     aria-invalid={Boolean(errors.phone)}
-                    placeholder="999 999 999"
+                    placeholder={t("phonePlaceholder")}
                     className="h-12 rounded-none border-0 border-b border-inverse-border px-4 text-lg text-inverse-foreground shadow-none placeholder:text-inverse-muted focus-visible:ring-0"
                   />
                   <FieldError
@@ -311,12 +315,12 @@ function ContactSection() {
                   htmlFor="contact-brief"
                   className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
                 >
-                  The brief
+                  {t("brief")}
                 </FieldLabel>
                 <Textarea
                   id="contact-brief"
                   name="brief"
-                  placeholder="Tell us about the ambition, the problem and where things stand."
+                  placeholder={t("briefPlaceholder")}
                   required
                   aria-invalid={Boolean(errors.brief)}
                   onChange={() => clearError("brief")}
@@ -331,7 +335,7 @@ function ContactSection() {
                 (formState.success ? (
                   <Alert className="rounded-none border-inverse-border bg-background px-5 py-5 text-foreground shadow-xl">
                     <CheckCircle2Icon className="text-success" />
-                    <AlertTitle>Inquiry received.</AlertTitle>
+                    <AlertTitle>{t("successTitle")}</AlertTitle>
                     <AlertDescription className="text-muted-foreground">
                       {formState.message}
                     </AlertDescription>
@@ -342,7 +346,7 @@ function ContactSection() {
                     className="rounded-none border-destructive/30 bg-background px-5 py-5"
                   >
                     <AlertCircleIcon />
-                    <AlertTitle>Something needs attention.</AlertTitle>
+                    <AlertTitle>{t("errorTitle")}</AlertTitle>
                     <AlertDescription>{formState.message}</AlertDescription>
                   </Alert>
                 ))}

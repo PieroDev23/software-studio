@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { useTranslations } from "next-intl";
 import CapabilitiesGrid from "@/components/capabilities-section";
 import Silk from "@/components/Silk";
 import { TerminalMeta } from "@/components/terminal-slash";
@@ -7,6 +6,7 @@ import {
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
+import { Link } from "@/i18n/navigation";
 
 function CardMeta({ client, year, service }) {
   return (
@@ -20,6 +20,7 @@ function CardMeta({ client, year, service }) {
 }
 
 function WorkGrid() {
+  const t = useTranslations("Work");
   return (
     <section
       id="selected-work"
@@ -29,7 +30,7 @@ function WorkGrid() {
       <div className="content-container">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-            Proof / selected work
+            {t("eyebrow")}
           </TypographyEyebrow>
           <TypographyDisplay
             id="work-title"
@@ -38,7 +39,7 @@ function WorkGrid() {
             tone="inverse"
             className="max-w-6xl lg:col-span-10"
           >
-            Clarity you can ship.
+            {t("title")}
           </TypographyDisplay>
         </div>
 
@@ -47,7 +48,7 @@ function WorkGrid() {
             data-reveal
             href="/work/atlas-health"
             className="block cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground lg:col-span-7 lg:row-span-2"
-            aria-label="View Atlas Health case study"
+            aria-label={t("viewAria", { client: "Atlas Health" })}
           >
             <article className="case-card case-card-atlas case-card-preview flex h-full min-h-[30rem] flex-col justify-between p-5 sm:min-h-[44rem] sm:p-8 lg:min-h-[54rem]">
               <div className="case-card-silk" aria-hidden="true">
@@ -62,23 +63,22 @@ function WorkGrid() {
               <CardMeta
                 client="Atlas Health"
                 year="2026"
-                service="Product + Engineering"
+                service={t("cards.atlas.service")}
               />
               <div className="case-card-preview-content relative z-10 flex max-w-3xl flex-col gap-6">
                 <h3 className="text-balance text-[2rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(2.5rem,4vw,4.75rem)] sm:leading-[1.02]">
                   <span className="block sm:whitespace-nowrap">
-                    One operating system
+                    {t("cards.atlas.line1")}
                   </span>
                   <span className="block sm:whitespace-nowrap">
-                    for preventive care.
+                    {t("cards.atlas.line2")}
                   </span>
                 </h3>
                 <p className="max-w-xl text-base leading-6 opacity-75 sm:text-lg">
-                  One connected experience for care teams, patients and the
-                  decisions between them.
+                  {t("cards.atlas.description")}
                 </p>
                 <span className="case-card-preview-cta inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
-                  View case study <span aria-hidden="true">↗</span>
+                  {t("view")} <span aria-hidden="true">↗</span>
                 </span>
               </div>
             </article>
@@ -88,7 +88,7 @@ function WorkGrid() {
             data-reveal
             href="/work/northstar"
             className="case-card case-card-northstar flex min-h-72 cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
-            aria-label="View Northstar case study"
+            aria-label={t("viewAria", { client: "Northstar" })}
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
@@ -102,23 +102,22 @@ function WorkGrid() {
             <CardMeta
               client="Northstar"
               year="2025"
-              service="Strategy + Design"
+              service={t("cards.northstar.service")}
             />
             <div className="relative z-10 flex max-w-xl flex-col gap-5">
               <h3 className="text-balance text-[1.75rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(2rem,3vw,3.25rem)] sm:leading-[1.02]">
                 <span className="block sm:whitespace-nowrap">
-                  Enterprise planning,
+                  {t("cards.northstar.line1")}
                 </span>
                 <span className="block sm:whitespace-nowrap">
-                  made immediate.
+                  {t("cards.northstar.line2")}
                 </span>
               </h3>
               <p className="text-base leading-6 opacity-65">
-                Critical planning moved from scattered tools into one decisive
-                workspace.
+                {t("cards.northstar.description")}
               </p>
               <span className="inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
-                View case study <span aria-hidden="true">↗</span>
+                {t("view")} <span aria-hidden="true">↗</span>
               </span>
             </div>
           </Link>
@@ -127,7 +126,7 @@ function WorkGrid() {
             data-reveal
             href="/work/prism"
             className="case-card case-card-prism flex min-h-72 cursor-pointer flex-col justify-between p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
-            aria-label="View Prism case study"
+            aria-label={t("viewAria", { client: "Prism" })}
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
@@ -138,22 +137,25 @@ function WorkGrid() {
                 rotation={-0.3}
               />
             </div>
-            <CardMeta client="Prism" year="2026" service="0→1 Product" />
+            <CardMeta
+              client="Prism"
+              year="2026"
+              service={t("cards.prism.service")}
+            />
             <div className="relative z-10 flex max-w-xl flex-col gap-5">
               <h3 className="text-balance text-[1.75rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(2rem,3vw,3.25rem)] sm:leading-[1.02]">
                 <span className="block sm:whitespace-nowrap">
-                  Financial clarity for
+                  {t("cards.prism.line1")}
                 </span>
                 <span className="block sm:whitespace-nowrap">
-                  independent teams.
+                  {t("cards.prism.line2")}
                 </span>
               </h3>
               <p className="text-base leading-6 opacity-65">
-                Cash, commitments and runway turned into decisions teams can
-                trust.
+                {t("cards.prism.description")}
               </p>
               <span className="inline-flex w-fit items-center gap-4 border-b border-inverse-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
-                View case study <span aria-hidden="true">↗</span>
+                {t("view")} <span aria-hidden="true">↗</span>
               </span>
             </div>
           </Link>

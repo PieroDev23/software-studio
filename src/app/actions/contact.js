@@ -1,17 +1,20 @@
 "use server";
 
+import { getTranslations } from "next-intl/server";
 import { Resend } from "resend";
-import { contactSchema } from "@/lib/contact-schema";
+import { createContactSchema } from "@/lib/contact-schema";
 import { countriesByCode } from "@/lib/countries";
 
 const recipient = "pierodavilaaguirre22@gmail.com";
 const mockDelivery = process.env.CONTACT_FORM_MOCK !== "false";
 
 export async function sendContactInquiry(_previousState, formData) {
+  const t = await getTranslations("Contact");
+  const contactSchema = createContactSchema(t);
   if (formData.get("bot-field")) {
     return {
       success: true,
-      message: "Thanks. We will be in touch shortly.",
+      message: t("success"),
       errors: {},
     };
   }
@@ -21,7 +24,7 @@ export async function sendContactInquiry(_previousState, formData) {
   if (!result.success) {
     return {
       success: false,
-      message: "Please review the highlighted fields.",
+      message: t("review"),
       errors: result.error.flatten().fieldErrors,
     };
   }
@@ -31,8 +34,7 @@ export async function sendContactInquiry(_previousState, formData) {
 
     return {
       success: true,
-      message:
-        "Thanks — your project is in our queue. We will be in touch shortly.",
+      message: t("success"),
       errors: {},
     };
   }
@@ -40,7 +42,7 @@ export async function sendContactInquiry(_previousState, formData) {
   if (!process.env.RESEND_API_KEY) {
     return {
       success: false,
-      message: "Email delivery is not configured yet.",
+      message: t("notConfigured"),
       errors: {},
     };
   }
@@ -72,15 +74,14 @@ export async function sendContactInquiry(_previousState, formData) {
     console.error("Resend contact delivery failed", error);
     return {
       success: false,
-      message: "We could not send your inquiry. Please try again.",
+      message: t("deliveryError"),
       errors: {},
     };
   }
 
   return {
     success: true,
-    message:
-      "Thanks — your project is in our queue. We will be in touch shortly.",
+    message: t("success"),
     errors: {},
   };
 }

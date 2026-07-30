@@ -1,34 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { TypographyEyebrow } from "@/components/ui/typography";
 
-const testimonials = [
-  {
-    quote:
-      "They felt like the senior product team we should have hired from the start.",
-    author: "Elena Ward",
-    role: "VP Product",
-    company: "Northstar",
-  },
-  {
-    quote:
-      "They turned difficult decisions into clear direction and a product we could ship.",
-    author: "Marcus Chen",
-    role: "Founder",
-    company: "Atlas Health",
-  },
-  {
-    quote:
-      "They challenged our strategy and stayed close enough to help us ship it.",
-    author: "Nadia Flores",
-    role: "COO",
-    company: "Prism",
-  },
-];
-
 function TestimonialsCarousel() {
+  const t = useTranslations("Testimonials");
+  const testimonials = t.raw("items");
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState("next");
   const activeTestimonial = testimonials[activeIndex];
@@ -53,7 +32,7 @@ function TestimonialsCarousel() {
       <div className="content-container flex flex-col gap-10 sm:gap-16">
         <div className="flex items-center justify-between gap-6">
           <TypographyEyebrow id="testimonials-title">
-            What partners say
+            {t("eyebrow")}
           </TypographyEyebrow>
           <p className="font-mono text-sm uppercase tracking-[0.16em] text-muted-foreground">
             {String(activeIndex + 1).padStart(2, "0")} /{" "}
@@ -75,23 +54,21 @@ function TestimonialsCarousel() {
 
             <div className="mt-10 flex flex-col gap-1 font-mono text-sm leading-5 sm:mt-12">
               <p className="uppercase tracking-[0.12em] text-foreground">
-                — {activeTestimonial.author}, {activeTestimonial.role} at{" "}
+                {activeTestimonial.author}, {activeTestimonial.role} at{" "}
                 {activeTestimonial.company}
               </p>
-              <p className="text-muted-foreground">
-                Concept testimonial for visual exploration
-              </p>
+              <p className="text-muted-foreground">{t("concept")}</p>
             </div>
           </div>
         </div>
 
         <div className="flex justify-end">
-          <nav className="flex gap-2" aria-label="Testimonial controls">
+          <nav className="flex gap-2" aria-label={t("controls")}>
             <button
               type="button"
               onClick={showPrevious}
               className="inline-flex size-12 cursor-pointer items-center justify-center border border-border font-mono text-lg transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              aria-label="Previous testimonial"
+              aria-label={t("previous")}
             >
               ←
             </button>
@@ -99,7 +76,7 @@ function TestimonialsCarousel() {
               type="button"
               onClick={showNext}
               className="inline-flex size-12 cursor-pointer items-center justify-center border border-border font-mono text-lg transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              aria-label="Next testimonial"
+              aria-label={t("next")}
             >
               →
             </button>

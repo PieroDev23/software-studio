@@ -2,11 +2,13 @@
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 gsap.registerPlugin(useGSAP);
 
 function PageLoader({ onComplete }) {
+  const t = useTranslations("Loader");
   const loaderRef = useRef(null);
   const wordRef = useRef(null);
   const [visible, setVisible] = useState(true);
@@ -41,7 +43,7 @@ function PageLoader({ onComplete }) {
           const registeredMark = document.createElement("span");
           registeredMark.className = "loader-registered-mark";
           registeredMark.textContent = "®";
-          wordElement.append(" ", registeredMark);
+          wordElement.append(registeredMark);
         }
 
         gsap.set(wordElement, { backgroundPosition: "100% 50%" });
@@ -137,7 +139,7 @@ function PageLoader({ onComplete }) {
         .addLabel("design", "hold+=0.85")
         .call(
           () => {
-            swapWord("Design deliberately.");
+            swapWord(t("design"));
             revealWord();
           },
           [],
@@ -157,7 +159,7 @@ function PageLoader({ onComplete }) {
         .addLabel("build", "design+=1.55")
         .call(
           () => {
-            swapWord("Build properly.");
+            swapWord(t("build"));
             revealWord(true);
           },
           [],
@@ -246,7 +248,7 @@ function PageLoader({ onComplete }) {
       ref={loaderRef}
       className="page-loader fixed inset-0 z-[100] isolate block overflow-hidden text-foreground"
       aria-live="polite"
-      aria-label="Loading Manyas"
+      aria-label={t("loading")}
     >
       <div className="absolute inset-0 grid grid-cols-3" aria-hidden="true">
         <span data-loader-panel className="bg-background" />
@@ -268,7 +270,7 @@ function PageLoader({ onComplete }) {
           <p data-loader-meta>
             Manyas <span className="align-super text-xs">®</span>
           </p>
-          <p data-loader-meta>Lima / Worldwide</p>
+          <p data-loader-meta>{t("location")}</p>
         </div>
 
         <div className="flex flex-col items-center overflow-visible py-[0.16em]">
@@ -282,7 +284,7 @@ function PageLoader({ onComplete }) {
                 data-loader-word
                 className="loader-spectrum loader-think-highlight -mb-[0.18em] inline-block whitespace-nowrap px-[0.06em] pb-[0.18em]"
               >
-                Think clearly.
+                {t("think")}
               </span>
             </span>
           </p>
@@ -290,7 +292,7 @@ function PageLoader({ onComplete }) {
             data-loader-signoff
             className="mt-5 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm"
           >
-            Senior product studio.
+            {t("studio")}
           </p>
         </div>
 
@@ -298,7 +300,7 @@ function PageLoader({ onComplete }) {
           data-loader-meta
           className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground"
         >
-          Strategy / Design / Engineering
+          {t("disciplines")}
         </p>
       </div>
     </output>

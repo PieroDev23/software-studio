@@ -11,27 +11,31 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const study = getCaseStudy(slug);
+  const { locale, slug } = await params;
+  const study = getCaseStudy(slug, locale);
 
   if (!study) {
     return {};
   }
 
-  const title = `${study.client} — ${study.title}`;
+  const title = `${study.client}: ${study.title}`;
 
   return {
     title,
     description: study.description,
     alternates: {
-      canonical: `/work/${study.slug}`,
+      canonical: `/${locale}/work/${study.slug}`,
+      languages: {
+        en: `/en/work/${study.slug}`,
+        es: `/es/work/${study.slug}`,
+      },
     },
     openGraph: {
       type: "article",
       title: `${title} | Manyas`,
       description: study.description,
       siteName: "Manyas",
-      locale: "en_US",
+      locale: locale === "es" ? "es_PE" : "en_US",
     },
     twitter: {
       card: "summary_large_image",
@@ -42,8 +46,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function WorkPage({ params }) {
-  const { slug } = await params;
-  const study = getCaseStudy(slug);
+  const { locale, slug } = await params;
+  const study = getCaseStudy(slug, locale);
 
   if (!study) {
     notFound();
@@ -51,7 +55,7 @@ export default async function WorkPage({ params }) {
 
   return (
     <CaseStudyMotionShell>
-      <CaseStudyPage study={study} />
+      <CaseStudyPage study={study} locale={locale} />
     </CaseStudyMotionShell>
   );
 }

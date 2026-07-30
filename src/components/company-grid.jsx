@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { TypographyEyebrow } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +17,7 @@ const markStyles = {
 };
 
 function CompanyGrid() {
+  const t = useTranslations("Companies");
   return (
     <section
       className="section-frame bg-inverse text-inverse-foreground"
@@ -24,13 +26,13 @@ function CompanyGrid() {
       <div className="content-container">
         <div className="flex items-end justify-between gap-6 px-1">
           <TypographyEyebrow id="companies-title" tone="inverse">
-            Experience across the team
+            {t("eyebrow")}
           </TypographyEyebrow>
           <TypographyEyebrow
             className="hidden text-right sm:block"
             tone="inverse"
           >
-            Selected companies &amp; ventures
+            {t("selected")}
           </TypographyEyebrow>
         </div>
 
@@ -53,7 +55,7 @@ function CompanyGrid() {
                     markStyles[company.mark],
                   )}
                 >
-                  {company.name}
+                  {t("client", { number: company.name.replace("Client ", "") })}
                 </span>
                 {company.detail ? (
                   <span className="font-mono text-sm font-medium uppercase tracking-[0.12em] text-inverse-muted">

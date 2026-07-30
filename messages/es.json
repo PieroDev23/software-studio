@@ -1,0 +1,285 @@
+{
+  "Metadata": {
+    "title": "Manyas, estudio senior de producto",
+    "description": "Socios senior para trabajos decisivos. Estrategia, diseño e ingeniería para productos digitales de alto impacto.",
+    "socialDescription": "Estrategia, diseño e ingeniería para productos digitales de alto impacto."
+  },
+  "Hero": {
+    "homeLabel": "Manyas, inicio",
+    "availability": "Proyectos selectos",
+    "eyebrow": "Socios senior de producto para desafíos decisivos",
+    "line1": "Productos ambiciosos.",
+    "line2": "Decisiones claras.",
+    "line3": "Hechos para durar.",
+    "lead": "Unimos estrategia, diseño e ingeniería cuando equivocarse cuesta demasiado.",
+    "cta": "Hablemos de tu proyecto",
+    "location": "Lima, PE 🇵🇪 · Trabajando globalmente"
+  },
+  "Companies": {
+    "eyebrow": "Experiencia de todo el equipo",
+    "selected": "Empresas y proyectos seleccionados",
+    "client": "Cliente {number}"
+  },
+  "Premise": {
+    "eyebrow": "La premisa",
+    "before": "Pensar sin ejecutar mata el impulso. Nosotros",
+    "highlight": "cerramos la brecha."
+  },
+  "Metrics": {
+    "aria": "Métricas de impacto del estudio",
+    "items": [
+      {
+        "label": "Liderazgo senior",
+        "value": "100%",
+        "description": "Quienes están en la reunión son quienes hacen el trabajo."
+      },
+      {
+        "label": "Un equipo integrado",
+        "value": "03",
+        "description": "Estrategia, diseño e ingeniería operando como un solo sistema."
+      },
+      {
+        "label": "Perdido en traspasos",
+        "value": "00",
+        "description": "Cero distancia entre la decisión y la ejecución."
+      },
+      {
+        "label": "Alcance operativo",
+        "value": "Global",
+        "description": "Con raíces en Lima. Preparados para colaborar en cualquier lugar."
+      }
+    ]
+  },
+  "Work": {
+    "eyebrow": "Evidencia / trabajo seleccionado",
+    "title": "Claridad que llega a producción.",
+    "view": "Ver caso de estudio",
+    "viewAria": "Ver caso de estudio de {client}",
+    "cards": {
+      "atlas": {
+        "service": "Producto + Ingeniería",
+        "line1": "Prevención en",
+        "line2": "un solo sistema.",
+        "description": "Equipos, pacientes y decisiones dentro de una misma experiencia."
+      },
+      "northstar": {
+        "service": "Estrategia + Diseño",
+        "line1": "Planificación clara,",
+        "line2": "decisiones rápidas.",
+        "description": "De herramientas dispersas a un espacio de trabajo decisivo."
+      },
+      "prism": {
+        "service": "Producto 0→1",
+        "line1": "Finanzas claras.",
+        "line2": "Decisiones firmes.",
+        "description": "Caja, compromisos y runway convertidos en acción."
+      }
+    }
+  },
+  "Capabilities": {
+    "items": [
+      {
+        "number": "01",
+        "label": "Ingeniería",
+        "titleLines": ["Construido para", "el mundo real."],
+        "services": [
+          "Ingeniería de producto lista para producción",
+          "Arquitectura bajo restricciones reales",
+          "IA que se gana su lugar",
+          "Plataformas preparadas para lo que sigue"
+        ]
+      },
+      {
+        "number": "02",
+        "label": "Diseño",
+        "titleLines": ["Complejidad,", "hecha claridad."],
+        "services": [
+          "Experiencia e interacción de producto",
+          "Sistemas que escalan decisiones",
+          "Prototipado rápido",
+          "Marca traducida en comportamiento"
+        ]
+      },
+      {
+        "number": "03",
+        "label": "Estrategia",
+        "titleLines": ["Ambigüedad", "hecha acción."],
+        "services": [
+          "Dirección y definición de producto",
+          "Diligencia técnica y de producto",
+          "Roadmaps ligados a resultados",
+          "Liderazgo senior en la sala"
+        ]
+      }
+    ]
+  },
+  "Testimonials": {
+    "eyebrow": "Lo que dicen nuestros socios",
+    "concept": "Testimonio conceptual para exploración visual",
+    "controls": "Controles de testimonios",
+    "previous": "Testimonio anterior",
+    "next": "Siguiente testimonio",
+    "items": [
+      {
+        "quote": "Se sintieron como el equipo senior de producto que debimos contratar desde el inicio.",
+        "author": "Elena Ward",
+        "role": "VP de Producto",
+        "company": "Northstar"
+      },
+      {
+        "quote": "Convirtieron decisiones difíciles en una dirección clara y un producto que pudimos lanzar.",
+        "author": "Marcus Chen",
+        "role": "Fundador",
+        "company": "Prism"
+      },
+      {
+        "quote": "Desafiaron nuestra estrategia y se mantuvieron lo bastante cerca para ayudarnos a lanzar.",
+        "author": "Ana Torres",
+        "role": "COO",
+        "company": "Atlas Health"
+      }
+    ]
+  },
+  "Team": {
+    "eyebrow": "El estudio",
+    "title": "Tres socios. Cero capas. Sin distancia.",
+    "edge": "Ventaja distintiva",
+    "members": [
+      {
+        "name": "Piero Davila",
+        "discipline": "Socio / Ingeniería",
+        "edge": "Creatividad de producto",
+        "bio": "Encuentra caminos originales dentro de restricciones complejas."
+      },
+      {
+        "name": "Josue Villasante",
+        "discipline": "Socio / Tecnología",
+        "edge": "Ingeniería 10×",
+        "bio": "Rango técnico excepcional y ejecución veloz en sistemas complejos."
+      },
+      {
+        "name": "Sebastian Muñoz",
+        "discipline": "Socio / Ingeniería",
+        "edge": "Liderazgo y criterio",
+        "bio": "Criterio impecable, liderazgo sólido y una lectura clara del negocio."
+      }
+    ]
+  },
+  "Engagement": {
+    "eyebrow": "Cómo trabajamos",
+    "title": "Decidir. Construir. Lanzar.",
+    "items": [
+      {
+        "number": "01",
+        "label": "Decidir",
+        "titleLines": ["Decide lo", "que importa."],
+        "description": "Aislamos la restricción, alineamos al equipo y definimos qué debe ser cierto."
+      },
+      {
+        "number": "02",
+        "label": "Dar forma",
+        "titleLines": ["Convicción", "hecha sistema."],
+        "description": "Estrategia, producto y tecnología avanzan en una sola dirección."
+      },
+      {
+        "number": "03",
+        "label": "Entregar",
+        "titleLines": ["Que funcione.", "En el mundo real."],
+        "description": "Seguimos cerca durante las decisiones difíciles, la construcción y el lanzamiento."
+      }
+    ]
+  },
+  "Faq": {
+    "eyebrow": "Antes de empezar",
+    "title": "Preguntas que importan.",
+    "items": [
+      {
+        "question": "¿Qué tipo de trabajo aceptan?",
+        "answer": "Productos digitales decisivos: nuevos negocios, plataformas complejas y decisiones críticas donde el criterio senior cambia el resultado."
+      },
+      {
+        "question": "¿Cuándo deberíamos incorporarlos?",
+        "answer": "Cuando la oportunidad es real pero el camino no. Somos más útiles antes de que la dirección se endurezca o cuando un producto perdió impulso."
+      },
+      {
+        "question": "¿Reemplazan a un equipo interno?",
+        "answer": "No. Trabajamos con fundadores y equipos de producto, sumando la estrategia, el diseño y la ingeniería senior necesarios para mover el trabajo más difícil."
+      },
+      {
+        "question": "¿Cómo comienza un proyecto?",
+        "answer": "Con la decisión que tienen delante. Definimos lo que está en juego, exponemos las restricciones reales y acordamos la forma más pequeña y significativa de empezar."
+      },
+      {
+        "question": "¿Cuánto duran los proyectos?",
+        "answer": "Lo suficiente para producir un resultado real. Algunos comienzan como una fase estratégica enfocada; otros continúan hasta diseño, construcción y lanzamiento."
+      },
+      {
+        "question": "¿Trabajan con equipos fuera de Perú?",
+        "answer": "Sí. Estamos en Lima y trabajamos globalmente, con horarios superpuestos, comunicación directa y socios senior en cada conversación."
+      }
+    ]
+  },
+  "Contact": {
+    "title": "Tráenos el problema decisivo.",
+    "description": "El que no está claro. Aquel del que depende tu siguiente capítulo. Pondremos atención senior y encontraremos el camino.",
+    "eyebrow": "Empecemos una conversación",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo",
+    "project": "Empresa / Proyecto",
+    "projectPlaceholder": "¿Qué estás construyendo?",
+    "country": "País",
+    "phone": "Teléfono",
+    "phonePlaceholder": "Número de teléfono",
+    "brief": "El contexto",
+    "briefPlaceholder": "Cuéntanos la ambición, el problema y en qué punto se encuentra.",
+    "send": "Enviar consulta",
+    "sending": "Enviando…",
+    "successTitle": "Consulta recibida",
+    "errorTitle": "Hay algo que revisar",
+    "success": "Gracias. Tu proyecto ya está en nuestra lista; te contactaremos pronto.",
+    "review": "Revisa los campos resaltados.",
+    "deliveryError": "No pudimos enviar tu consulta. Inténtalo de nuevo.",
+    "notConfigured": "El envío de correo aún no está configurado.",
+    "validation": {
+      "nameRequired": "Ingresa tu nombre.",
+      "nameLong": "Tu nombre es demasiado largo.",
+      "emailInvalid": "Ingresa un correo válido.",
+      "emailLong": "Tu correo es demasiado largo.",
+      "projectRequired": "Cuéntanos qué estás construyendo.",
+      "projectLong": "Limita el nombre del proyecto a 120 caracteres.",
+      "countryRequired": "Selecciona un país.",
+      "phoneRequired": "Ingresa tu número de teléfono.",
+      "phoneInvalid": "Ingresa un teléfono válido para el país seleccionado.",
+      "briefRequired": "Cuéntanos un poco más sobre el proyecto.",
+      "briefLong": "Limita el contexto a 2.000 caracteres."
+    }
+  },
+  "Loader": {
+    "loading": "Cargando Manyas",
+    "think": "Pensar con claridad.",
+    "design": "Diseñar con intención.",
+    "build": "Construir de verdad.",
+    "studio": "Estudio senior de producto.",
+    "location": "Lima / Global",
+    "disciplines": "Estrategia / Diseño / Ingeniería"
+  },
+  "Navigation": {
+    "page": "Navegación de página",
+    "top": "Volver arriba",
+    "end": "Ir al final de la página"
+  },
+  "CaseStudy": {
+    "selected": "Trabajo seleccionado",
+    "premise": "La premisa",
+    "challenge": "El desafío",
+    "shift": "El cambio",
+    "before": "Antes",
+    "after": "Después",
+    "changed": "Qué cambió",
+    "moves": "Los movimientos que hicieron la diferencia.",
+    "outcome": "El resultado",
+    "next": "Siguiente caso",
+    "cta": "Hablemos de tu proyecto"
+  }
+}

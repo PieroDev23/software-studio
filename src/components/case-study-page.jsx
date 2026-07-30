@@ -1,5 +1,5 @@
-import Link from "next/link";
-
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/language-switcher";
 import Silk from "@/components/Silk";
 import { TerminalMeta } from "@/components/terminal-slash";
 import { CtaLink } from "@/components/ui/cta-link";
@@ -8,10 +8,12 @@ import {
   TypographyEyebrow,
   TypographyLead,
 } from "@/components/ui/typography";
+import { Link } from "@/i18n/navigation";
 import { getCaseStudy } from "@/lib/case-studies";
 
-function CaseStudyPage({ study }) {
-  const nextStudy = getCaseStudy(study.next);
+function CaseStudyPage({ study, locale }) {
+  const t = useTranslations("CaseStudy");
+  const nextStudy = getCaseStudy(study.next, locale);
 
   return (
     <main className="bg-background text-foreground">
@@ -32,12 +34,15 @@ function CaseStudyPage({ study }) {
               <Link href="/" className="transition-opacity hover:opacity-60">
                 Manyas <span className="align-super text-xs">®</span>
               </Link>
-              <Link
-                href="/#selected-work"
-                className="text-right transition-opacity hover:opacity-60"
-              >
-                ← Selected work
-              </Link>
+              <div className="flex items-center gap-5">
+                <LanguageSwitcher />
+                <Link
+                  href="/#selected-work"
+                  className="text-right transition-opacity hover:opacity-60"
+                >
+                  ← {t("selected")}
+                </Link>
+              </div>
             </nav>
 
             <div className="flex flex-1 flex-col justify-end pb-12 pt-28 sm:pb-16 lg:pb-20">
@@ -75,7 +80,7 @@ function CaseStudyPage({ study }) {
         <section className="section-frame section-grid section-grid-light bg-inverse text-inverse-foreground">
           <div className="content-container grid gap-10 lg:grid-cols-12 lg:gap-8">
             <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-              The premise
+              {t("premise")}
             </TypographyEyebrow>
             <TypographyDisplay
               as="h2"
@@ -91,7 +96,7 @@ function CaseStudyPage({ study }) {
         <section className="section-frame bg-inverse text-inverse-foreground">
           <div className="content-container grid gap-12 lg:grid-cols-12 lg:gap-8">
             <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-              The challenge
+              {t("challenge")}
             </TypographyEyebrow>
             <div className="lg:col-span-9 lg:col-start-4">
               <h2 className="max-w-[15ch] text-[2.5rem] font-medium leading-[1.08] tracking-[-0.03em] sm:text-[clamp(3.25rem,5vw,5.75rem)] sm:leading-[1.04]">
@@ -115,7 +120,7 @@ function CaseStudyPage({ study }) {
           <div className="content-container relative flex min-h-[52svh] flex-col justify-between gap-20 px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
             <div className="flex items-center justify-between gap-6">
               <TypographyEyebrow className="text-current opacity-65">
-                The shift
+                {t("shift")}
               </TypographyEyebrow>
               <TypographyEyebrow className="text-current opacity-65">
                 02 / 04
@@ -135,11 +140,11 @@ function CaseStudyPage({ study }) {
                 className="grid border-t border-current/25 pt-5 font-mono text-sm uppercase leading-5 tracking-[0.1em] lg:col-span-3"
               >
                 <div className="grid grid-cols-[4.5rem_1fr] gap-4 border-b border-current/20 py-4">
-                  <dt className="opacity-50">Before</dt>
+                  <dt className="opacity-50">{t("before")}</dt>
                   <dd>{study.shift.before}</dd>
                 </div>
                 <div className="grid grid-cols-[4.5rem_1fr] gap-4 py-4">
-                  <dt className="opacity-50">After</dt>
+                  <dt className="opacity-50">{t("after")}</dt>
                   <dd>{study.shift.after}</dd>
                 </div>
               </dl>
@@ -151,14 +156,14 @@ function CaseStudyPage({ study }) {
           <div className="content-container">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
               <TypographyEyebrow className="lg:col-span-2">
-                What changed
+                {t("changed")}
               </TypographyEyebrow>
               <TypographyDisplay
                 as="h2"
                 size="statement"
                 className="max-w-5xl lg:col-span-10"
               >
-                The moves that made the difference.
+                {t("moves")}
               </TypographyDisplay>
             </div>
 
@@ -186,7 +191,7 @@ function CaseStudyPage({ study }) {
         <section className="section-frame section-grid section-grid-light bg-inverse text-inverse-foreground">
           <div className="content-container grid gap-12 lg:grid-cols-12 lg:gap-8">
             <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-              The outcome
+              {t("outcome")}
             </TypographyEyebrow>
             <div className="lg:col-span-10">
               <TypographyDisplay
@@ -208,7 +213,7 @@ function CaseStudyPage({ study }) {
       <footer className="section-frame bg-background text-foreground">
         <div className="content-container grid gap-10 lg:grid-cols-12 lg:gap-8">
           <TypographyEyebrow className="lg:col-span-2">
-            Next case
+            {t("next")}
           </TypographyEyebrow>
           <div className="lg:col-span-10">
             <Link
@@ -230,7 +235,7 @@ function CaseStudyPage({ study }) {
             </Link>
 
             <CtaLink href="/#contacto" className="mt-16 sm:mt-24">
-              Discuss a project
+              {t("cta")}
             </CtaLink>
           </div>
         </div>

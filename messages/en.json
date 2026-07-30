@@ -1,0 +1,285 @@
+{
+  "Metadata": {
+    "title": "Manyas, Senior Product Studio",
+    "description": "Senior product partners for consequential work. Strategy, design and engineering for ambitious digital products.",
+    "socialDescription": "Strategy, design and engineering for ambitious digital products."
+  },
+  "Hero": {
+    "homeLabel": "Manyas, home",
+    "availability": "Select engagements only",
+    "eyebrow": "Senior product partners for consequential work",
+    "line1": "Consequential products.",
+    "line2": "Clear decisions.",
+    "line3": "Built to endure.",
+    "lead": "We bring strategy, design and engineering together when the cost of getting it wrong is too high.",
+    "cta": "Discuss a project",
+    "location": "Lima, PE 🇵🇪 · Working globally"
+  },
+  "Companies": {
+    "eyebrow": "Experience across the team",
+    "selected": "Selected companies & ventures",
+    "client": "Client {number}"
+  },
+  "Premise": {
+    "eyebrow": "The premise",
+    "before": "Momentum dies in the gaps between thinking and making. We",
+    "highlight": "close them."
+  },
+  "Metrics": {
+    "aria": "Studio impact metrics",
+    "items": [
+      {
+        "label": "Senior ownership",
+        "value": "100%",
+        "description": "The people in the room are the people doing the work."
+      },
+      {
+        "label": "One integrated team",
+        "value": "03",
+        "description": "Strategy, design and engineering moving as one system."
+      },
+      {
+        "label": "Lost in handoffs",
+        "value": "00",
+        "description": "Zero distance between the decision and the execution."
+      },
+      {
+        "label": "Operating range",
+        "value": "Global",
+        "description": "Rooted in Lima. Built to collaborate anywhere."
+      }
+    ]
+  },
+  "Work": {
+    "eyebrow": "Proof / selected work",
+    "title": "Clarity you can ship.",
+    "view": "View case study",
+    "viewAria": "View {client} case study",
+    "cards": {
+      "atlas": {
+        "service": "Product + Engineering",
+        "line1": "One operating system",
+        "line2": "for preventive care.",
+        "description": "One connected experience for care teams, patients and the decisions between them."
+      },
+      "northstar": {
+        "service": "Strategy + Design",
+        "line1": "Enterprise planning,",
+        "line2": "made immediate.",
+        "description": "Critical planning moved from scattered tools into one decisive workspace."
+      },
+      "prism": {
+        "service": "0→1 Product",
+        "line1": "Financial clarity for",
+        "line2": "independent teams.",
+        "description": "Cash, commitments and runway turned into decisions teams can trust."
+      }
+    }
+  },
+  "Capabilities": {
+    "items": [
+      {
+        "number": "01",
+        "label": "Engineering",
+        "titleLines": ["Build for", "the real world."],
+        "services": [
+          "Production ready product engineering",
+          "Architecture under real constraints",
+          "AI that earns its place",
+          "Platforms ready for what comes next"
+        ]
+      },
+      {
+        "number": "02",
+        "label": "Design",
+        "titleLines": ["Complexity,", "made clear."],
+        "services": [
+          "Product experience & interaction",
+          "Systems that scale decisions",
+          "Rapid prototyping",
+          "Brand translated into behavior"
+        ]
+      },
+      {
+        "number": "03",
+        "label": "Strategy",
+        "titleLines": ["Turn ambiguity", "into action."],
+        "services": [
+          "Product direction & definition",
+          "Technical and product diligence",
+          "Roadmaps tied to outcomes",
+          "Senior leadership in the room"
+        ]
+      }
+    ]
+  },
+  "Testimonials": {
+    "eyebrow": "What partners say",
+    "concept": "Concept testimonial for visual exploration",
+    "controls": "Testimonial controls",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
+    "items": [
+      {
+        "quote": "They felt like the senior product team we should have hired from the start.",
+        "author": "Elena Ward",
+        "role": "VP Product",
+        "company": "Northstar"
+      },
+      {
+        "quote": "They turned difficult decisions into clear direction and a product we could ship.",
+        "author": "Marcus Chen",
+        "role": "Founder",
+        "company": "Prism"
+      },
+      {
+        "quote": "They challenged our strategy and stayed close enough to help us ship it.",
+        "author": "Ana Torres",
+        "role": "COO",
+        "company": "Atlas Health"
+      }
+    ]
+  },
+  "Team": {
+    "eyebrow": "The studio",
+    "title": "Three partners. Zero layers. All in.",
+    "edge": "Distinctive edge",
+    "members": [
+      {
+        "name": "Piero Davila",
+        "discipline": "Partner / Engineering",
+        "edge": "Creative product thinking",
+        "bio": "The team’s creative force, finding original paths through difficult product constraints."
+      },
+      {
+        "name": "Josue Villasante",
+        "discipline": "Partner / Technology",
+        "edge": "10× engineering",
+        "bio": "Exceptional technical range and execution speed across complex product systems."
+      },
+      {
+        "name": "Sebastian Muñoz",
+        "discipline": "Partner / Engineering",
+        "edge": "Leadership & judgment",
+        "bio": "Impeccable judgment, strong leadership and a clear understanding of the business behind every problem."
+      }
+    ]
+  },
+  "Engagement": {
+    "eyebrow": "How we engage",
+    "title": "From hard decision to shipped product.",
+    "items": [
+      {
+        "number": "01",
+        "label": "Decide",
+        "titleLines": ["Find the decision", "that matters."],
+        "description": "We isolate the real constraint, align the room and define what must be true."
+      },
+      {
+        "number": "02",
+        "label": "Shape",
+        "titleLines": ["Turn conviction", "into a system."],
+        "description": "Strategy, product and technology become one direction the team can act on."
+      },
+      {
+        "number": "03",
+        "label": "Deliver",
+        "titleLines": ["Stay until it works", "in the real world."],
+        "description": "Senior partners remain close through the hard tradeoffs, build and release."
+      }
+    ]
+  },
+  "Faq": {
+    "eyebrow": "Before we begin",
+    "title": "The questions worth asking.",
+    "items": [
+      {
+        "question": "What kind of work do you take on?",
+        "answer": "Consequential digital products: new ventures, complex platforms and critical product decisions where senior judgment changes the outcome."
+      },
+      {
+        "question": "When should we bring you in?",
+        "answer": "When the opportunity is real but the path is not. We are most useful before direction hardens and when a product has lost momentum."
+      },
+      {
+        "question": "Do you replace an internal team?",
+        "answer": "No. We work with founders and product teams, bringing the senior strategy, design and engineering needed to move the hardest work forward."
+      },
+      {
+        "question": "How does an engagement begin?",
+        "answer": "With the decision in front of you. We establish the stakes, expose the real constraints and define the smallest meaningful way to start."
+      },
+      {
+        "question": "How long do engagements last?",
+        "answer": "Long enough to create a real outcome. Some begin as a focused strategic phase; others continue through design, build and release."
+      },
+      {
+        "question": "Can you work with teams outside Peru?",
+        "answer": "Yes. We are based in Lima and work globally, with deliberate overlap, direct communication and senior partners in every conversation."
+      }
+    ]
+  },
+  "Contact": {
+    "title": "Bring us the problem worth solving.",
+    "description": "The unclear one. The consequential one. The one your next chapter depends on. We will bring senior attention and a way through.",
+    "eyebrow": "Start a conversation",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "project": "Company / Project",
+    "projectPlaceholder": "What are you building?",
+    "country": "Country",
+    "phone": "Phone",
+    "phonePlaceholder": "Phone number",
+    "brief": "The brief",
+    "briefPlaceholder": "Tell us about the ambition, the problem and where things stand.",
+    "send": "Send inquiry",
+    "sending": "Sending…",
+    "successTitle": "Inquiry received",
+    "errorTitle": "Something needs attention",
+    "success": "Thanks. Your project is in our queue. We will be in touch shortly.",
+    "review": "Please review the highlighted fields.",
+    "deliveryError": "We could not send your inquiry. Please try again.",
+    "notConfigured": "Email delivery is not configured yet.",
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "nameLong": "Your name is too long.",
+      "emailInvalid": "Enter a valid email address.",
+      "emailLong": "Your email is too long.",
+      "projectRequired": "Tell us what you are building.",
+      "projectLong": "Keep the project name under 120 characters.",
+      "countryRequired": "Select a country.",
+      "phoneRequired": "Enter your phone number.",
+      "phoneInvalid": "Enter a valid phone number for the selected country.",
+      "briefRequired": "Tell us a little more about the project.",
+      "briefLong": "Keep the brief under 2,000 characters."
+    }
+  },
+  "Loader": {
+    "loading": "Loading Manyas",
+    "think": "Think clearly.",
+    "design": "Design deliberately.",
+    "build": "Build properly.",
+    "studio": "Senior product studio.",
+    "location": "Lima / Worldwide",
+    "disciplines": "Strategy / Design / Engineering"
+  },
+  "Navigation": {
+    "page": "Page navigation",
+    "top": "Back to top",
+    "end": "Go to page end"
+  },
+  "CaseStudy": {
+    "selected": "Selected work",
+    "premise": "The premise",
+    "challenge": "The challenge",
+    "shift": "The shift",
+    "before": "Before",
+    "after": "After",
+    "changed": "What changed",
+    "moves": "The moves that made the difference.",
+    "outcome": "The outcome",
+    "next": "Next case",
+    "cta": "Discuss a project"
+  }
+}

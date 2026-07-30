@@ -1,41 +1,6 @@
+import { useTranslations } from "next-intl";
 import { TerminalMeta } from "@/components/terminal-slash";
 import { TypographyEyebrow } from "@/components/ui/typography";
-
-const capabilities = [
-  {
-    number: "01",
-    label: "Engineering",
-    titleLines: ["Build for", "the real world."],
-    services: [
-      "Production-grade product engineering",
-      "Architecture under real constraints",
-      "AI that earns its place",
-      "Platforms ready for what comes next",
-    ],
-  },
-  {
-    number: "02",
-    label: "Design",
-    titleLines: ["Complexity,", "made clear."],
-    services: [
-      "Product experience & interaction",
-      "Systems that scale decisions",
-      "Rapid prototyping",
-      "Brand translated into behavior",
-    ],
-  },
-  {
-    number: "03",
-    label: "Strategy",
-    titleLines: ["Turn ambiguity", "into action."],
-    services: [
-      "Product direction & definition",
-      "Technical and product diligence",
-      "Roadmaps tied to outcomes",
-      "Senior leadership in the room",
-    ],
-  },
-];
 
 function CapabilityMark() {
   return (
@@ -48,6 +13,8 @@ function CapabilityMark() {
 }
 
 function CapabilitiesGrid() {
+  const t = useTranslations("Capabilities");
+  const capabilities = t.raw("items");
   return (
     <div className="mt-12 grid w-full border-t border-inverse-border text-inverse-foreground sm:mt-20 lg:mt-24 lg:grid-cols-3">
       {capabilities.map((capability) => (

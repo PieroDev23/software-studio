@@ -1,9 +1,11 @@
+import { useTranslations } from "next-intl";
 import {
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
 
 function PremiseSection() {
+  const t = useTranslations("Premise");
   return (
     <section
       className="section-frame section-grid section-grid-light flex items-center bg-inverse text-inverse-foreground"
@@ -11,7 +13,7 @@ function PremiseSection() {
     >
       <div className="content-container grid gap-10 lg:grid-cols-12 lg:gap-8">
         <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-          The premise
+          {t("eyebrow")}
         </TypographyEyebrow>
 
         <TypographyDisplay
@@ -21,8 +23,8 @@ function PremiseSection() {
           tone="inverse"
           className="lg:col-span-10"
         >
-          Momentum dies in the gaps between thinking and making. We{" "}
-          <span className="text-impact-gradient">close them.</span>
+          {t("before")}{" "}
+          <span className="text-impact-gradient">{t("highlight")}</span>
         </TypographyDisplay>
       </div>
     </section>
