@@ -10,7 +10,9 @@ import "lenis/dist/lenis.css";
 import "../globals.css";
 
 import SmoothScrollProvider from "@/components/smooth-scroll-provider";
+import WebVitals from "@/components/web-vitals";
 import { routing } from "@/i18n/routing";
+import { siteConfig } from "@/lib/site-config";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -37,9 +39,11 @@ export async function generateMetadata({ params }) {
   }
 
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  const keywords = t.raw("keywords");
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
   return {
-    metadataBase: new URL("https://manyas.dev"),
+    metadataBase: new URL(siteConfig.url),
     title: {
       default: t("title"),
       template: "%s | Manyas",
@@ -49,14 +53,7 @@ export async function generateMetadata({ params }) {
     authors: [{ name: "Manyas" }],
     creator: "Manyas",
     publisher: "Manyas",
-    keywords: [
-      "product studio",
-      "product strategy",
-      "product design",
-      "software engineering",
-      "digital products",
-      "Lima",
-    ],
+    keywords,
     robots: {
       index: true,
       follow: true,
@@ -66,8 +63,12 @@ export async function generateMetadata({ params }) {
       languages: {
         en: "/en",
         es: "/es",
+        "x-default": "/en",
       },
     },
+    verification: googleVerification
+      ? { google: googleVerification }
+      : undefined,
     openGraph: {
       type: "website",
       locale: locale === "es" ? "es_PE" : "en_US",
@@ -100,6 +101,7 @@ export default async function LocaleLayout({ children, params }) {
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <WebVitals />
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>

@@ -12,6 +12,7 @@ import {
 } from "react";
 import * as THREE from "three";
 import { degToRad } from "three/src/math/MathUtils.js";
+import { useAnimationActivity } from "@/hooks/use-animation-activity";
 
 function extendMaterial(BaseMaterial, cfg) {
   const physical = THREE.ShaderLib.physical;
@@ -60,11 +61,21 @@ function extendMaterial(BaseMaterial, cfg) {
   return mat;
 }
 
-const CanvasWrapper = ({ children }) => (
-  <Canvas dpr={[1, 2]} frameloop="always" className="w-full h-full relative">
-    {children}
-  </Canvas>
-);
+const CanvasWrapper = ({ children }) => {
+  const { elementRef, shouldAnimate } = useAnimationActivity();
+
+  return (
+    <div ref={elementRef} className="h-full w-full">
+      <Canvas
+        dpr={[1, 1.5]}
+        frameloop={shouldAnimate ? "always" : "demand"}
+        className="relative h-full w-full"
+      >
+        {children}
+      </Canvas>
+    </div>
+  );
+};
 
 const hexToNormalizedRGB = (hex) => {
   const clean = hex.replace("#", "");

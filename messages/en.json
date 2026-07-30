@@ -1,8 +1,26 @@
 {
   "Metadata": {
-    "title": "Manyas, Senior Product Studio",
-    "description": "Senior product partners for consequential work. Strategy, design and engineering for ambitious digital products.",
-    "socialDescription": "Strategy, design and engineering for ambitious digital products."
+    "title": "Manyas, Product Strategy, Design and Engineering",
+    "description": "A senior product studio in Lima for consequential digital products. Strategy, product design and software engineering, working globally.",
+    "socialDescription": "Senior product strategy, design and engineering for consequential digital products.",
+    "keywords": [
+      "product strategy studio",
+      "product design studio",
+      "software engineering studio",
+      "digital product development",
+      "AI product development",
+      "senior product team",
+      "product studio Lima"
+    ]
+  },
+  "Seo": {
+    "description": "Manyas is a senior product strategy, design and software engineering studio based in Lima and working globally.",
+    "expertise": [
+      "Product strategy",
+      "Product design",
+      "Software engineering",
+      "AI product development"
+    ]
   },
   "Hero": {
     "homeLabel": "Manyas, home",
@@ -110,6 +128,30 @@
           "Roadmaps tied to outcomes",
           "Senior leadership in the room"
         ]
+      }
+    ]
+  },
+  "Expertise": {
+    "eyebrow": "What we solve",
+    "title": "Senior depth where product decisions carry weight.",
+    "intro": "We work across strategy, design and engineering as one senior team, from the first consequential decision through production.",
+    "cta": "Bring us the hard problem",
+    "items": [
+      {
+        "title": "Product strategy for consequential decisions.",
+        "description": "We turn ambiguity, evidence and business constraints into a direction teams can act on."
+      },
+      {
+        "title": "Product design for complex workflows.",
+        "description": "We make demanding systems feel clear without hiding the depth professionals need."
+      },
+      {
+        "title": "Software engineering built to endure.",
+        "description": "We ship production ready platforms with architecture that can survive real users and real change."
+      },
+      {
+        "title": "AI product development with a reason to exist.",
+        "description": "We apply AI where it creates measurable leverage, not where it only creates a demo."
       }
     ]
   },
@@ -260,6 +302,10 @@
     "think": "Think clearly.",
     "design": "Design deliberately.",
     "build": "Build properly.",
+    "languageTransition": {
+      "en": "Another language. The same intent.",
+      "es": "Otro idioma. La misma intención."
+    },
     "studio": "Senior product studio.",
     "location": "Lima / Worldwide",
     "disciplines": "Strategy / Design / Engineering"

@@ -14,8 +14,18 @@ gsap.registerPlugin(useGSAP, SplitText);
 function MotionShell({ children, showLoader = true }) {
   const t = useTranslations("Navigation");
   const contentRef = useRef(null);
+  const shouldShowLoader = useRef(
+    showLoader &&
+      (typeof window === "undefined" || !window.__manyasPageLoaderShown),
+  ).current;
   const [canScrollUp, setCanScrollUp] = useState(false);
   const lenis = useLenis();
+
+  useEffect(() => {
+    if (shouldShowLoader) {
+      window.__manyasPageLoaderShown = true;
+    }
+  }, [shouldShowLoader]);
 
   useEffect(() => {
     const updateNavigation = () => {
@@ -136,7 +146,7 @@ function MotionShell({ children, showLoader = true }) {
         heroTimeline.play(0);
       });
 
-      if (showLoader) {
+      if (shouldShowLoader) {
         window.addEventListener("manyas:loader-reveal", playHero, {
           once: true,
         });
@@ -215,7 +225,11 @@ function MotionShell({ children, showLoader = true }) {
         });
       };
     },
-    { scope: contentRef, dependencies: [showLoader], revertOnUpdate: true },
+    {
+      scope: contentRef,
+      dependencies: [shouldShowLoader],
+      revertOnUpdate: true,
+    },
   );
 
   const scrollTo = (position) => {
@@ -241,7 +255,7 @@ function MotionShell({ children, showLoader = true }) {
 
   return (
     <>
-      {showLoader ? <PageLoader /> : null}
+      {shouldShowLoader ? <PageLoader /> : null}
       <div ref={contentRef}>{children}</div>
 
       <nav

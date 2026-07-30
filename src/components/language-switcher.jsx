@@ -1,18 +1,29 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { playLanguageTransition } from "@/lib/language-transition";
 
 function LanguageSwitcher({ className = "" }) {
   const locale = useLocale();
+  const t = useTranslations("Loader");
   const pathname = usePathname();
   const router = useRouter();
+  const [pendingLocale, setPendingLocale] = useState(null);
 
   const changeLanguage = (nextLocale) => {
-    if (nextLocale === locale) return;
+    if (nextLocale === locale || pendingLocale) return;
 
-    router.replace(pathname, { locale: nextLocale });
+    setPendingLocale(nextLocale);
+    playLanguageTransition({
+      phrase: t(`languageTransition.${nextLocale}`),
+      onCovered: () => {
+        router.replace(pathname, { locale: nextLocale });
+      },
+      onComplete: () => setPendingLocale(null),
+    });
   };
 
   return (
@@ -31,8 +42,9 @@ function LanguageSwitcher({ className = "" }) {
             key={value}
             type="button"
             onClick={() => changeLanguage(value)}
+            disabled={Boolean(pendingLocale)}
             aria-pressed={active}
-            className={`cursor-pointer px-2.5 py-2 transition-colors first:border-r first:border-current/25 ${
+            className={`cursor-pointer px-2.5 py-2 transition-colors first:border-r first:border-current/25 disabled:cursor-wait ${
               active
                 ? "underline decoration-2 underline-offset-4"
                 : "opacity-55 hover:opacity-100"

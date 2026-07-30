@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 
 import CaseStudyMotionShell from "@/components/case-study-motion-shell";
 import CaseStudyPage from "@/components/case-study-page";
+import JsonLd from "@/components/json-ld";
 import { caseStudySlugs, getCaseStudy } from "@/lib/case-studies";
+import { getCaseStudyStructuredData } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -28,6 +30,7 @@ export async function generateMetadata({ params }) {
       languages: {
         en: `/en/work/${study.slug}`,
         es: `/es/work/${study.slug}`,
+        "x-default": `/en/work/${study.slug}`,
       },
     },
     openGraph: {
@@ -53,9 +56,17 @@ export default async function WorkPage({ params }) {
     notFound();
   }
 
+  const structuredData = getCaseStudyStructuredData(study, locale, {
+    home: locale === "es" ? "Inicio" : "Home",
+    work: locale === "es" ? "Casos de estudio" : "Case studies",
+  });
+
   return (
-    <CaseStudyMotionShell>
-      <CaseStudyPage study={study} locale={locale} />
-    </CaseStudyMotionShell>
+    <>
+      <JsonLd data={structuredData} />
+      <CaseStudyMotionShell>
+        <CaseStudyPage study={study} locale={locale} />
+      </CaseStudyMotionShell>
+    </>
   );
 }

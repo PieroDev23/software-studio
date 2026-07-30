@@ -1,9 +1,11 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Beams from "@/components/Beams";
 import CompanyGrid from "@/components/company-grid";
 import ContactSection from "@/components/contact-section";
 import EngagementSection from "@/components/engagement-section";
+import ExpertiseSection from "@/components/expertise-section";
 import FaqSection from "@/components/faq-section";
+import JsonLd from "@/components/json-ld";
 import LanguageSwitcher from "@/components/language-switcher";
 import MetricsSection from "@/components/metrics-section";
 import MotionShell from "@/components/motion-shell";
@@ -17,11 +19,20 @@ import {
   TypographyLead,
 } from "@/components/ui/typography";
 import WorkGrid from "@/components/work-grid";
+import { getHomeStructuredData } from "@/lib/structured-data";
 
-export default function Home() {
-  const t = useTranslations("Hero");
+export default async function Home({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Hero" });
+  const seo = await getTranslations({ locale, namespace: "Seo" });
+  const structuredData = getHomeStructuredData(locale, {
+    description: seo("description"),
+    expertise: seo.raw("expertise"),
+  });
+
   return (
     <MotionShell>
+      <JsonLd data={structuredData} />
       <main className="flex flex-1 flex-col bg-background text-foreground">
         <section
           id="top"
@@ -113,6 +124,7 @@ export default function Home() {
         <PremiseSection />
         <MetricsSection />
         <WorkGrid />
+        <ExpertiseSection />
         <TestimonialsCarousel />
         <TeamSection />
         <EngagementSection />

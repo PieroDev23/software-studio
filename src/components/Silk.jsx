@@ -3,6 +3,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { forwardRef, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { Color } from "three";
+import { useAnimationActivity } from "@/hooks/use-animation-activity";
 
 const hexToNormalizedRGB = (hex) => {
   const cleanHex = hex.replace("#", "");
@@ -107,6 +108,7 @@ function Silk({
   rotation = 0,
 }) {
   const meshRef = useRef();
+  const { elementRef, shouldAnimate } = useAnimationActivity();
   // biome-ignore lint/correctness/useExhaustiveDependencies: uniforms must keep a stable identity while props update their values.
   const uniforms = useMemo(
     () => ({
@@ -129,9 +131,11 @@ function Silk({
   }, [speed, scale, noiseIntensity, color, rotation, uniforms]);
 
   return (
-    <Canvas dpr={[1, 2]} frameloop="always">
-      <SilkPlane ref={meshRef} uniforms={uniforms} />
-    </Canvas>
+    <div ref={elementRef} className="h-full w-full">
+      <Canvas dpr={[1, 1.5]} frameloop={shouldAnimate ? "always" : "demand"}>
+        <SilkPlane ref={meshRef} uniforms={uniforms} />
+      </Canvas>
+    </div>
   );
 }
 

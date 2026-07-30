@@ -1,8 +1,26 @@
 {
   "Metadata": {
-    "title": "Manyas, estudio senior de producto",
-    "description": "Socios senior para trabajos decisivos. Estrategia, diseño e ingeniería para productos digitales de alto impacto.",
-    "socialDescription": "Estrategia, diseño e ingeniería para productos digitales de alto impacto."
+    "title": "Manyas, estrategia, diseño e ingeniería de producto",
+    "description": "Estudio senior de producto en Lima para productos digitales decisivos. Estrategia, diseño e ingeniería de software con alcance global.",
+    "socialDescription": "Estrategia, diseño e ingeniería senior para productos digitales decisivos.",
+    "keywords": [
+      "estrategia de producto",
+      "estudio de diseño de producto",
+      "ingeniería de software",
+      "desarrollo de productos digitales",
+      "desarrollo de productos con IA",
+      "equipo senior de producto",
+      "estudio de producto Lima"
+    ]
+  },
+  "Seo": {
+    "description": "Manyas es un estudio senior de estrategia, diseño e ingeniería de producto con base en Lima y alcance global.",
+    "expertise": [
+      "Estrategia de producto",
+      "Diseño de producto",
+      "Ingeniería de software",
+      "Desarrollo de productos con IA"
+    ]
   },
   "Hero": {
     "homeLabel": "Manyas, inicio",
@@ -110,6 +128,30 @@
           "Roadmaps ligados a resultados",
           "Liderazgo senior en la sala"
         ]
+      }
+    ]
+  },
+  "Expertise": {
+    "eyebrow": "Lo que resolvemos",
+    "title": "Experiencia senior cuando las decisiones de producto pesan.",
+    "intro": "Trabajamos estrategia, diseño e ingeniería como un solo equipo senior, desde la primera decisión decisiva hasta producción.",
+    "cta": "Tráenos el problema difícil",
+    "items": [
+      {
+        "title": "Estrategia para decisiones de producto decisivas.",
+        "description": "Convertimos ambigüedad, evidencia y restricciones de negocio en una dirección sobre la que el equipo puede actuar."
+      },
+      {
+        "title": "Diseño de producto para flujos complejos.",
+        "description": "Hacemos que sistemas exigentes se sientan claros sin ocultar la profundidad que necesitan sus usuarios."
+      },
+      {
+        "title": "Ingeniería de software hecha para durar.",
+        "description": "Llevamos plataformas a producción con una arquitectura preparada para usuarios reales y cambios reales."
+      },
+      {
+        "title": "Productos con IA que justifican su existencia.",
+        "description": "Aplicamos IA cuando crea una ventaja medible, no cuando solo produce una demostración vistosa."
       }
     ]
   },
@@ -260,6 +302,10 @@
     "think": "Pensar con claridad.",
     "design": "Diseñar con intención.",
     "build": "Construir de verdad.",
+    "languageTransition": {
+      "en": "Another language. The same intent.",
+      "es": "Otro idioma. La misma intención."
+    },
     "studio": "Estudio senior de producto.",
     "location": "Lima / Global",
     "disciplines": "Estrategia / Diseño / Ingeniería"
