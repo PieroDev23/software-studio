@@ -19,7 +19,7 @@ function FaqSection() {
             id="faq-title"
             as="h2"
             size="statement"
-            className="mt-8 max-w-[8ch] sm:mt-12"
+            className="mt-8 max-w-full sm:mt-12 sm:max-w-[8ch]"
           >
             {t("title")}
           </TypographyDisplay>

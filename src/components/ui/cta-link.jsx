@@ -3,6 +3,7 @@
 import { useLenis } from "lenis/react";
 
 import { Link } from "@/i18n/navigation";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 import { cn } from "@/lib/utils";
 
 const tones = {
@@ -37,22 +38,7 @@ function CtaLink({
 
     event.preventDefault();
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (lenis && !reducedMotion) {
-      lenis.scrollTo(target, {
-        duration: 2,
-        easing: (progress) => (1 - Math.cos(Math.PI * progress)) / 2,
-      });
-      return;
-    }
-
-    target.scrollIntoView({
-      behavior: reducedMotion ? "auto" : "smooth",
-      block: "start",
-    });
+    smoothScrollTo(lenis, target);
   };
 
   return (

@@ -257,41 +257,38 @@ h4 {
     );
 }
 
-.testimonial-slide {
-  animation: testimonial-slide-next 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
+.company-marquee {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
 }
 
-.testimonial-slide[data-direction="previous"] {
-  animation-name: testimonial-slide-previous;
+.company-marquee-track {
+  animation: company-marquee 32s linear infinite;
 }
 
-@keyframes testimonial-slide-next {
-  from {
-    opacity: 0;
-    transform: translateX(3rem);
-  }
-
+@keyframes company-marquee {
   to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes testimonial-slide-previous {
-  from {
-    opacity: 0;
-    transform: translateX(-3rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .testimonial-slide {
-    animation-duration: 0.01ms;
+  .company-marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .company-marquee-track {
+    animation: none;
+  }
+
+  .company-marquee-repeated {
+    display: none;
   }
 }
 

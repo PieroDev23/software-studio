@@ -8,6 +8,8 @@ function finishActiveTransition() {
 
   transition.isExiting = true;
   clearTimeout(transition.safetyTimeout);
+  window.__manyasNavigationTransitionActive = false;
+  window.dispatchEvent(new CustomEvent("manyas:navigation-reveal"));
 
   gsap
     .timeline({
@@ -37,15 +39,36 @@ function finishActiveTransition() {
     );
 }
 
-export function completeLanguageTransition(locale) {
-  if (!activeTransition || activeTransition.targetLocale !== locale) return;
+export function completeNavigationTransition(targetKey) {
+  if (!activeTransition || activeTransition.targetKey !== targetKey) return;
 
   activeTransition.destinationReady = true;
   if (activeTransition.covered) finishActiveTransition();
 }
 
+export function isNavigationTransitionActive() {
+  return (
+    typeof window !== "undefined" &&
+    window.__manyasNavigationTransitionActive === true
+  );
+}
+
 export function playLanguageTransition({
   targetLocale,
+  phrase,
+  onCovered,
+  onComplete,
+}) {
+  return playNavigationTransition({
+    targetKey: `locale:${targetLocale}`,
+    phrase,
+    onCovered,
+    onComplete,
+  });
+}
+
+export function playNavigationTransition({
+  targetKey,
   phrase,
   onCovered,
   onComplete,
@@ -88,11 +111,12 @@ export function playLanguageTransition({
   loader.append(panels, grid, content);
   document.body.append(loader);
   document.documentElement.style.overflow = "hidden";
+  window.__manyasNavigationTransitionActive = true;
 
   const panelElements = loader.querySelectorAll("[data-language-panel]");
 
   activeTransition = {
-    targetLocale,
+    targetKey,
     loader,
     text,
     panelElements,
@@ -143,4 +167,6 @@ export function playLanguageTransition({
       },
       "-=0.14",
     );
+
+  return true;
 }

@@ -2,13 +2,13 @@ import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/language-switcher";
 import Silk from "@/components/Silk";
 import { TerminalMeta } from "@/components/terminal-slash";
+import TransitionLink from "@/components/transition-link";
 import { CtaLink } from "@/components/ui/cta-link";
 import {
   TypographyDisplay,
   TypographyEyebrow,
   TypographyLead,
 } from "@/components/ui/typography";
-import { Link } from "@/i18n/navigation";
 import { getCaseStudy } from "@/lib/case-studies";
 
 function CaseStudyPage({ study, locale }) {
@@ -31,17 +31,22 @@ function CaseStudyPage({ study, locale }) {
 
           <div className="content-container relative flex min-h-svh flex-col px-5 py-5 sm:px-8 sm:py-7 lg:px-12 lg:py-10">
             <nav className="flex items-start justify-between gap-6 font-mono text-xs font-medium uppercase tracking-[0.16em] sm:text-sm">
-              <Link href="/" className="transition-opacity hover:opacity-60">
+              <TransitionLink
+                href="/"
+                transitionLabel={t("returnHome")}
+                className="transition-opacity hover:opacity-60"
+              >
                 Manyas <span className="align-super text-xs">®</span>
-              </Link>
+              </TransitionLink>
               <div className="flex items-center gap-5">
                 <LanguageSwitcher />
-                <Link
+                <TransitionLink
                   href="/#selected-work"
+                  transitionLabel={t("returnWork")}
                   className="text-right transition-opacity hover:opacity-60"
                 >
                   ← {t("selected")}
-                </Link>
+                </TransitionLink>
               </div>
             </nav>
 
@@ -216,8 +221,9 @@ function CaseStudyPage({ study, locale }) {
             {t("next")}
           </TypographyEyebrow>
           <div className="lg:col-span-10">
-            <Link
+            <TransitionLink
               href={`/work/${nextStudy.slug}`}
+              transitionLabel={t("opening", { client: nextStudy.client })}
               className="group block border-t border-border pt-8 sm:pt-12"
             >
               <span className="font-mono text-sm uppercase tracking-[0.14em] text-muted-foreground">
@@ -232,7 +238,7 @@ function CaseStudyPage({ study, locale }) {
                   →
                 </span>
               </span>
-            </Link>
+            </TransitionLink>
 
             <CtaLink href="/#contacto" className="mt-16 sm:mt-24">
               {t("cta")}

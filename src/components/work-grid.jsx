@@ -2,11 +2,11 @@ import { useTranslations } from "next-intl";
 import CapabilitiesGrid from "@/components/capabilities-section";
 import Silk from "@/components/Silk";
 import { TerminalMeta } from "@/components/terminal-slash";
+import TransitionLink from "@/components/transition-link";
 import {
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
-import { Link } from "@/i18n/navigation";
 
 function CardMeta({ client, year, service }) {
   return (
@@ -44,9 +44,10 @@ function WorkGrid() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:mt-20 lg:grid-cols-12 lg:grid-rows-2">
-          <Link
+          <TransitionLink
             data-reveal
             href="/work/atlas-health"
+            transitionLabel={t("opening", { client: "Atlas Health" })}
             className="block cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground lg:col-span-7 lg:row-span-2"
             aria-label={t("viewAria", { client: "Atlas Health" })}
           >
@@ -82,11 +83,12 @@ function WorkGrid() {
                 </span>
               </div>
             </article>
-          </Link>
+          </TransitionLink>
 
-          <Link
+          <TransitionLink
             data-reveal
             href="/work/northstar"
+            transitionLabel={t("opening", { client: "Northstar" })}
             className="case-card case-card-northstar flex min-h-72 cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
             aria-label={t("viewAria", { client: "Northstar" })}
           >
@@ -120,11 +122,12 @@ function WorkGrid() {
                 {t("view")} <span aria-hidden="true">↗</span>
               </span>
             </div>
-          </Link>
+          </TransitionLink>
 
-          <Link
+          <TransitionLink
             data-reveal
             href="/work/prism"
+            transitionLabel={t("opening", { client: "Prism" })}
             className="case-card case-card-prism flex min-h-72 cursor-pointer flex-col justify-between p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
             aria-label={t("viewAria", { client: "Prism" })}
           >
@@ -158,7 +161,7 @@ function WorkGrid() {
                 {t("view")} <span aria-hidden="true">↗</span>
               </span>
             </div>
-          </Link>
+          </TransitionLink>
         </div>
 
         <CapabilitiesGrid />

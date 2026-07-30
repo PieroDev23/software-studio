@@ -7,13 +7,27 @@ import { useLenis } from "lenis/react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
+import { isNavigationTransitionActive } from "@/lib/language-transition";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
+
 gsap.registerPlugin(useGSAP, SplitText);
 
 function CaseStudyMotionShell({ children }) {
   const t = useTranslations("Navigation");
   const contentRef = useRef(null);
   const [canScrollUp, setCanScrollUp] = useState(false);
+  const [transitionReady, setTransitionReady] = useState(
+    () => !isNavigationTransitionActive(),
+  );
   const lenis = useLenis();
+
+  useEffect(() => {
+    if (transitionReady) return;
+
+    const reveal = () => setTransitionReady(true);
+    window.addEventListener("manyas:navigation-reveal", reveal, { once: true });
+    return () => window.removeEventListener("manyas:navigation-reveal", reveal);
+  }, [transitionReady]);
 
   useEffect(() => {
     const updateNavigation = () => {
@@ -32,7 +46,7 @@ function CaseStudyMotionShell({ children }) {
     (_context, contextSafe) => {
       const root = contentRef.current;
 
-      if (!root) {
+      if (!root || !transitionReady) {
         return;
       }
 
@@ -116,28 +130,16 @@ function CaseStudyMotionShell({ children }) {
         });
       };
     },
-    { scope: contentRef },
+    {
+      scope: contentRef,
+      dependencies: [transitionReady],
+      revertOnUpdate: true,
+    },
   );
 
   const scrollTo = (position) => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
     const target = position === 0 ? 0 : document.documentElement.scrollHeight;
-
-    if (lenis && !reducedMotion) {
-      lenis.scrollTo(target, {
-        duration: 2,
-        easing: (progress) => (1 - Math.cos(Math.PI * progress)) / 2,
-      });
-      return;
-    }
-
-    window.scrollTo({
-      top: target,
-      behavior: reducedMotion ? "auto" : "smooth",
-    });
+    smoothScrollTo(lenis, target);
   };
 
   return (

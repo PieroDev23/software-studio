@@ -18,6 +18,33 @@ const markStyles = {
 
 function CompanyGrid() {
   const t = useTranslations("Companies");
+
+  const renderMarqueeCompanies = (repeated = false) => (
+    <ul
+      className={cn(
+        "flex shrink-0 gap-3 pr-3",
+        repeated && "company-marquee-repeated",
+      )}
+      aria-hidden={repeated || undefined}
+    >
+      {companies.map((company) => (
+        <li
+          key={`${repeated ? "repeat" : "initial"}-${company.name}`}
+          className="flex min-w-40 shrink-0 items-center justify-center border border-inverse-border px-6 py-5"
+        >
+          <span
+            className={cn(
+              "whitespace-nowrap text-xl leading-none",
+              markStyles[company.mark],
+            )}
+          >
+            {t("client", { number: company.name.replace("Client ", "") })}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <section
       className="section-frame bg-inverse text-inverse-foreground"
@@ -36,7 +63,14 @@ function CompanyGrid() {
           </TypographyEyebrow>
         </div>
 
-        <ul className="mt-6 grid grid-cols-2 border-l border-t border-inverse-border sm:mt-8 md:grid-cols-3 lg:grid-cols-6">
+        <div className="company-marquee mt-7 overflow-hidden md:hidden">
+          <div className="company-marquee-track flex w-max">
+            {renderMarqueeCompanies()}
+            {renderMarqueeCompanies(true)}
+          </div>
+        </div>
+
+        <ul className="mt-8 hidden border-l border-t border-inverse-border md:grid md:grid-cols-3 lg:grid-cols-6">
           {companies.map((company) => (
             <li
               data-reveal

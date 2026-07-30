@@ -73,6 +73,7 @@
     "title": "Claridad que llega a producción.",
     "view": "Ver caso de estudio",
     "viewAria": "Ver caso de estudio de {client}",
+    "opening": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "cards": {
       "atlas": {
         "service": "Producto + Ingeniería",
@@ -317,6 +318,9 @@
   },
   "CaseStudy": {
     "selected": "Trabajo seleccionado",
+    "opening": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
+    "returnHome": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
+    "returnWork": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "premise": "La premisa",
     "challenge": "El desafío",
     "shift": "El cambio",

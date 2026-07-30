@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import PageLoader from "@/components/page-loader";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -233,24 +234,8 @@ function MotionShell({ children, showLoader = true }) {
   );
 
   const scrollTo = (position) => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
     const target = position === 0 ? 0 : document.documentElement.scrollHeight;
-
-    if (lenis && !reducedMotion) {
-      lenis.scrollTo(target, {
-        duration: 2,
-        easing: (progress) => (1 - Math.cos(Math.PI * progress)) / 2,
-      });
-      return;
-    }
-
-    window.scrollTo({
-      top: target,
-      behavior: reducedMotion ? "auto" : "smooth",
-    });
+    smoothScrollTo(lenis, target);
   };
 
   return (

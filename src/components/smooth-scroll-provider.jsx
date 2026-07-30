@@ -8,7 +8,7 @@ function SmoothScrollProvider({ children }) {
       root
       options={{
         autoRaf: true,
-        anchors: true,
+        anchors: false,
         lerp: 0.18,
         smoothWheel: true,
         syncTouch: false,

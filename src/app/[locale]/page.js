@@ -69,7 +69,7 @@ export default async function Home({ params }) {
               </a>
 
               <div className="flex items-start gap-4 sm:items-center sm:gap-6">
-                <p className="flex max-w-40 items-start gap-2 font-mono text-xs font-normal uppercase leading-4 tracking-[0.14em] text-muted-foreground sm:max-w-none sm:items-center sm:text-sm sm:leading-none sm:tracking-[0.16em]">
+                <p className="hidden max-w-none items-center gap-2 font-mono text-sm font-normal uppercase leading-none tracking-[0.16em] text-muted-foreground sm:flex">
                   <span
                     className="size-1.5 rounded-full bg-white"
                     aria-hidden="true"
@@ -82,7 +82,10 @@ export default async function Home({ params }) {
 
             <section className="flex flex-1 items-center">
               <div className="flex max-w-6xl flex-col gap-6 sm:gap-10">
-                <TypographyEyebrow data-reveal>
+                <TypographyEyebrow
+                  data-reveal
+                  className="max-w-[24rem] leading-6"
+                >
                   {t("eyebrow")}
                 </TypographyEyebrow>
 

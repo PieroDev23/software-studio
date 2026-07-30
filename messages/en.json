@@ -73,6 +73,7 @@
     "title": "Clarity you can ship.",
     "view": "View case study",
     "viewAria": "View {client} case study",
+    "opening": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
     "cards": {
       "atlas": {
         "service": "Product + Engineering",
@@ -317,6 +318,9 @@
   },
   "CaseStudy": {
     "selected": "Selected work",
+    "opening": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
+    "returnHome": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
+    "returnWork": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
     "premise": "The premise",
     "challenge": "The challenge",
     "shift": "The shift",
