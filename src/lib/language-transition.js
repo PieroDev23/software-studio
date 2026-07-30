@@ -80,7 +80,7 @@ export function playLanguageTransition({
   content.className =
     "relative z-10 flex min-h-svh items-center justify-center overflow-hidden px-5 py-8";
   text.className =
-    "text-center text-[clamp(2.5rem,7vw,7rem)] font-medium leading-[0.98] tracking-[-0.03em]";
+    "whitespace-pre-line text-center text-[clamp(2.5rem,7vw,7rem)] font-medium leading-[0.98] tracking-[-0.03em]";
   text.dataset.languagePhrase = "";
   text.textContent = phrase;
 

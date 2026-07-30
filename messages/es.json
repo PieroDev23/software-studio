@@ -303,8 +303,8 @@
     "design": "Diseñar con intención.",
     "build": "Construir de verdad.",
     "languageTransition": {
-      "en": "Another language. The same intent.",
-      "es": "Otro idioma. La misma intención."
+      "en": "Another language.\nSame intent.",
+      "es": "Otro idioma.\nMisma intención."
     },
     "studio": "Estudio senior de producto.",
     "location": "Lima / Global",

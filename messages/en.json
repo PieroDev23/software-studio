@@ -303,8 +303,8 @@
     "design": "Design deliberately.",
     "build": "Build properly.",
     "languageTransition": {
-      "en": "Another language. The same intent.",
-      "es": "Otro idioma. La misma intención."
+      "en": "Another language.\nSame intent.",
+      "es": "Otro idioma.\nMisma intención."
     },
     "studio": "Senior product studio.",
     "location": "Lima / Worldwide",
