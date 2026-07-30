@@ -34,7 +34,7 @@ function finishActiveTransition() {
         yPercent: -101,
         duration: 0.48,
         stagger: (_index, panel) =>
-          (2 - Number(panel.dataset.layer)) * 0.12 +
+          (1 - Number(panel.dataset.layer)) * 0.12 +
           (2 - Number(panel.dataset.column)) * 0.035,
       },
       "-=0.24",
@@ -96,7 +96,7 @@ export function playNavigationTransition({
     const column = document.createElement("div");
     column.className = "navigation-transition-column relative";
 
-    for (let layerIndex = 0; layerIndex < 3; layerIndex += 1) {
+    for (let layerIndex = 0; layerIndex < 2; layerIndex += 1) {
       const panel = document.createElement("span");
       panel.className =
         "navigation-transition-layer absolute inset-y-0 -left-px -right-px";

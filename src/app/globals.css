@@ -276,10 +276,6 @@ h4 {
 }
 
 .navigation-transition-layer[data-layer="1"] {
-  background: color-mix(in srgb, var(--accent) 62%, var(--background));
-}
-
-.navigation-transition-layer[data-layer="2"] {
   background: var(--background);
 }
 
