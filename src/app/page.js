@@ -64,13 +64,13 @@ export default function Home() {
             <section className="flex flex-1 items-center">
               <div className="flex max-w-6xl flex-col gap-6 sm:gap-10">
                 <TypographyEyebrow data-reveal>
-                  Independent senior product studio
+                  Senior product partners for consequential work
                 </TypographyEyebrow>
 
                 <TypographyDisplay className="flex max-w-5xl flex-col items-start">
                   <span>High-stakes products.</span>
-                  <span>Senior judgment.</span>
-                  <span>Built without compromise.</span>
+                  <span>Clear decisions.</span>
+                  <span>Built to endure.</span>
                 </TypographyDisplay>
 
                 <div
@@ -78,8 +78,8 @@ export default function Home() {
                   className="flex max-w-4xl flex-col items-start gap-5 sm:flex-row sm:items-end sm:gap-12"
                 >
                   <TypographyLead className="max-w-xl">
-                    Strategy, design and engineering for ambitious teams
-                    navigating consequential decisions.
+                    We bring strategy, design and engineering together when the
+                    cost of getting it wrong is too high.
                   </TypographyLead>
 
                   <CtaLink

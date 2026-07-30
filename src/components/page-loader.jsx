@@ -10,7 +10,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 function PageLoader({ onComplete }) {
   const loaderRef = useRef(null);
   const wordRef = useRef(null);
-  const wordWrapperRef = useRef(null);
   const [visible, setVisible] = useState(true);
 
   useGSAP(
@@ -28,46 +27,48 @@ function PageLoader({ onComplete }) {
       const originalOverflow = document.documentElement.style.overflow;
       document.documentElement.style.overflow = "hidden";
 
-      const swapWord = contextSafe((word) => {
+      const swapWord = contextSafe((word, withRegisteredMark = false) => {
         const wordElement = wordRef.current;
-        const wrapperElement = wordWrapperRef.current;
 
-        if (!wordElement || !wrapperElement) {
+        if (!wordElement) {
           return;
         }
 
-        const currentWidth = wrapperElement.getBoundingClientRect().width;
+        wordElement.classList.remove("loader-think-highlight");
+        wordElement.classList.toggle("loader-brand-word", withRegisteredMark);
         wordElement.textContent = word;
 
-        gsap.set(wrapperElement, { width: "auto" });
-        const targetWidth = wrapperElement.getBoundingClientRect().width;
-        gsap.set(wrapperElement, { width: currentWidth });
+        if (withRegisteredMark) {
+          const registeredMark = document.createElement("span");
+          registeredMark.className = "loader-registered-mark";
+          registeredMark.textContent = "®";
+          wordElement.append(" ", registeredMark);
+        }
 
-        gsap.to(wrapperElement, {
-          width: targetWidth,
-          duration: 0.65,
-          ease: "power3.inOut",
-          overwrite: true,
-        });
+        gsap.set(wordElement, { backgroundPosition: "100% 50%" });
       });
 
-      const revealWord = contextSafe((withTracking = false) => {
-        gsap.fromTo(
-          wordRef.current,
-          {
-            autoAlpha: 0,
-            scale: 1.015,
-            letterSpacing: withTracking ? "0.02em" : "-0.055em",
-          },
-          {
-            autoAlpha: 1,
-            scale: 1,
-            letterSpacing: "-0.055em",
-            duration: 0.55,
-            ease: "power3.out",
-          },
-        );
-      });
+      const revealWord = contextSafe(
+        (withTracking = false, isBrandWord = false) => {
+          const finalLetterSpacing = isBrandWord ? "0.16em" : "-0.03em";
+
+          gsap.fromTo(
+            wordRef.current,
+            {
+              autoAlpha: 0,
+              scale: 1.015,
+              letterSpacing: withTracking ? "0.02em" : finalLetterSpacing,
+            },
+            {
+              autoAlpha: 1,
+              scale: 1,
+              letterSpacing: finalLetterSpacing,
+              duration: 0.45,
+              ease: "power3.out",
+            },
+          );
+        },
+      );
 
       const finish = contextSafe(() => {
         document.documentElement.style.overflow = originalOverflow;
@@ -76,13 +77,13 @@ function PageLoader({ onComplete }) {
         ScrollTrigger.refresh();
       });
 
-      const sweepWord = contextSafe(() => {
+      const sweepSpectrum = contextSafe(() => {
         gsap.fromTo(
           wordRef.current,
           { backgroundPosition: "100% 50%" },
           {
             backgroundPosition: "0% 50%",
-            duration: 0.85,
+            duration: 0.9,
             ease: "power1.inOut",
           },
         );
@@ -97,7 +98,7 @@ function PageLoader({ onComplete }) {
         .from("[data-loader-meta]", {
           y: 18,
           autoAlpha: 0,
-          duration: 0.55,
+          duration: 0.4,
           stagger: 0.08,
         })
         .fromTo(
@@ -109,82 +110,79 @@ function PageLoader({ onComplete }) {
           {
             yPercent: 0,
             autoAlpha: 1,
-            duration: 0.75,
+            duration: 0.8,
             ease: "power3.out",
           },
           0.12,
         )
-        .addLabel("hold")
         .fromTo(
-          "[data-loader-rule]",
-          { scaleX: 0, autoAlpha: 0 },
+          wordRef.current,
+          { "--highlight-progress": "0%" },
           {
-            scaleX: 1,
-            autoAlpha: 1,
-            duration: 0.55,
-            transformOrigin: "left center",
+            "--highlight-progress": "100%",
+            duration: 0.65,
+            ease: "power3.out",
           },
-          "hold+=0.05",
+          0.3,
         )
+        .addLabel("hold")
         .to(
           wordRef.current,
           {
             autoAlpha: 0,
             scale: 0.975,
-            duration: 0.4,
+            duration: 0.3,
             ease: "power2.inOut",
           },
-          "hold+=0.65",
+          "hold+=0.55",
         )
-        .to(
-          "[data-loader-rule]",
-          { scaleX: 0, autoAlpha: 0, duration: 0.3 },
-          "hold+=0.65",
-        )
+        .addLabel("design", "hold+=0.85")
         .call(
           () => {
             swapWord("Design deliberately.");
             revealWord();
           },
           [],
-          "hold+=0.95",
+          "design",
         )
-        .call(sweepWord, [], "hold+=1.55")
+        .call(sweepSpectrum, [], "design+=0.3")
         .to(
           wordRef.current,
           {
             autoAlpha: 0,
             scale: 0.975,
-            duration: 0.4,
+            duration: 0.3,
             ease: "power2.inOut",
           },
-          "hold+=2.45",
+          "design+=1.25",
         )
+        .addLabel("build", "design+=1.55")
         .call(
           () => {
             swapWord("Build properly.");
             revealWord(true);
           },
           [],
-          "hold+=2.75",
+          "build",
         )
         .to(
           wordRef.current,
           {
             autoAlpha: 0,
             scale: 0.975,
-            duration: 0.4,
+            duration: 0.3,
             ease: "power2.inOut",
           },
-          "hold+=3.55",
+          "build+=1",
         )
+        .addLabel("signature", "build+=1.3")
         .call(
           () => {
-            swapWord("Manyas®");
-            revealWord();
+            swapWord("Manyas", true);
+            revealWord(false, true);
           },
           [],
-          "hold+=3.85",
+          "signature",
         )
         .fromTo(
           "[data-loader-signoff]",
@@ -195,9 +193,9 @@ function PageLoader({ onComplete }) {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.45,
+            duration: 0.35,
           },
-          "hold+=4.05",
+          "signature+=0.2",
         )
         .to(
           "[data-loader-content]",
@@ -207,7 +205,7 @@ function PageLoader({ onComplete }) {
             duration: 0.35,
             ease: "power2.in",
           },
-          "hold+=4.75",
+          "signature+=1.1",
         )
         .addLabel("reveal")
         .call(
@@ -219,15 +217,15 @@ function PageLoader({ onComplete }) {
         )
         .to(
           "[data-loader-grid]",
-          { autoAlpha: 0, duration: 0.3, ease: "power2.out" },
+          { autoAlpha: 0, duration: 0.25, ease: "power2.out" },
           "reveal",
         )
         .to(
           "[data-loader-panel]",
           {
             yPercent: -101,
-            duration: 0.8,
-            stagger: 0.075,
+            duration: 0.65,
+            stagger: 0.05,
             ease: "power4.inOut",
           },
           "reveal",
@@ -269,33 +267,27 @@ function PageLoader({ onComplete }) {
         className="relative z-10 flex min-h-svh flex-col justify-between p-5 sm:p-8 lg:p-12"
       >
         <div className="flex items-start justify-between gap-6 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm">
-          <p data-loader-meta>Manyas®</p>
+          <p data-loader-meta>
+            Manyas <span className="align-super text-xs">®</span>
+          </p>
           <p data-loader-meta>Lima / Worldwide</p>
         </div>
 
         <div className="flex flex-col items-center overflow-visible py-[0.16em]">
           <p
             data-loader-phrase
-            className="flex items-center justify-center text-center text-[clamp(2.75rem,8.5vw,8rem)] font-medium leading-[0.95] tracking-[-0.055em]"
+            className="flex items-center justify-center text-center text-[clamp(2.75rem,8.5vw,8rem)] font-medium leading-[0.95] tracking-[-0.03em]"
           >
-            <span
-              ref={wordWrapperRef}
-              className="inline-block min-w-0 shrink-0 overflow-visible px-[0.08em] pb-[0.12em] text-center"
-            >
+            <span className="inline-block min-w-0 shrink-0 overflow-visible px-[0.08em] pb-[0.12em] text-center">
               <span
                 ref={wordRef}
                 data-loader-word
-                className="loader-spectrum -mb-[0.18em] inline-block whitespace-nowrap px-[0.06em] pb-[0.18em]"
+                className="loader-spectrum loader-think-highlight -mb-[0.18em] inline-block whitespace-nowrap px-[0.06em] pb-[0.18em]"
               >
                 Think clearly.
               </span>
             </span>
           </p>
-          <span
-            data-loader-rule
-            className="mt-5 h-px w-20 bg-foreground sm:mt-7 sm:w-28"
-            aria-hidden="true"
-          />
           <p
             data-loader-signoff
             className="mt-5 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm"

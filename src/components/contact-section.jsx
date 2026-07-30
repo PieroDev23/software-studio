@@ -1,14 +1,116 @@
+"use client";
+
+import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { useFormStatus } from "react-dom";
+import { sendContactInquiry } from "@/app/actions/contact";
 import Silk from "@/components/Silk";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
 import { TypographyEyebrow } from "@/components/ui/typography";
+import { countries, countriesByCode } from "@/lib/countries";
+
+const initialFormState = {
+  success: false,
+  message: "",
+  errors: {},
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button
+      type="submit"
+      size="lg"
+      disabled={pending}
+      className="h-16 w-full justify-between rounded-none px-6 text-base"
+    >
+      {pending ? "Sending…" : "Send inquiry"}
+      <span aria-hidden="true">↗</span>
+    </Button>
+  );
+}
 
 function ContactSection() {
-  const contactTitle = "Build the thing people remember.";
+  const formRef = useRef(null);
+  const [formState, formAction] = useActionState(
+    sendContactInquiry,
+    initialFormState,
+  );
+  const [countryCode, setCountryCode] = useState("PE");
+  const [phone, setPhone] = useState("");
+  const [errors, setErrors] = useState({});
+  const contactTitle = "Bring us the problem worth solving.";
   const contactDescription =
-    "Bring us the idea, the broken system or the difficult next chapter. We will bring senior attention and a clear point of view.";
+    "The unclear one. The consequential one. The one your next chapter depends on. We will bring senior attention and a way through.";
+
+  useEffect(() => {
+    let active = true;
+
+    async function detectCountry() {
+      try {
+        const response = await fetch("/api/geolocation", {
+          cache: "no-store",
+        });
+        const data = await response.json();
+        const detectedCountry = countriesByCode.get(data.country);
+
+        if (!active || !detectedCountry) return;
+
+        setCountryCode(detectedCountry.code);
+      } catch {
+        // Peru remains the safe default when geolocation is unavailable.
+      }
+    }
+
+    detectCountry();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    setErrors(formState.errors ?? {});
+
+    if (formState.success) {
+      formRef.current?.reset();
+      setPhone("");
+    }
+  }, [formState]);
+
+  const clearError = (fieldName) => {
+    setErrors((currentErrors) => {
+      if (!currentErrors[fieldName]) return currentErrors;
+
+      const nextErrors = { ...currentErrors };
+      delete nextErrors[fieldName];
+      return nextErrors;
+    });
+  };
+
+  const handleCountryChange = (event) => {
+    const nextCountry = countriesByCode.get(event.target.value);
+
+    if (!nextCountry) return;
+
+    setCountryCode(nextCountry.code);
+    clearError("country");
+    clearError("phone");
+  };
 
   return (
     <section id="contacto" className="bg-inverse">
@@ -44,7 +146,26 @@ function ContactSection() {
         </div>
 
         <div className="flex items-center bg-inverse px-5 py-14 text-inverse-foreground sm:min-h-svh sm:px-10 sm:py-16 lg:px-12 xl:px-16">
-          <form data-reveal className="mx-auto w-full max-w-2xl">
+          <form
+            ref={formRef}
+            data-reveal
+            action={formAction}
+            className="mx-auto w-full max-w-2xl"
+            noValidate
+          >
+            <input
+              type="text"
+              name="bot-field"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
+            <input
+              type="hidden"
+              name="phone"
+              value={`${countriesByCode.get(countryCode)?.callingCode ?? "+51"} ${phone}`.trim()}
+            />
             <div className="mb-12 flex flex-col gap-5 lg:hidden">
               <h2 className="text-[2.65rem] font-medium leading-[1.08] tracking-[-0.035em]">
                 {contactTitle}
@@ -60,7 +181,7 @@ function ContactSection() {
 
             <FieldGroup className="gap-8 sm:gap-10">
               <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
-                <Field>
+                <Field data-invalid={Boolean(errors.name)}>
                   <FieldLabel
                     htmlFor="contact-name"
                     className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
@@ -73,11 +194,16 @@ function ContactSection() {
                     autoComplete="name"
                     placeholder="Your name"
                     required
+                    aria-invalid={Boolean(errors.name)}
+                    onChange={() => clearError("name")}
                     className="h-12 rounded-none border-0 border-b border-inverse-border px-4 text-lg text-inverse-foreground shadow-none placeholder:text-inverse-muted focus-visible:ring-0"
+                  />
+                  <FieldError
+                    errors={errors.name?.map((message) => ({ message }))}
                   />
                 </Field>
 
-                <Field>
+                <Field data-invalid={Boolean(errors.email)}>
                   <FieldLabel
                     htmlFor="contact-email"
                     className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
@@ -91,12 +217,17 @@ function ContactSection() {
                     autoComplete="email"
                     placeholder="you@company.com"
                     required
+                    aria-invalid={Boolean(errors.email)}
+                    onChange={() => clearError("email")}
                     className="h-12 rounded-none border-0 border-b border-inverse-border px-4 text-lg text-inverse-foreground shadow-none placeholder:text-inverse-muted focus-visible:ring-0"
+                  />
+                  <FieldError
+                    errors={errors.email?.map((message) => ({ message }))}
                   />
                 </Field>
               </div>
 
-              <Field>
+              <Field data-invalid={Boolean(errors.project)}>
                 <FieldLabel
                   htmlFor="contact-project"
                   className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
@@ -108,11 +239,74 @@ function ContactSection() {
                   name="project"
                   placeholder="What are you building?"
                   required
+                  aria-invalid={Boolean(errors.project)}
+                  onChange={() => clearError("project")}
                   className="h-12 rounded-none border-0 border-b border-inverse-border px-4 text-lg text-inverse-foreground shadow-none placeholder:text-inverse-muted focus-visible:ring-0"
+                />
+                <FieldError
+                  errors={errors.project?.map((message) => ({ message }))}
                 />
               </Field>
 
-              <Field>
+              <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
+                <Field data-invalid={Boolean(errors.country)}>
+                  <FieldLabel
+                    htmlFor="contact-country"
+                    className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
+                  >
+                    Country
+                  </FieldLabel>
+                  <NativeSelect
+                    id="contact-country"
+                    name="country"
+                    value={countryCode}
+                    onChange={handleCountryChange}
+                    aria-invalid={Boolean(errors.country)}
+                    className="w-full [&_[data-slot=native-select]]:h-12 [&_[data-slot=native-select]]:rounded-none [&_[data-slot=native-select]]:border-0 [&_[data-slot=native-select]]:border-b [&_[data-slot=native-select]]:border-inverse-border [&_[data-slot=native-select]]:px-4 [&_[data-slot=native-select]]:text-lg [&_[data-slot=native-select]]:text-inverse-foreground [&_[data-slot=native-select]]:shadow-none [&_[data-slot=native-select]]:focus-visible:ring-0"
+                  >
+                    {countries.map((country) => (
+                      <NativeSelectOption
+                        key={country.code}
+                        value={country.code}
+                      >
+                        {country.flag} {country.name} ({country.callingCode})
+                      </NativeSelectOption>
+                    ))}
+                  </NativeSelect>
+                  <FieldError
+                    errors={errors.country?.map((message) => ({ message }))}
+                  />
+                </Field>
+
+                <Field data-invalid={Boolean(errors.phone)}>
+                  <FieldLabel
+                    htmlFor="contact-phone"
+                    className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
+                  >
+                    Phone
+                  </FieldLabel>
+                  <Input
+                    id="contact-phone"
+                    name="phoneNational"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    value={phone}
+                    onChange={(event) => {
+                      setPhone(event.target.value);
+                      clearError("phone");
+                    }}
+                    aria-invalid={Boolean(errors.phone)}
+                    placeholder="999 999 999"
+                    className="h-12 rounded-none border-0 border-b border-inverse-border px-4 text-lg text-inverse-foreground shadow-none placeholder:text-inverse-muted focus-visible:ring-0"
+                  />
+                  <FieldError
+                    errors={errors.phone?.map((message) => ({ message }))}
+                  />
+                </Field>
+              </div>
+
+              <Field data-invalid={Boolean(errors.brief)}>
                 <FieldLabel
                   htmlFor="contact-brief"
                   className="font-mono text-sm uppercase tracking-[0.12em] text-inverse-muted"
@@ -124,17 +318,36 @@ function ContactSection() {
                   name="brief"
                   placeholder="Tell us about the ambition, the problem and where things stand."
                   required
+                  aria-invalid={Boolean(errors.brief)}
+                  onChange={() => clearError("brief")}
                   className="min-h-40 resize-y rounded-none border-0 border-b border-inverse-border px-4 py-4 text-lg leading-7 text-inverse-foreground shadow-none placeholder:text-inverse-muted focus-visible:ring-0"
+                />
+                <FieldError
+                  errors={errors.brief?.map((message) => ({ message }))}
                 />
               </Field>
 
-              <Button
-                type="submit"
-                size="lg"
-                className="h-16 w-full justify-between rounded-none px-6 text-base"
-              >
-                Send inquiry <span aria-hidden="true">↗</span>
-              </Button>
+              {formState.message &&
+                (formState.success ? (
+                  <Alert className="rounded-none border-inverse-border bg-background px-5 py-5 text-foreground shadow-xl">
+                    <CheckCircle2Icon className="text-success" />
+                    <AlertTitle>Inquiry received.</AlertTitle>
+                    <AlertDescription className="text-muted-foreground">
+                      {formState.message}
+                    </AlertDescription>
+                  </Alert>
+                ) : (
+                  <Alert
+                    variant="destructive"
+                    className="rounded-none border-destructive/30 bg-background px-5 py-5"
+                  >
+                    <AlertCircleIcon />
+                    <AlertTitle>Something needs attention.</AlertTitle>
+                    <AlertDescription>{formState.message}</AlertDescription>
+                  </Alert>
+                ))}
+
+              {!formState.success && <SubmitButton />}
             </FieldGroup>
           </form>
         </div>

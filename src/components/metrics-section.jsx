@@ -1,23 +1,23 @@
 const metrics = [
   {
-    label: "Senior involvement",
+    label: "Senior ownership",
     value: "100%",
-    description: "Every engagement is led hands-on by the senior team.",
+    description: "The people in the room are the people doing the work.",
   },
   {
-    label: "Core disciplines",
+    label: "One integrated team",
     value: "03",
-    description: "Strategy, design and engineering working as one system.",
+    description: "Strategy, design and engineering moving as one system.",
   },
   {
-    label: "Delivery layers",
+    label: "Lost in handoffs",
     value: "00",
-    description: "No handoffs between the people deciding and building.",
+    description: "Zero distance between the decision and the execution.",
   },
   {
-    label: "Working model",
+    label: "Operating range",
     value: "Global",
-    description: "Based in Lima and collaborating with teams everywhere.",
+    description: "Rooted in Lima. Built to collaborate anywhere.",
   },
 ];
 

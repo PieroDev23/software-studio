@@ -21,9 +21,8 @@ function PremiseSection() {
           tone="inverse"
           className="lg:col-span-10"
         >
-          Small teams can create{" "}
-          <span className="text-impact-gradient">outsized impact</span> when
-          senior people stay close to the work.
+          Momentum dies in the gaps between thinking and making. We{" "}
+          <span className="text-impact-gradient">close them.</span>
         </TypographyDisplay>
       </div>
     </section>

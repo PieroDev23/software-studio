@@ -29,7 +29,7 @@ function WorkGrid() {
       <div className="content-container">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <TypographyEyebrow tone="inverse" className="lg:col-span-2">
-            Selected work / concept cases
+            Proof / selected work
           </TypographyEyebrow>
           <TypographyDisplay
             id="work-title"
@@ -38,7 +38,7 @@ function WorkGrid() {
             tone="inverse"
             className="max-w-6xl lg:col-span-10"
           >
-            Complex products, made legible.
+            Clarity you can ship.
           </TypographyDisplay>
         </div>
 
@@ -74,8 +74,8 @@ function WorkGrid() {
                   </span>
                 </h3>
                 <p className="max-w-xl text-base leading-6 opacity-75 sm:text-lg">
-                  A unified patient experience connecting diagnostics, coaching,
-                  clinical workflows and longitudinal health data.
+                  One connected experience for care teams, patients and the
+                  decisions between them.
                 </p>
                 <span className="case-card-preview-cta inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
                   View case study <span aria-hidden="true">↗</span>
@@ -112,7 +112,8 @@ function WorkGrid() {
                 </span>
               </h3>
               <p className="text-base leading-6 opacity-65">
-                From fragmented tools to one focused planning workspace.
+                Critical planning moved from scattered tools into one decisive
+                workspace.
               </p>
               <CtaLink href="/work/northstar">View case study</CtaLink>
             </div>
@@ -142,7 +143,8 @@ function WorkGrid() {
                 </span>
               </h3>
               <p className="text-base leading-6 opacity-65">
-                A calmer way to understand cash, commitments and runway.
+                Cash, commitments and runway turned into decisions teams can
+                trust.
               </p>
               <CtaLink href="/work/prism" tone="inverse">
                 View case study

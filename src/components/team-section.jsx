@@ -59,7 +59,7 @@ function TeamSection() {
             tone="inverse"
             className="max-w-7xl lg:col-span-10"
           >
-            Senior enough to challenge. Small enough to care.
+            Three partners. Zero layers. All in.
           </TypographyDisplay>
         </div>
 
