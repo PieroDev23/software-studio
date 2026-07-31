@@ -2,19 +2,16 @@ import { useTranslations } from "next-intl";
 import { TypographyEyebrow } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
-const companies = Array.from({ length: 18 }, (_, index) => ({
-  name: `Client ${index + 1}`,
-}));
-
-const markStyles = {
-  airy: "font-normal uppercase tracking-[0.12em]",
-  compact: "font-medium uppercase tracking-[-0.04em]",
-  condensed: "font-semibold uppercase tracking-[-0.055em]",
-  heavy: "font-bold uppercase tracking-[-0.07em]",
-  mono: "font-mono font-normal uppercase tracking-[0.12em]",
-  tight: "font-medium uppercase tracking-[-0.065em]",
-  wide: "font-normal uppercase tracking-[0.08em]",
-};
+const companies = [
+  { name: "PCHUJOY" },
+  { name: "AXO Longevity" },
+  { name: "Filo" },
+  { name: "BCP" },
+  { name: "Keynua" },
+  { name: "Qempo" },
+  { name: "Vitally" },
+  { name: "WoYao" },
+];
 
 function CompanyGrid() {
   const t = useTranslations("Companies");
@@ -32,13 +29,8 @@ function CompanyGrid() {
           key={`${repeated ? "repeat" : "initial"}-${company.name}`}
           className="flex min-w-40 shrink-0 items-center justify-center border border-inverse-border px-6 py-5"
         >
-          <span
-            className={cn(
-              "whitespace-nowrap text-xl leading-none",
-              markStyles[company.mark],
-            )}
-          >
-            {t("client", { number: company.name.replace("Client ", "") })}
+          <span className="whitespace-nowrap text-xl font-medium uppercase leading-none tracking-[-0.04em]">
+            {company.name}
           </span>
         </li>
       ))}
@@ -70,7 +62,7 @@ function CompanyGrid() {
           </div>
         </div>
 
-        <ul className="mt-8 hidden border-l border-t border-inverse-border md:grid md:grid-cols-3 lg:grid-cols-6">
+        <ul className="mt-8 hidden border-l border-t border-inverse-border md:grid md:grid-cols-4">
           {companies.map((company) => (
             <li
               data-reveal
@@ -83,13 +75,8 @@ function CompanyGrid() {
               )}
             >
               <div className="flex flex-col items-center gap-2 text-center">
-                <span
-                  className={cn(
-                    "text-lg leading-none sm:text-2xl",
-                    markStyles[company.mark],
-                  )}
-                >
-                  {t("client", { number: company.name.replace("Client ", "") })}
+                <span className="text-lg font-medium uppercase leading-none tracking-[-0.04em] sm:text-2xl">
+                  {company.name}
                 </span>
                 {company.detail ? (
                   <span className="font-mono text-sm font-medium uppercase tracking-[0.12em] text-inverse-muted">
