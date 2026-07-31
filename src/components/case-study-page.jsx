@@ -87,14 +87,24 @@ function CaseStudyPage({ study, locale }) {
             <TypographyEyebrow tone="inverse" className="lg:col-span-2">
               {t("premise")}
             </TypographyEyebrow>
-            <TypographyDisplay
-              as="h2"
-              size="statement"
-              tone="inverse"
-              className="max-w-6xl lg:col-span-10"
-            >
-              {study.premise}
-            </TypographyDisplay>
+            <div className="lg:col-span-10">
+              <TypographyDisplay
+                as="h2"
+                size="statement"
+                tone="inverse"
+                className="max-w-6xl"
+              >
+                {study.premise}
+              </TypographyDisplay>
+              {study.premiseDescription ? (
+                <p
+                  data-reveal
+                  className="mt-8 max-w-3xl text-lg leading-8 text-inverse-muted sm:mt-10 sm:text-xl sm:leading-9"
+                >
+                  {study.premiseDescription}
+                </p>
+              ) : null}
+            </div>
           </div>
         </section>
 

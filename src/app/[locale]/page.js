@@ -10,6 +10,7 @@ import LanguageSwitcher from "@/components/language-switcher";
 import MetricsSection from "@/components/metrics-section";
 import MotionShell from "@/components/motion-shell";
 import PremiseSection from "@/components/premise-section";
+import StickyHeader from "@/components/sticky-header";
 import TeamSection from "@/components/team-section";
 import TestimonialsCarousel from "@/components/testimonials-carousel";
 import { CtaLink } from "@/components/ui/cta-link";
@@ -19,11 +20,17 @@ import {
   TypographyLead,
 } from "@/components/ui/typography";
 import WorkGrid from "@/components/work-grid";
+import {
+  headerBrandClass,
+  headerNavClass,
+  headerNavItemClass,
+} from "@/lib/header-styles";
 import { getHomeStructuredData } from "@/lib/structured-data";
 
 export default async function Home({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Hero" });
+  const nav = await getTranslations({ locale, namespace: "StickyHeader" });
   const seo = await getTranslations({ locale, namespace: "Seo" });
   const structuredData = getHomeStructuredData(locale, {
     description: seo("description"),
@@ -33,6 +40,7 @@ export default async function Home({ params }) {
   return (
     <MotionShell>
       <JsonLd data={structuredData} />
+      <StickyHeader />
       <main className="flex flex-1 flex-col bg-background text-foreground">
         <section
           id="top"
@@ -58,24 +66,34 @@ export default async function Home({ params }) {
           <div className="content-container relative flex min-h-svh flex-col px-5 py-5 sm:px-8 sm:py-7 lg:px-12 lg:py-10">
             <header
               data-hero-chrome
-              className="flex items-start justify-between gap-3 sm:gap-6"
+              className="flex items-center justify-between gap-3 sm:gap-6"
             >
               <a
-                className="whitespace-nowrap font-mono text-xs font-medium uppercase leading-none tracking-[0.16em] text-foreground transition-opacity hover:opacity-70 sm:text-sm sm:tracking-[0.18em]"
+                className={`${headerBrandClass} text-foreground transition-opacity hover:opacity-70`}
                 href="#top"
                 aria-label={t("homeLabel")}
               >
-                Manyas <span className="align-super text-xs">®</span>
+                Manyas
+                <span className="relative -top-[0.35em] ml-1 text-[0.65em] leading-none">
+                  ®
+                </span>
               </a>
 
-              <div className="flex items-start gap-4 sm:items-center sm:gap-6">
-                <p className="hidden max-w-none items-center gap-2 font-mono text-sm font-normal uppercase leading-none tracking-[0.16em] text-muted-foreground sm:flex">
-                  <span
-                    className="size-1.5 rounded-full bg-white"
-                    aria-hidden="true"
-                  />
-                  {t("availability")}
-                </p>
+              <div className="ml-auto flex items-center justify-end gap-4 sm:gap-6 lg:gap-8">
+                <nav className={headerNavClass} aria-label={nav("label")}>
+                  <a
+                    href="#selected-work"
+                    className={`${headerNavItemClass} transition-opacity hover:opacity-60`}
+                  >
+                    {nav("work")}
+                  </a>
+                  <a
+                    href="#team"
+                    className={`${headerNavItemClass} transition-opacity hover:opacity-60`}
+                  >
+                    {nav("team")}
+                  </a>
+                </nav>
                 <LanguageSwitcher className="text-muted-foreground" />
               </div>
             </header>

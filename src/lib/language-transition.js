@@ -1,5 +1,13 @@
 import { gsap } from "gsap";
 
+import {
+  getLoaderPanelEnterDelay,
+  getLoaderPanelExitDelay,
+  LOADER_COLUMN_COUNT,
+  LOADER_LAYER_COUNT,
+  LOADER_PANEL_DURATION,
+} from "@/lib/loader-motion";
+
 let activeTransition = null;
 
 function finishActiveTransition() {
@@ -15,29 +23,40 @@ function finishActiveTransition() {
       onComplete: () => {
         document.documentElement.style.overflow = transition.originalOverflow;
         transition.loader.remove();
-        window.__manyasNavigationTransitionActive = false;
-        window.dispatchEvent(new CustomEvent("manyas:navigation-reveal"));
         activeTransition = null;
         transition.onComplete?.();
       },
     })
     .to({}, { duration: 0.16 })
-    .to(transition.text, {
-      yPercent: -110,
+    .to(transition.content, {
+      y: -24,
       autoAlpha: 0,
-      duration: 0.5,
-      ease: "power3.in",
+      duration: 0.35,
+      ease: "power2.in",
     })
+    .addLabel("reveal")
+    .call(
+      () => {
+        window.__manyasNavigationTransitionActive = false;
+        window.dispatchEvent(new CustomEvent("manyas:navigation-reveal"));
+      },
+      [],
+      "reveal",
+    )
+    .to(
+      transition.grid,
+      { autoAlpha: 0, duration: 0.25, ease: "power2.out" },
+      "reveal",
+    )
     .to(
       transition.panelElements,
       {
         yPercent: -101,
-        duration: 0.48,
-        stagger: (_index, panel) =>
-          (1 - Number(panel.dataset.layer)) * 0.12 +
-          (2 - Number(panel.dataset.column)) * 0.035,
+        duration: LOADER_PANEL_DURATION,
+        stagger: (_index, panel) => getLoaderPanelExitDelay(panel),
+        ease: "power4.inOut",
       },
-      "-=0.24",
+      "reveal",
     );
 }
 
@@ -92,14 +111,17 @@ export function playNavigationTransition({
   panels.className = "absolute inset-0 grid grid-cols-3";
   panels.setAttribute("aria-hidden", "true");
 
-  for (let columnIndex = 0; columnIndex < 3; columnIndex += 1) {
+  for (
+    let columnIndex = 0;
+    columnIndex < LOADER_COLUMN_COUNT;
+    columnIndex += 1
+  ) {
     const column = document.createElement("div");
     column.className = "navigation-transition-column relative";
 
-    for (let layerIndex = 0; layerIndex < 2; layerIndex += 1) {
+    for (let layerIndex = 0; layerIndex < LOADER_LAYER_COUNT; layerIndex += 1) {
       const panel = document.createElement("span");
-      panel.className =
-        "navigation-transition-layer absolute inset-y-0 -left-px -right-px";
+      panel.className = "navigation-transition-layer absolute -inset-1";
       panel.dataset.languagePanel = "";
       panel.dataset.column = String(columnIndex);
       panel.dataset.layer = String(layerIndex);
@@ -115,7 +137,7 @@ export function playNavigationTransition({
   content.className =
     "relative z-10 flex min-h-svh items-center justify-center overflow-hidden px-5 py-8";
   text.className =
-    "whitespace-pre-line text-center text-[clamp(2.5rem,7vw,7rem)] font-medium leading-[0.98] tracking-[-0.03em]";
+    "whitespace-pre-line text-center text-[clamp(2.5rem,7vw,7rem)] font-medium leading-[1.12] tracking-[var(--heading-tracking)] sm:leading-[1.08]";
   text.dataset.languagePhrase = "";
   text.textContent = phrase;
 
@@ -137,6 +159,8 @@ export function playNavigationTransition({
     targetKey,
     loader,
     text,
+    content,
+    grid,
     panelElements,
     originalOverflow,
     onComplete,
@@ -170,10 +194,8 @@ export function playNavigationTransition({
       { yPercent: 101 },
       {
         yPercent: 0,
-        duration: 0.52,
-        stagger: (_index, panel) =>
-          Number(panel.dataset.layer) * 0.12 +
-          Number(panel.dataset.column) * 0.035,
+        duration: LOADER_PANEL_DURATION,
+        stagger: (_index, panel) => getLoaderPanelEnterDelay(panel),
       },
     )
     .fromTo(

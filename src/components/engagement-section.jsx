@@ -42,9 +42,9 @@ function EngagementSection() {
               </TypographyEyebrow>
 
               <div className="mt-auto pt-16">
-                <h3 className="max-w-[13ch] text-[2rem] font-medium leading-[1.08] tracking-[-0.03em] sm:text-[clamp(2.25rem,3vw,3.5rem)] sm:leading-[1.04]">
+                <h3 className="text-[2rem] font-medium leading-[1.08] tracking-[-0.03em] sm:text-[clamp(2.125rem,2.4vw,3rem)] sm:leading-[1.04]">
                   {stage.titleLines.map((line) => (
-                    <span key={line} className="block sm:whitespace-nowrap">
+                    <span key={line} className="block whitespace-nowrap">
                       {line}
                     </span>
                   ))}

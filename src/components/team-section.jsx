@@ -98,6 +98,7 @@ function TeamSection() {
   const members = t.raw("members");
   return (
     <section
+      id="team"
       className="section-frame section-grid section-grid-light bg-inverse text-inverse-foreground"
       aria-labelledby="team-title"
     >

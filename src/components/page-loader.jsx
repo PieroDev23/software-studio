@@ -5,6 +5,13 @@ import { gsap } from "gsap";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
+import {
+  getLoaderPanelExitDelay,
+  LOADER_COLUMNS,
+  LOADER_LAYERS,
+  LOADER_PANEL_DURATION,
+} from "@/lib/loader-motion";
+
 gsap.registerPlugin(useGSAP);
 
 function PageLoader({ onComplete }) {
@@ -224,8 +231,8 @@ function PageLoader({ onComplete }) {
           "[data-loader-panel]",
           {
             yPercent: -101,
-            duration: 0.65,
-            stagger: 0.05,
+            duration: LOADER_PANEL_DURATION,
+            stagger: (_index, panel) => getLoaderPanelExitDelay(panel),
             ease: "power4.inOut",
           },
           "reveal",
@@ -251,9 +258,19 @@ function PageLoader({ onComplete }) {
       aria-label={t("loading")}
     >
       <div className="absolute inset-0 grid grid-cols-3" aria-hidden="true">
-        <span data-loader-panel className="bg-background" />
-        <span data-loader-panel className="bg-background" />
-        <span data-loader-panel className="bg-background" />
+        {LOADER_COLUMNS.map((column, columnIndex) => (
+          <div key={column} className="navigation-transition-column relative">
+            {LOADER_LAYERS.map((layer, layerIndex) => (
+              <span
+                key={layer}
+                data-loader-panel
+                data-column={columnIndex}
+                data-layer={layerIndex}
+                className="navigation-transition-layer absolute -inset-1"
+              />
+            ))}
+          </div>
+        ))}
       </div>
 
       <div
@@ -276,13 +293,13 @@ function PageLoader({ onComplete }) {
         <div className="flex flex-col items-center overflow-visible py-[0.16em]">
           <p
             data-loader-phrase
-            className="flex items-center justify-center text-center text-[clamp(2.75rem,8.5vw,8rem)] font-medium leading-[0.95] tracking-[-0.03em]"
+            className="flex w-full items-center justify-center text-center text-[clamp(2.5rem,8.5vw,8rem)] font-medium leading-[1.02] tracking-[-0.03em] sm:leading-[0.95]"
           >
-            <span className="inline-block min-w-0 shrink-0 overflow-visible px-[0.08em] pb-[0.12em] text-center">
+            <span className="inline-block min-w-0 max-w-full overflow-visible px-[0.08em] pb-[0.12em] text-center">
               <span
                 ref={wordRef}
                 data-loader-word
-                className="loader-spectrum loader-think-highlight -mb-[0.18em] inline-block whitespace-nowrap px-[0.06em] pb-[0.18em]"
+                className="loader-spectrum loader-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-normal px-[0.06em] pb-[0.18em] sm:whitespace-nowrap"
               >
                 {t("think")}
               </span>

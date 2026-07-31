@@ -63,7 +63,7 @@ function TestimonialsCarousel() {
             {testimonials.map((testimonial) => (
               <CarouselItem key={testimonial.quote} className="pl-0">
                 <blockquote className="max-w-[72rem]">
-                  <p className="line-clamp-3 text-pretty text-[1.625rem] font-medium leading-[1.16] tracking-[-0.03em] sm:text-[clamp(1.75rem,4vw,4.25rem)] sm:leading-[1.08]">
+                  <p className="line-clamp-3 text-pretty text-[1.625rem] font-medium leading-[1.12] tracking-[-0.03em] sm:text-[clamp(1.75rem,4vw,4.25rem)] sm:leading-[1.08]">
                     “{testimonial.quote}”
                   </p>
                 </blockquote>

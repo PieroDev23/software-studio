@@ -48,7 +48,7 @@ function ExpertiseSection() {
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-12 max-w-md text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl">
+              <h3 className="mt-12 max-w-md text-3xl font-medium leading-[1.1] tracking-[-0.03em] sm:text-4xl sm:leading-[1.04]">
                 {item.title}
               </h3>
               <p className="mt-5 max-w-lg text-base leading-7 text-muted-foreground">

@@ -1,12 +1,12 @@
 const caseStudies = {
-  "atlas-health": {
-    slug: "atlas-health",
-    client: "Atlas Health",
-    year: "2026",
-    service: "Product + Engineering",
-    title: "One operating system for preventive care.",
+  pchujoy: {
+    slug: "pchujoy",
+    client: "PCHUJOY",
+    year: "2025",
+    service: "Creator Platform",
+    title: "From one creator to an entire platform.",
     description:
-      "A unified patient experience connecting diagnostics, coaching, clinical workflows and longitudinal health data.",
+      "We designed and engineered a subscription platform capable of supporting a repeatable business model beyond a single creator.",
     theme: "bg-accent text-foreground",
     silk: {
       color: "#5227FF",
@@ -16,53 +16,52 @@ const caseStudies = {
       rotation: -0.15,
     },
     facts: [
-      ["Mandate", "Product system"],
-      ["Focus", "Preventive care"],
-      ["Contribution", "Strategy / Design / Engineering"],
+      ["Year", "2025"],
+      ["Focus", "Creator Economy"],
+      ["Contribution", "Strategy / Product / Design / Engineering"],
     ],
-    premise:
-      "Preventive care breaks when every participant sees a different version of the patient.",
-    challengeTitle: "Care was connected in theory. Fragmented in practice.",
+    premise: "Great creators should not depend on manual operations.",
+    premiseDescription:
+      "Growing audiences require products that scale beyond spreadsheets, forms and repetitive workflows.",
+    challengeTitle:
+      "Phillip Chu Joy had more than an audience. He had a business opportunity.",
     challenge: [
-      "Diagnostics lived in one workflow, coaching in another and clinical decisions somewhere else. Patients repeated context while care teams reconstructed the story by hand.",
-      "The challenge was not another dashboard. It was creating one operating model that could hold every decision without flattening the nuance of care.",
+      "The challenge was not creating another giveaway platform. It was designing infrastructure capable of supporting subscriptions, recurring campaigns and future creators within the same ecosystem.",
     ],
     moves: [
       {
         number: "01",
-        title: "One patient model.",
-        body: "We organized the product around a longitudinal health record shared by patients, coaches and clinicians.",
+        title: "Subscription-first architecture.",
+        body: "Every interaction was designed around recurring memberships rather than isolated campaigns.",
       },
       {
         number: "02",
-        title: "Decisions, not data dumps.",
-        body: "Every surface prioritizes the next meaningful action instead of exposing another layer of raw information.",
+        title: "Multi-creator scalability.",
+        body: "The platform could support new creators without redesigning the product.",
       },
       {
         number: "03",
-        title: "A system built to evolve.",
-        body: "Modular workflows let new programs and clinical protocols enter without rebuilding the product around them.",
+        title: "Operational automation.",
+        body: "Campaigns, subscriptions and participant management became repeatable instead of manual.",
       },
     ],
-    outcomeTitle: "One connected experience. Fewer gaps in care.",
+    outcomeTitle:
+      "A product that transformed a creator business into a scalable digital platform.",
     outcome:
-      "The resulting system gives every participant the context they need while preserving a coherent journey for the patient, from first signal to sustained change.",
+      "What started as Phillip Chu Joy's subscription platform became a scalable product capable of supporting a much larger creator ecosystem.",
     pullQuote:
-      "The product stopped documenting care and started moving it forward.",
-    shift: {
-      before: "Fragmented workflows",
-      after: "One care model",
-    },
-    next: "northstar",
+      "The product stopped revolving around one creator. It became a platform.",
+    shift: { before: "One creator", after: "A scalable platform" },
+    next: "samay",
   },
-  northstar: {
-    slug: "northstar",
-    client: "Northstar",
+  samay: {
+    slug: "samay",
+    client: "SAMAY",
     year: "2025",
-    service: "Strategy + Design",
-    title: "Enterprise planning, made immediate.",
+    service: "Digital Experience",
+    title: "Engagement should not feel like marketing.",
     description:
-      "Critical planning moved from scattered tools into one decisive workspace.",
+      "An interactive experience that transformed participation into something people could enjoy and remember.",
     theme: "bg-primary text-primary-foreground",
     silk: {
       color: "#242429",
@@ -72,53 +71,47 @@ const caseStudies = {
       rotation: 0.25,
     },
     facts: [
-      ["Mandate", "Product direction"],
-      ["Focus", "Enterprise planning"],
-      ["Contribution", "Strategy / Research / Design"],
+      ["Mandate", "Interactive experience"],
+      ["Focus", "Participation and engagement"],
+      ["Contribution", "Strategy / Product / Design / Engineering"],
     ],
-    premise:
-      "A planning tool only creates value when a team can see the consequence of a decision immediately.",
-    challengeTitle: "The plan was everywhere. Confidence was nowhere.",
+    premise: "People remember experiences, not campaigns.",
+    challengeTitle: "Traditional activations create attention for a day.",
     challenge: [
-      "Planning happened across spreadsheets, presentations and disconnected specialist tools. Every review began by reconciling information before anyone could discuss the decision itself.",
-      "Northstar needed a product language that could make complex dependencies legible without turning expert work into a rigid workflow.",
+      "We wanted people to stay, participate and enjoy. The decision was to make interaction the product rather than add it around a campaign.",
     ],
     moves: [
       {
         number: "01",
-        title: "Start with the decision.",
-        body: "We reframed the information architecture around the questions leaders actually ask during planning.",
+        title: "Real-time interaction.",
+        body: "Every response shaped the experience immediately, keeping participation visible and alive.",
       },
       {
         number: "02",
-        title: "Make consequence visible.",
-        body: "Scenarios reveal tradeoffs and downstream effects while a decision is still being shaped.",
+        title: "Gameplay around participation.",
+        body: "Simple mechanics turned passive attention into an experience people wanted to continue.",
       },
       {
         number: "03",
-        title: "Design for the room.",
-        body: "The interface works as both an individual planning environment and a shared surface for decisive conversations.",
+        title: "Seamless multi-device experience.",
+        body: "The interaction remained coherent across screens, contexts and moments of participation.",
       },
     ],
-    outcomeTitle: "From fragmented planning to shared conviction.",
+    outcomeTitle: "A digital experience where engagement became the product.",
     outcome:
-      "Northstar became one focused environment where teams can frame options, understand consequence and leave the room with a decision everyone recognizes.",
-    pullQuote:
-      "Planning became a conversation about the future instead of a debate about the file.",
-    shift: {
-      before: "Scattered planning",
-      after: "Shared conviction",
-    },
-    next: "prism",
+      "SAMAY replaced short-lived attention with participation people could feel, understand and remember.",
+    pullQuote: "The campaign became an experience.",
+    shift: { before: "A campaign", after: "An experience" },
+    next: "axo-longevity",
   },
-  prism: {
-    slug: "prism",
-    client: "Prism",
+  "axo-longevity": {
+    slug: "axo-longevity",
+    client: "AXO Longevity",
     year: "2026",
-    service: "0→1 Product",
-    title: "Financial clarity for independent teams.",
+    service: "Preventive Health Platform",
+    title: "AI is only useful when it fits into real clinical workflows.",
     description:
-      "Cash, commitments and runway turned into decisions teams can trust.",
+      "Biomarkers, laboratories, medical workflows and operations connected in one intelligent platform.",
     theme: "bg-inverse text-inverse-foreground",
     silk: {
       color: "#FFFFFF",
@@ -128,171 +121,169 @@ const caseStudies = {
       rotation: -0.3,
     },
     facts: [
-      ["Mandate", "New product creation"],
-      ["Focus", "Financial clarity"],
-      ["Contribution", "Definition / Design / Prototype"],
+      ["Mandate", "Integrated health platform"],
+      ["Focus", "Preventive healthcare"],
+      ["Contribution", "Strategy / Product / Design / Engineering"],
     ],
-    premise:
-      "Small teams do not need more financial reporting. They need to know what is safe to do next.",
-    challengeTitle: "The numbers were available. The answer was not.",
+    premise: "Preventive healthcare depends on information, not intuition.",
+    challengeTitle: "Clinical information lived across disconnected systems.",
     challenge: [
-      "Independent teams could see balances and transactions but still struggled to understand commitments, true runway and the consequence of a new hire or investment.",
-      "Prism had to translate financial complexity into confidence without pretending uncertainty did not exist.",
+      "The challenge was not adding AI. It was making it useful across biomarkers, laboratory integrations, medical decisions and operational workflows.",
     ],
     moves: [
       {
         number: "01",
-        title: "Model real commitments.",
-        body: "We moved beyond account balances to show the obligations and assumptions that shape available cash.",
+        title: "Unified clinical data.",
+        body: "Biomarkers, laboratory results and patient context became one coherent source of truth.",
       },
       {
         number: "02",
-        title: "Answer the next question.",
-        body: "The product turns financial signals into direct, contextual guidance for everyday operating decisions.",
+        title: "Operational automation.",
+        body: "Repeated coordination moved into reliable workflows that reduced friction for care teams.",
       },
       {
         number: "03",
-        title: "Calm by design.",
-        body: "A quiet visual system makes risk visible without making every fluctuation feel like an emergency.",
+        title: "Context-aware AI.",
+        body: "Intelligence appeared inside the clinical context where it could support judgment instead of creating another task.",
       },
     ],
-    outcomeTitle: "A calmer way to understand what comes next.",
+    outcomeTitle:
+      "A platform where AI helps healthcare professionals instead of creating more operational friction.",
     outcome:
-      "Prism gives independent teams a shared view of cash, commitments and possibility, so financial conversations can end in action rather than anxiety.",
-    pullQuote:
-      "Clarity arrived before the spreadsheet could become another meeting.",
-    shift: {
-      before: "Financial noise",
-      after: "Actionable clarity",
-    },
-    next: "atlas-health",
+      "AXO turns fragmented preventive care into a connected system where information reaches the right professional in the right context.",
+    pullQuote: "AI became part of the workflow instead of another feature.",
+    shift: { before: "Disconnected systems", after: "One clinical workflow" },
+    next: "pchujoy",
   },
 };
 
 const caseStudiesEs = {
-  "atlas-health": {
-    service: "Producto + Ingeniería",
-    title: "Prevención en un solo sistema.",
+  pchujoy: {
+    service: "Plataforma para creadores",
+    title: "De un creador a una plataforma completa.",
     description:
-      "Una experiencia unificada que conecta diagnósticos, acompañamiento, flujos clínicos y datos longitudinales de salud.",
+      "Diseñamos y construimos una plataforma de suscripción capaz de sostener un modelo de negocio repetible más allá de un solo creador.",
     facts: [
-      ["Mandato", "Sistema de producto"],
-      ["Enfoque", "Atención preventiva"],
-      ["Contribución", "Estrategia / Diseño / Ingeniería"],
+      ["Año", "2025"],
+      ["Enfoque", "Economía de creadores"],
+      ["Contribución", "Estrategia / Producto / Diseño / Ingeniería"],
     ],
     premise:
-      "La atención preventiva se rompe cuando cada participante ve una versión distinta del paciente.",
+      "Los grandes creadores no deberían depender de operaciones manuales.",
+    premiseDescription:
+      "Las audiencias que crecen necesitan productos capaces de superar hojas de cálculo, formularios y flujos repetitivos.",
     challengeTitle:
-      "La atención estaba conectada en teoría. Fragmentada en la práctica.",
+      "Phillip Chu Joy tenía más que una audiencia. Tenía una oportunidad de negocio.",
     challenge: [
-      "Los diagnósticos vivían en un flujo, el acompañamiento en otro y las decisiones clínicas en algún lugar más. Los pacientes repetían el contexto mientras los equipos reconstruían la historia a mano.",
-      "El reto no era crear otro dashboard. Era construir un modelo operativo capaz de sostener cada decisión sin simplificar los matices de la atención.",
+      "El reto no era crear otra plataforma de sorteos. Era diseñar una infraestructura capaz de sostener suscripciones, campañas recurrentes y futuros creadores dentro del mismo ecosistema.",
     ],
     moves: [
       {
         number: "01",
-        title: "Un modelo de paciente.",
-        body: "Organizamos el producto alrededor de un historial longitudinal compartido por pacientes, coaches y especialistas.",
+        title: "Arquitectura centrada en suscripciones.",
+        body: "Cada interacción fue diseñada alrededor de membresías recurrentes, no de campañas aisladas.",
       },
       {
         number: "02",
-        title: "Decisiones, no volcados de datos.",
-        body: "Cada superficie prioriza la siguiente acción significativa en lugar de exponer otra capa de información cruda.",
+        title: "Escala para múltiples creadores.",
+        body: "La plataforma podía incorporar nuevos creadores sin tener que rediseñar el producto.",
       },
       {
         number: "03",
-        title: "Un sistema que puede evolucionar.",
-        body: "Los flujos modulares permiten sumar programas y protocolos clínicos sin reconstruir el producto.",
+        title: "Automatización operativa.",
+        body: "Las campañas, suscripciones y gestión de participantes se volvieron repetibles en lugar de manuales.",
       },
     ],
-    outcomeTitle: "Una experiencia conectada. Menos vacíos en la atención.",
+    outcomeTitle:
+      "Un producto que convirtió el negocio de un creador en una plataforma digital escalable.",
     outcome:
-      "El sistema resultante entrega a cada participante el contexto que necesita y conserva un recorrido coherente para el paciente, desde la primera señal hasta un cambio sostenido.",
+      "Lo que comenzó como la plataforma de suscripción de Phillip Chu Joy se convirtió en un producto escalable capaz de sostener un ecosistema de creadores mucho mayor.",
     pullQuote:
-      "El producto dejó de documentar la atención y empezó a impulsarla.",
-    shift: { before: "Flujos fragmentados", after: "Un modelo de atención" },
+      "El producto dejó de girar alrededor de un creador. Se convirtió en una plataforma.",
+    shift: {
+      before: "Un creador",
+      after: "Una plataforma escalable",
+    },
   },
-  northstar: {
-    service: "Estrategia + Diseño",
-    title: "Planificación clara. Decisiones rápidas.",
+  samay: {
+    service: "Experiencia digital",
+    title: "El engagement no debería sentirse como marketing.",
     description:
-      "La planificación crítica pasó de herramientas dispersas a un espacio de trabajo decisivo.",
+      "Una experiencia interactiva que convirtió la participación en algo que las personas podían disfrutar y recordar.",
     facts: [
-      ["Mandato", "Dirección de producto"],
-      ["Enfoque", "Planificación empresarial"],
-      ["Contribución", "Estrategia / Investigación / Diseño"],
+      ["Mandato", "Experiencia interactiva"],
+      ["Enfoque", "Participación y engagement"],
+      ["Contribución", "Estrategia / Producto / Diseño / Ingeniería"],
     ],
-    premise:
-      "Una herramienta de planificación solo crea valor cuando el equipo puede ver inmediatamente la consecuencia de una decisión.",
-    challengeTitle: "El plan estaba en todas partes. La confianza, en ninguna.",
+    premise: "Las personas recuerdan experiencias, no campañas.",
+    challengeTitle:
+      "Las activaciones tradicionales generan atención por un día.",
     challenge: [
-      "La planificación ocurría entre hojas de cálculo, presentaciones y herramientas especializadas desconectadas. Cada revisión comenzaba conciliando información antes de poder discutir la decisión.",
-      "Northstar necesitaba un lenguaje de producto que hiciera legibles dependencias complejas sin convertir el trabajo experto en un flujo rígido.",
+      "Queríamos que las personas permanecieran, participaran y disfrutaran. La decisión fue convertir la interacción en el producto, no colocarla alrededor de una campaña.",
     ],
     moves: [
       {
         number: "01",
-        title: "Empezar por la decisión.",
-        body: "Replanteamos la arquitectura de información alrededor de las preguntas que los líderes hacen al planificar.",
+        title: "Interacción en tiempo real.",
+        body: "Cada respuesta transformaba la experiencia de inmediato y mantenía la participación visible y activa.",
       },
       {
         number: "02",
-        title: "Hacer visible la consecuencia.",
-        body: "Los escenarios revelan decisiones difíciles y efectos posteriores mientras la decisión todavía está tomando forma.",
+        title: "Juego alrededor de la participación.",
+        body: "Mecánicas simples convirtieron la atención pasiva en una experiencia que las personas querían continuar.",
       },
       {
         number: "03",
-        title: "Diseñar para la conversación.",
-        body: "La interfaz funciona como entorno individual y como superficie compartida para conversaciones decisivas.",
+        title: "Experiencia multidispositivo fluida.",
+        body: "La interacción se mantuvo coherente entre pantallas, contextos y momentos de participación.",
       },
     ],
-    outcomeTitle: "De planificación fragmentada a convicción compartida.",
+    outcomeTitle:
+      "Una experiencia digital donde el engagement se convirtió en el producto.",
     outcome:
-      "Northstar se convirtió en un entorno enfocado donde los equipos pueden formular opciones, entender consecuencias y salir de la reunión con una decisión reconocible para todos.",
-    pullQuote:
-      "Planificar se volvió una conversación sobre el futuro, no un debate sobre el archivo.",
-    shift: { before: "Planificación dispersa", after: "Convicción compartida" },
+      "SAMAY reemplazó la atención pasajera por una participación que las personas podían sentir, comprender y recordar.",
+    pullQuote: "La campaña se convirtió en una experiencia.",
+    shift: { before: "Una campaña", after: "Una experiencia" },
   },
-  prism: {
-    service: "Producto 0→1",
-    title: "Finanzas claras. Decisiones firmes.",
+  "axo-longevity": {
+    service: "Plataforma de salud preventiva",
+    title: "La IA solo es útil cuando encaja en flujos clínicos reales.",
     description:
-      "Caja, compromisos y runway convertidos en decisiones confiables.",
+      "Biomarcadores, laboratorios, flujos médicos y operaciones conectados en una plataforma inteligente.",
     facts: [
-      ["Mandato", "Producto desde cero"],
-      ["Enfoque", "Claridad financiera"],
-      ["Contribución", "Definición / Diseño / Prototipo"],
+      ["Mandato", "Plataforma de salud integrada"],
+      ["Enfoque", "Salud preventiva"],
+      ["Contribución", "Estrategia / Producto / Diseño / Ingeniería"],
     ],
-    premise:
-      "Los equipos pequeños no necesitan más reportes financieros. Necesitan saber qué pueden hacer a continuación con seguridad.",
-    challengeTitle: "Los números estaban disponibles. La respuesta no.",
+    premise: "La salud preventiva depende de información, no de intuición.",
+    challengeTitle: "La información clínica vivía en sistemas desconectados.",
     challenge: [
-      "Los equipos podían ver saldos y transacciones, pero aún les costaba entender compromisos, runway real y la consecuencia de una nueva contratación o inversión.",
-      "Prism debía traducir complejidad financiera en confianza sin fingir que la incertidumbre no existía.",
+      "El reto no era agregar IA. Era volverla útil entre biomarcadores, integraciones de laboratorio, decisiones médicas y flujos operativos.",
     ],
     moves: [
       {
         number: "01",
-        title: "Modelar compromisos reales.",
-        body: "Fuimos más allá de los saldos para mostrar las obligaciones y supuestos que determinan la caja disponible.",
+        title: "Datos clínicos unificados.",
+        body: "Biomarcadores, resultados de laboratorio y contexto del paciente se convirtieron en una fuente de verdad coherente.",
       },
       {
         number: "02",
-        title: "Responder la siguiente pregunta.",
-        body: "El producto convierte señales financieras en orientación directa y contextual para decisiones operativas cotidianas.",
+        title: "Automatización operativa.",
+        body: "La coordinación repetitiva pasó a flujos confiables que redujeron fricción para los equipos de atención.",
       },
       {
         number: "03",
-        title: "Calma desde el diseño.",
-        body: "Un sistema visual sereno hace visible el riesgo sin convertir cada fluctuación en una emergencia.",
+        title: "IA consciente del contexto.",
+        body: "La inteligencia apareció dentro del contexto clínico donde podía apoyar el criterio en lugar de crear otra tarea.",
       },
     ],
-    outcomeTitle: "Una forma más serena de entender lo que sigue.",
+    outcomeTitle:
+      "Una plataforma donde la IA ayuda a los profesionales de salud en lugar de generar más fricción operativa.",
     outcome:
-      "Prism ofrece una vista compartida de caja, compromisos y posibilidades para que las conversaciones financieras terminen en acción, no en ansiedad.",
+      "AXO convierte la atención preventiva fragmentada en un sistema conectado donde la información llega al profesional correcto dentro del contexto correcto.",
     pullQuote:
-      "La claridad llegó antes de que la hoja de cálculo se convirtiera en otra reunión.",
-    shift: { before: "Ruido financiero", after: "Claridad accionable" },
+      "La IA se convirtió en parte del flujo, no en otra funcionalidad.",
+    shift: { before: "Sistemas desconectados", after: "Un flujo clínico" },
   },
 };
 

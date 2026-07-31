@@ -14,7 +14,7 @@ function CardMeta({ client, year, service }) {
       <p>
         <TerminalMeta text={`${client} / ${year}`} />
       </p>
-      <p className="text-right">{service}</p>
+      <p className="max-w-[48%] text-right leading-[1.35]">{service}</p>
     </div>
   );
 }
@@ -46,10 +46,10 @@ function WorkGrid() {
         <div className="mt-12 grid gap-4 sm:mt-20 lg:grid-cols-12 lg:grid-rows-2">
           <TransitionLink
             data-reveal
-            href="/work/atlas-health"
-            transitionLabel={t("opening", { client: "Atlas Health" })}
+            href="/work/pchujoy"
+            transitionLabel={t("opening", { client: "PCHUJOY" })}
             className="block cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground lg:col-span-7 lg:row-span-2"
-            aria-label={t("viewAria", { client: "Atlas Health" })}
+            aria-label={t("viewAria", { client: "PCHUJOY" })}
           >
             <article className="case-card case-card-atlas case-card-preview flex h-full min-h-[30rem] flex-col justify-between p-5 sm:min-h-[44rem] sm:p-8 lg:min-h-[54rem]">
               <div className="case-card-silk" aria-hidden="true">
@@ -62,11 +62,11 @@ function WorkGrid() {
                 />
               </div>
               <CardMeta
-                client="Atlas Health"
-                year="2026"
+                client="PCHUJOY"
+                year="2025"
                 service={t("cards.atlas.service")}
               />
-              <div className="case-card-preview-content relative z-10 flex max-w-3xl flex-col gap-6">
+              <div className="case-card-preview-content relative z-10 flex min-w-0 max-w-full flex-col gap-6">
                 <h3 className="text-balance text-[2rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(2.5rem,4vw,4.75rem)] sm:leading-[1.02]">
                   <span className="block sm:whitespace-nowrap">
                     {t("cards.atlas.line1")}
@@ -87,10 +87,10 @@ function WorkGrid() {
 
           <TransitionLink
             data-reveal
-            href="/work/northstar"
-            transitionLabel={t("opening", { client: "Northstar" })}
-            className="case-card case-card-northstar flex min-h-72 cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
-            aria-label={t("viewAria", { client: "Northstar" })}
+            href="/work/samay"
+            transitionLabel={t("opening", { client: "SAMAY" })}
+            className="case-card case-card-northstar flex min-h-72 min-w-0 cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
+            aria-label={t("viewAria", { client: "SAMAY" })}
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
@@ -102,23 +102,23 @@ function WorkGrid() {
               />
             </div>
             <CardMeta
-              client="Northstar"
+              client="SAMAY"
               year="2025"
               service={t("cards.northstar.service")}
             />
-            <div className="relative z-10 flex max-w-xl flex-col gap-5">
-              <h3 className="text-balance text-[1.75rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(2rem,3vw,3.25rem)] sm:leading-[1.02]">
-                <span className="block sm:whitespace-nowrap">
+            <div className="relative z-10 flex min-w-0 max-w-2xl flex-col gap-5 2xl:gap-7">
+              <h3 className="w-full max-w-full text-[1.75rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(2rem,3vw,3.25rem)] sm:leading-[1.02]">
+                <span className="block whitespace-nowrap">
                   {t("cards.northstar.line1")}
                 </span>
-                <span className="block sm:whitespace-nowrap">
+                <span className="block whitespace-nowrap">
                   {t("cards.northstar.line2")}
                 </span>
               </h3>
-              <p className="text-base leading-6 opacity-65">
+              <p className="max-w-xl text-base leading-6 opacity-65 sm:text-lg sm:leading-7 2xl:text-xl 2xl:leading-8">
                 {t("cards.northstar.description")}
               </p>
-              <span className="inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
+              <span className="inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em] 2xl:text-base">
                 {t("view")} <span aria-hidden="true">↗</span>
               </span>
             </div>
@@ -126,10 +126,10 @@ function WorkGrid() {
 
           <TransitionLink
             data-reveal
-            href="/work/prism"
-            transitionLabel={t("opening", { client: "Prism" })}
+            href="/work/axo-longevity"
+            transitionLabel={t("opening", { client: "AXO Longevity" })}
             className="case-card case-card-prism flex min-h-72 cursor-pointer flex-col justify-between p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
-            aria-label={t("viewAria", { client: "Prism" })}
+            aria-label={t("viewAria", { client: "AXO Longevity" })}
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
@@ -141,7 +141,7 @@ function WorkGrid() {
               />
             </div>
             <CardMeta
-              client="Prism"
+              client="AXO Longevity"
               year="2026"
               service={t("cards.prism.service")}
             />

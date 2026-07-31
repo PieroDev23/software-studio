@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "title": "Manyas, estrategia, diseño e ingeniería de producto",
-    "description": "Estudio senior de producto en Lima para productos digitales decisivos. Estrategia, diseño e ingeniería de software con alcance global.",
-    "socialDescription": "Estrategia, diseño e ingeniería senior para productos digitales decisivos.",
+    "title": "Manyas, firma de producto para decisiones que importan",
+    "description": "Firma senior de producto en Lima. Criterio, diseño e ingeniería para decidir qué merece existir y construirlo para durar.",
+    "socialDescription": "Criterio, diseño e ingeniería para productos que merecen existir.",
     "keywords": [
       "estrategia de producto",
       "estudio de diseño de producto",
@@ -14,7 +14,7 @@
     ]
   },
   "Seo": {
-    "description": "Manyas es un estudio senior de estrategia, diseño e ingeniería de producto con base en Lima y alcance global.",
+    "description": "Manyas es una firma senior de producto que convierte decisiones difíciles en productos preparados para durar.",
     "expertise": [
       "Estrategia de producto",
       "Diseño de producto",
@@ -25,73 +25,73 @@
   "Hero": {
     "homeLabel": "Manyas, inicio",
     "availability": "Proyectos selectos",
-    "eyebrow": "Socios senior de producto para desafíos decisivos",
-    "line1": "Productos ambiciosos.",
-    "line2": "Decisiones claras.",
-    "line3": "Hechos para durar.",
-    "lead": "Unimos estrategia, diseño e ingeniería cuando equivocarse cuesta demasiado.",
-    "cta": "Hablemos de tu proyecto",
+    "eyebrow": "Criterio senior para productos que importan",
+    "line1": "Construimos productos",
+    "line2": "que merecen",
+    "line3": "existir.",
+    "lead": "Estrategia, diseño e ingeniería para tomar la decisión correcta antes de escribir código.",
+    "cta": "Tomemos la decisión correcta",
     "location": "Lima, PE 🇵🇪 · Trabajando globalmente"
   },
   "Companies": {
-    "eyebrow": "Experiencia de todo el equipo",
-    "selected": "Empresas y proyectos seleccionados",
+    "eyebrow": "Equipos que decidieron construir con criterio",
+    "selected": "Experiencia seleccionada",
     "client": "Cliente {number}"
   },
   "Premise": {
     "eyebrow": "La premisa",
-    "before": "Pensar sin ejecutar mata el impulso. Nosotros",
-    "highlight": "cerramos la brecha."
+    "before": "El problema rara vez es construir. Es decidir",
+    "highlight": "qué vale la pena construir."
   },
   "Metrics": {
     "aria": "Métricas de impacto del estudio",
     "items": [
       {
-        "label": "Liderazgo senior",
-        "value": "100%",
-        "description": "Quienes están en la reunión son quienes hacen el trabajo."
+        "label": "Principio 01",
+        "value": "Decidir",
+        "description": "Antes que features."
       },
       {
-        "label": "Un equipo integrado",
-        "value": "03",
-        "description": "Estrategia, diseño e ingeniería operando como un solo sistema."
+        "label": "Principio 02",
+        "value": "Producto",
+        "description": "Antes que código."
       },
       {
-        "label": "Perdido en traspasos",
-        "value": "00",
-        "description": "Cero distancia entre la decisión y la ejecución."
+        "label": "Principio 03",
+        "value": "Escala",
+        "description": "Ingeniería preparada para crecer."
       },
       {
-        "label": "Alcance operativo",
-        "value": "Global",
-        "description": "Con raíces en Lima. Preparados para colaborar en cualquier lugar."
+        "label": "Principio 04",
+        "value": "Volver",
+        "description": "Equipos que vuelven."
       }
     ]
   },
   "Work": {
-    "eyebrow": "Evidencia / trabajo seleccionado",
-    "title": "Claridad que llega a producción.",
+    "eyebrow": "Impacto / trabajo seleccionado",
+    "title": "El resultado importa más que la tecnología.",
     "view": "Ver caso de estudio",
     "viewAria": "Ver caso de estudio de {client}",
     "opening": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "cards": {
       "atlas": {
-        "service": "Producto + Ingeniería",
-        "line1": "Prevención en",
-        "line2": "un solo sistema.",
-        "description": "Equipos, pacientes y decisiones dentro de una misma experiencia."
+        "service": "Plataforma para creadores",
+        "line1": "De un creador a",
+        "line2": "una plataforma.",
+        "description": "Una plataforma de suscripción escalable para negocios de creadores más allá de una sola audiencia."
       },
       "northstar": {
-        "service": "Estrategia + Diseño",
-        "line1": "Planificación clara,",
-        "line2": "decisiones rápidas.",
-        "description": "De herramientas dispersas a un espacio de trabajo decisivo."
+        "service": "Experiencia digital",
+        "line1": "Experiencias que",
+        "line2": "se recuerdan.",
+        "description": "Experiencias interactivas que convierten participación en momentos memorables."
       },
       "prism": {
-        "service": "Producto 0→1",
-        "line1": "Finanzas claras.",
-        "line2": "Decisiones firmes.",
-        "description": "Caja, compromisos y runway convertidos en acción."
+        "service": "Plataforma de salud preventiva",
+        "line1": "IA integrada en flujos",
+        "line2": "clínicos reales.",
+        "description": "Biomarcadores, laboratorios y operaciones conectados en una plataforma inteligente."
       }
     }
   },
@@ -99,60 +99,60 @@
     "items": [
       {
         "number": "01",
-        "label": "Ingeniería",
-        "titleLines": ["Construido para", "el mundo real."],
+        "label": "Producto",
+        "titleLines": ["Antes de construir,", "entendemos."],
         "services": [
-          "Ingeniería de producto lista para producción",
-          "Arquitectura bajo restricciones reales",
-          "IA que se gana su lugar",
-          "Plataformas preparadas para lo que sigue"
+          "Definición de producto",
+          "Investigación y contexto",
+          "Decisiones de alcance",
+          "Dirección antes que ejecución"
         ]
       },
       {
         "number": "02",
         "label": "Diseño",
-        "titleLines": ["Complejidad,", "hecha claridad."],
+        "titleLines": ["Cada interfaz", "expresa criterio."],
         "services": [
-          "Experiencia e interacción de producto",
-          "Sistemas que escalan decisiones",
+          "Experiencia de producto",
+          "Interfaces que reducen complejidad",
           "Prototipado rápido",
-          "Marca traducida en comportamiento"
+          "Sistemas de diseño"
         ]
       },
       {
         "number": "03",
-        "label": "Estrategia",
-        "titleLines": ["Ambigüedad", "hecha acción."],
+        "label": "Ingeniería",
+        "titleLines": ["Software preparado", "para evolucionar."],
         "services": [
-          "Dirección y definición de producto",
-          "Diligencia técnica y de producto",
-          "Roadmaps ligados a resultados",
-          "Liderazgo senior en la sala"
+          "Arquitectura preparada para crecer",
+          "Desarrollo listo para producción",
+          "IA cuando crea una ventaja real",
+          "Sistemas hechos para durar"
         ]
       }
     ]
   },
   "Expertise": {
-    "eyebrow": "Lo que resolvemos",
-    "title": "Experiencia senior cuando las decisiones de producto pesan.",
-    "intro": "Trabajamos estrategia, diseño e ingeniería como un solo equipo senior, desde la primera decisión decisiva hasta producción.",
+    "eyebrow": "Nuestro criterio",
+    "title": "De la incertidumbre a un producto que merece existir.",
+    "intro": "No vendemos disciplinas aisladas. Reunimos criterio de producto, diseño e ingeniería alrededor de una sola decisión.",
     "cta": "Tráenos el problema difícil",
     "items": [
       {
-        "title": "Estrategia para decisiones de producto decisivas.",
-        "description": "Convertimos ambigüedad, evidencia y restricciones de negocio en una dirección sobre la que el equipo puede actuar."
+        "title": "Decidir qué merece existir.",
+        "description": "Convertimos ambigüedad, evidencia y restricciones en una dirección que el equipo puede defender."
       },
       {
-        "title": "Diseño de producto para flujos complejos.",
-        "description": "Hacemos que sistemas exigentes se sientan claros sin ocultar la profundidad que necesitan sus usuarios."
+        "title": "Dar forma a una dirección clara.",
+        "description": "Diseñamos experiencias que vuelven comprensible la complejidad sin esconder lo importante."
       },
       {
-        "title": "Ingeniería de software hecha para durar.",
-        "description": "Llevamos plataformas a producción con una arquitectura preparada para usuarios reales y cambios reales."
+        "title": "Construir sin hipotecar el futuro.",
+        "description": "Llevamos productos a producción con una arquitectura preparada para usuarios, escala y cambio real."
       },
       {
-        "title": "Productos con IA que justifican su existencia.",
-        "description": "Aplicamos IA cuando crea una ventaja medible, no cuando solo produce una demostración vistosa."
+        "title": "Usar IA solo cuando cambia el resultado.",
+        "description": "La aplicamos cuando crea una ventaja medible, nunca para decorar una demostración."
       }
     ]
   },
@@ -164,71 +164,71 @@
     "next": "Siguiente testimonio",
     "items": [
       {
-        "quote": "Se sintieron como el equipo senior de producto que debimos contratar desde el inicio.",
+        "quote": "Nunca sentimos que contratábamos proveedores. Sentimos que alguien finalmente entendía el producto.",
         "author": "Elena Ward",
         "role": "VP de Producto",
-        "company": "Northstar"
+        "company": "PCHUJOY"
       },
       {
         "quote": "Convirtieron decisiones difíciles en una dirección clara y un producto que pudimos lanzar.",
         "author": "Marcus Chen",
         "role": "Fundador",
-        "company": "Prism"
+        "company": "SAMAY"
       },
       {
         "quote": "Desafiaron nuestra estrategia y se mantuvieron lo bastante cerca para ayudarnos a lanzar.",
         "author": "Ana Torres",
         "role": "COO",
-        "company": "Atlas Health"
+        "company": "AXO Longevity"
       }
     ]
   },
   "Team": {
     "eyebrow": "El estudio",
-    "title": "Tres socios. Cero capas. Sin distancia.",
-    "edge": "Ventaja distintiva",
+    "title": "Tres perfiles. Una obsesión. Mejores productos.",
+    "edge": "Criterio",
     "members": [
       {
         "name": "Piero Davila",
-        "discipline": "Socio / Ingeniería",
-        "edge": "Creatividad de producto",
-        "bio": "Encuentra caminos originales dentro de restricciones complejas."
+        "discipline": "Cofundador",
+        "edge": "Visión de producto y dirección creativa.",
+        "bio": "Convierte ideas ambiguas en productos claros, útiles y con una experiencia que marca la diferencia."
       },
       {
         "name": "Josue Villasante",
-        "discipline": "Socio / Tecnología",
-        "edge": "Ingeniería 10×",
-        "bio": "Rango técnico excepcional y ejecución veloz en sistemas complejos."
+        "discipline": "Cofundador",
+        "edge": "Sistemas preparados para crecer.",
+        "bio": "Convierte complejidad técnica en fundamentos sólidos, confiables y preparados para la escala."
       },
       {
         "name": "Sebastian Muñoz",
-        "discipline": "Socio / Ingeniería",
-        "edge": "Liderazgo y criterio",
-        "bio": "Criterio impecable, liderazgo sólido y una lectura clara del negocio."
+        "discipline": "Cofundador",
+        "edge": "Liderazgo con criterio.",
+        "bio": "Alinea personas, producto y negocio para tomar mejores decisiones y llevarlas hasta el resultado."
       }
     ]
   },
   "Engagement": {
     "eyebrow": "Cómo trabajamos",
-    "title": "Decidir. Construir. Lanzar.",
+    "title": "El mejor código empieza antes del editor.",
     "items": [
       {
         "number": "01",
-        "label": "Decidir",
-        "titleLines": ["Decide lo", "que importa."],
-        "description": "Aislamos la restricción, alineamos al equipo y definimos qué debe ser cierto."
+        "label": "Entender",
+        "titleLines": ["Entender antes", "de construir."],
+        "description": "Encontramos el problema real y la decisión capaz de cambiar el producto."
       },
       {
         "number": "02",
-        "label": "Dar forma",
-        "titleLines": ["Convicción", "hecha sistema."],
-        "description": "Estrategia, producto y tecnología avanzan en una sola dirección."
+        "label": "Diseñar",
+        "titleLines": ["Reducir complejidad.", "Crear claridad."],
+        "description": "Convertimos la dirección en una experiencia que el equipo puede comprender y usar."
       },
       {
         "number": "03",
-        "label": "Entregar",
-        "titleLines": ["Que funcione.", "En el mundo real."],
-        "description": "Seguimos cerca durante las decisiones difíciles, la construcción y el lanzamiento."
+        "label": "Construir",
+        "titleLines": ["Hacerlo durar.", "Hacerlo crecer."],
+        "description": "Llevamos el producto a producción con ingeniería preparada para evolucionar."
       }
     ]
   },
@@ -263,8 +263,8 @@
     ]
   },
   "Contact": {
-    "title": "Cualquier cosa que imagines, nosotros lo podemos crear.",
-    "description": "El que no está claro. Aquel del que depende tu siguiente capítulo. Pondremos atención senior y encontraremos el camino.",
+    "title": "¿Todavía no sabes qué construir? Hablemos antes del código.",
+    "description": "Trae la ambición, la incertidumbre y la decisión difícil. Encontraremos qué merece existir.",
     "eyebrow": "Empecemos una conversación",
     "name": "Nombre",
     "namePlaceholder": "Tu nombre",
@@ -315,6 +315,12 @@
     "page": "Navegación de página",
     "top": "Volver arriba",
     "end": "Ir al final de la página"
+  },
+  "StickyHeader": {
+    "label": "Navegación principal",
+    "work": "Proyectos",
+    "team": "Equipo",
+    "cta": "Iniciar proyecto"
   },
   "CaseStudy": {
     "selected": "Trabajo seleccionado",

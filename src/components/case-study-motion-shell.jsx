@@ -15,7 +15,7 @@ gsap.registerPlugin(useGSAP, SplitText);
 function CaseStudyMotionShell({ children }) {
   const t = useTranslations("Navigation");
   const contentRef = useRef(null);
-  const [canScrollUp, setCanScrollUp] = useState(false);
+  const [isAtPageEnd, setIsAtPageEnd] = useState(false);
   const [transitionReady, setTransitionReady] = useState(false);
   const lenis = useLenis();
 
@@ -32,14 +32,19 @@ function CaseStudyMotionShell({ children }) {
 
   useEffect(() => {
     const updateNavigation = () => {
-      setCanScrollUp(window.scrollY > 24);
+      const remainingScroll =
+        document.documentElement.scrollHeight -
+        (window.scrollY + window.innerHeight);
+      setIsAtPageEnd(remainingScroll <= 24);
     };
 
     updateNavigation();
     window.addEventListener("scroll", updateNavigation, { passive: true });
+    window.addEventListener("resize", updateNavigation);
 
     return () => {
       window.removeEventListener("scroll", updateNavigation);
+      window.removeEventListener("resize", updateNavigation);
     };
   }, []);
 
@@ -158,13 +163,13 @@ function CaseStudyMotionShell({ children }) {
       >
         <button
           type="button"
-          onClick={() => scrollTo(canScrollUp ? 0 : "max")}
+          onClick={() => scrollTo(isAtPageEnd ? 0 : "max")}
           className="inline-flex size-10 cursor-pointer items-center justify-center border border-border bg-background/90 font-mono text-base text-foreground shadow-lg backdrop-blur-sm transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:size-12 sm:text-lg"
-          aria-label={canScrollUp ? t("top") : t("end")}
-          title={canScrollUp ? t("top") : t("end")}
+          aria-label={isAtPageEnd ? t("top") : t("end")}
+          title={isAtPageEnd ? t("top") : t("end")}
         >
-          <span key={canScrollUp ? "up" : "down"} aria-hidden="true">
-            {canScrollUp ? "↑" : "↓"}
+          <span key={isAtPageEnd ? "up" : "down"} aria-hidden="true">
+            {isAtPageEnd ? "↑" : "↓"}
           </span>
         </button>
       </nav>

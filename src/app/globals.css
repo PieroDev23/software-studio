@@ -27,6 +27,15 @@
   --team-light: #ebe8ef;
   --team-dark: #111112;
   --team-purple: var(--brand-violet);
+  --heading-tracking: 0em;
+  --card-title-tracking: var(--heading-tracking);
+  --card-title-leading: 1.12;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --card-title-leading: 1.08;
+  }
 }
 
 @theme inline {
@@ -238,7 +247,12 @@ h2,
 h3,
 h4 {
   font-kerning: normal;
+  letter-spacing: var(--heading-tracking);
   text-rendering: optimizeLegibility;
+}
+
+:is(h1, h2, h3, h4)[class] {
+  letter-spacing: var(--heading-tracking);
 }
 
 .hero-scrim {
@@ -273,6 +287,10 @@ h4 {
 
 .navigation-transition-layer[data-layer="0"] {
   background: var(--accent);
+}
+
+.navigation-transition-layer {
+  will-change: transform;
 }
 
 .navigation-transition-layer[data-layer="1"] {

@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "title": "Manyas, Product Strategy, Design and Engineering",
-    "description": "A senior product studio in Lima for consequential digital products. Strategy, product design and software engineering, working globally.",
-    "socialDescription": "Senior product strategy, design and engineering for consequential digital products.",
+    "title": "Manyas, a product firm for decisions that matter",
+    "description": "A senior product firm in Lima. Judgment, design and engineering to decide what deserves to exist and build it to endure.",
+    "socialDescription": "Judgment, design and engineering for products that deserve to exist.",
     "keywords": [
       "product strategy studio",
       "product design studio",
@@ -14,7 +14,7 @@
     ]
   },
   "Seo": {
-    "description": "Manyas is a senior product strategy, design and software engineering studio based in Lima and working globally.",
+    "description": "Manyas is a senior product firm turning difficult decisions into products built to endure.",
     "expertise": [
       "Product strategy",
       "Product design",
@@ -25,73 +25,73 @@
   "Hero": {
     "homeLabel": "Manyas, home",
     "availability": "Select engagements only",
-    "eyebrow": "Senior product partners for consequential work",
-    "line1": "Consequential products.",
-    "line2": "Clear decisions.",
-    "line3": "Built to endure.",
-    "lead": "We bring strategy, design and engineering together when the cost of getting it wrong is too high.",
-    "cta": "Discuss a project",
+    "eyebrow": "Senior judgment for products that matter",
+    "line1": "We build products",
+    "line2": "that deserve",
+    "line3": "to exist.",
+    "lead": "Strategy, design and engineering for making the right decision before writing code.",
+    "cta": "Make the right decision",
     "location": "Lima, PE 🇵🇪 · Working globally"
   },
   "Companies": {
-    "eyebrow": "Experience across the team",
-    "selected": "Selected companies & ventures",
+    "eyebrow": "Teams that chose to build with judgment",
+    "selected": "Selected experience",
     "client": "Client {number}"
   },
   "Premise": {
     "eyebrow": "The premise",
-    "before": "Momentum dies in the gaps between thinking and making. We",
-    "highlight": "close them."
+    "before": "The problem is rarely building. It is deciding",
+    "highlight": "what is worth building."
   },
   "Metrics": {
     "aria": "Studio impact metrics",
     "items": [
       {
-        "label": "Senior ownership",
-        "value": "100%",
-        "description": "The people in the room are the people doing the work."
+        "label": "Principle 01",
+        "value": "Decide",
+        "description": "Before features."
       },
       {
-        "label": "One integrated team",
-        "value": "03",
-        "description": "Strategy, design and engineering moving as one system."
+        "label": "Principle 02",
+        "value": "Product",
+        "description": "Before code."
       },
       {
-        "label": "Lost in handoffs",
-        "value": "00",
-        "description": "Zero distance between the decision and the execution."
+        "label": "Principle 03",
+        "value": "Scale",
+        "description": "Engineering ready to grow."
       },
       {
-        "label": "Operating range",
-        "value": "Global",
-        "description": "Rooted in Lima. Built to collaborate anywhere."
+        "label": "Principle 04",
+        "value": "Return",
+        "description": "Teams that come back."
       }
     ]
   },
   "Work": {
-    "eyebrow": "Proof / selected work",
-    "title": "Clarity you can ship.",
+    "eyebrow": "Impact - Our work",
+    "title": "The outcome matters more than the technology.",
     "view": "View case study",
     "viewAria": "View {client} case study",
     "opening": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
     "cards": {
       "atlas": {
-        "service": "Product + Engineering",
-        "line1": "One operating system",
-        "line2": "for preventive care.",
-        "description": "One connected experience for care teams, patients and the decisions between them."
+        "service": "Creator Platform",
+        "line1": "From one creator to",
+        "line2": "an entire platform.",
+        "description": "A scalable subscription platform designed to power creator businesses beyond a single audience."
       },
       "northstar": {
-        "service": "Strategy + Design",
-        "line1": "Enterprise planning,",
-        "line2": "made immediate.",
-        "description": "Critical planning moved from scattered tools into one decisive workspace."
+        "service": "Digital Experience",
+        "line1": "Experiences people",
+        "line2": "remember.",
+        "description": "Interactive experiences that transform participation into memorable moments."
       },
       "prism": {
-        "service": "0→1 Product",
-        "line1": "Financial clarity for",
-        "line2": "independent teams.",
-        "description": "Cash, commitments and runway turned into decisions teams can trust."
+        "service": "Preventive Health Platform",
+        "line1": "AI built around real",
+        "line2": "clinical workflows.",
+        "description": "Biomarkers, laboratories and operations connected in one intelligent platform."
       }
     }
   },
@@ -99,60 +99,60 @@
     "items": [
       {
         "number": "01",
-        "label": "Engineering",
-        "titleLines": ["Build for", "the real world."],
+        "label": "Product",
+        "titleLines": ["Before we build,", "we understand."],
         "services": [
-          "Production ready product engineering",
-          "Architecture under real constraints",
-          "AI that earns its place",
-          "Platforms ready for what comes next"
+          "Product definition",
+          "Research and context",
+          "Scope decisions",
+          "Direction before execution"
         ]
       },
       {
         "number": "02",
         "label": "Design",
-        "titleLines": ["Complexity,", "made clear."],
+        "titleLines": ["Every interface", "expresses judgment."],
         "services": [
-          "Product experience & interaction",
-          "Systems that scale decisions",
+          "Product experience",
+          "Interfaces that reduce complexity",
           "Rapid prototyping",
-          "Brand translated into behavior"
+          "Design systems"
         ]
       },
       {
         "number": "03",
-        "label": "Strategy",
-        "titleLines": ["Turn ambiguity", "into action."],
+        "label": "Engineering",
+        "titleLines": ["Software ready", "to evolve."],
         "services": [
-          "Product direction & definition",
-          "Technical and product diligence",
-          "Roadmaps tied to outcomes",
-          "Senior leadership in the room"
+          "Architecture ready to grow",
+          "Production ready development",
+          "AI where it creates real leverage",
+          "Systems built to endure"
         ]
       }
     ]
   },
   "Expertise": {
-    "eyebrow": "What we solve",
-    "title": "Senior depth where product decisions carry weight.",
-    "intro": "We work across strategy, design and engineering as one senior team, from the first consequential decision through production.",
+    "eyebrow": "Our judgment",
+    "title": "From uncertainty to a product that deserves to exist.",
+    "intro": "We do not sell isolated disciplines. We bring product judgment, design and engineering around one decision.",
     "cta": "Bring us the hard problem",
     "items": [
       {
-        "title": "Product strategy for consequential decisions.",
-        "description": "We turn ambiguity, evidence and business constraints into a direction teams can act on."
+        "title": "Decide what deserves to exist.",
+        "description": "We turn ambiguity, evidence and constraints into a direction the team can defend."
       },
       {
-        "title": "Product design for complex workflows.",
-        "description": "We make demanding systems feel clear without hiding the depth professionals need."
+        "title": "Give clear direction a form.",
+        "description": "We design experiences that make complexity understandable without hiding what matters."
       },
       {
-        "title": "Software engineering built to endure.",
-        "description": "We ship production ready platforms with architecture that can survive real users and real change."
+        "title": "Build without mortgaging the future.",
+        "description": "We ship products with architecture ready for real users, scale and change."
       },
       {
-        "title": "AI product development with a reason to exist.",
-        "description": "We apply AI where it creates measurable leverage, not where it only creates a demo."
+        "title": "Use AI only when it changes the outcome.",
+        "description": "We apply it where it creates measurable leverage, never to decorate a demo."
       }
     ]
   },
@@ -164,71 +164,71 @@
     "next": "Next testimonial",
     "items": [
       {
-        "quote": "They felt like the senior product team we should have hired from the start.",
+        "quote": "We never felt like we were hiring vendors. We felt like someone finally understood the product.",
         "author": "Elena Ward",
         "role": "VP Product",
-        "company": "Northstar"
+        "company": "PCHUJOY"
       },
       {
         "quote": "They turned difficult decisions into clear direction and a product we could ship.",
         "author": "Marcus Chen",
         "role": "Founder",
-        "company": "Prism"
+        "company": "SAMAY"
       },
       {
         "quote": "They challenged our strategy and stayed close enough to help us ship it.",
         "author": "Ana Torres",
         "role": "COO",
-        "company": "Atlas Health"
+        "company": "AXO Longevity"
       }
     ]
   },
   "Team": {
     "eyebrow": "The studio",
-    "title": "Three partners. Zero layers. All in.",
-    "edge": "Distinctive edge",
+    "title": "Three profiles. One obsession. Better products.",
+    "edge": "Judgment",
     "members": [
       {
         "name": "Piero Davila",
-        "discipline": "Partner / Engineering",
-        "edge": "Creative product thinking",
-        "bio": "The team’s creative force, finding original paths through difficult product constraints."
+        "discipline": "Co-founder",
+        "edge": "Product vision and creative direction.",
+        "bio": "Turns ambiguous ideas into clear, useful products with an experience that makes the difference."
       },
       {
         "name": "Josue Villasante",
-        "discipline": "Partner / Technology",
-        "edge": "10× engineering",
-        "bio": "Exceptional technical range and execution speed across complex product systems."
+        "discipline": "Co-founder",
+        "edge": "Systems ready to grow.",
+        "bio": "Turns technical complexity into foundations that are solid, reliable and ready to scale."
       },
       {
         "name": "Sebastian Muñoz",
-        "discipline": "Partner / Engineering",
-        "edge": "Leadership & judgment",
-        "bio": "Impeccable judgment, strong leadership and a clear understanding of the business behind every problem."
+        "discipline": "Co-founder",
+        "edge": "Leadership with judgment.",
+        "bio": "Aligns people, product and business to make better decisions and carry them through to the outcome."
       }
     ]
   },
   "Engagement": {
     "eyebrow": "How we engage",
-    "title": "From hard decision to shipped product.",
+    "title": "The best code starts before the editor.",
     "items": [
       {
         "number": "01",
-        "label": "Decide",
-        "titleLines": ["Find the decision", "that matters."],
-        "description": "We isolate the real constraint, align the room and define what must be true."
+        "label": "Understand",
+        "titleLines": ["Understand before", "you build."],
+        "description": "We find the real problem and the decision capable of changing the product."
       },
       {
         "number": "02",
-        "label": "Shape",
-        "titleLines": ["Turn conviction", "into a system."],
-        "description": "Strategy, product and technology become one direction the team can act on."
+        "label": "Design",
+        "titleLines": ["Reduce complexity.", "Create clarity."],
+        "description": "We turn direction into an experience the team can understand and use."
       },
       {
         "number": "03",
-        "label": "Deliver",
-        "titleLines": ["Stay until it works", "in the real world."],
-        "description": "Senior partners remain close through the hard tradeoffs, build and release."
+        "label": "Build",
+        "titleLines": ["Make it last.", "Make it grow."],
+        "description": "We take the product to production with engineering designed to evolve."
       }
     ]
   },
@@ -263,8 +263,8 @@
     ]
   },
   "Contact": {
-    "title": "Anything you can imagine, we can create.",
-    "description": "The unclear one. The consequential one. The one your next chapter depends on. We will bring senior attention and a way through.",
+    "title": "Still unsure what to build? Talk to us before the code.",
+    "description": "Bring the ambition, the uncertainty and the hard decision. We will find what deserves to exist.",
     "eyebrow": "Start a conversation",
     "name": "Name",
     "namePlaceholder": "Your name",
@@ -315,6 +315,12 @@
     "page": "Page navigation",
     "top": "Back to top",
     "end": "Go to page end"
+  },
+  "StickyHeader": {
+    "label": "Primary navigation",
+    "work": "Work",
+    "team": "Team",
+    "cta": "Start a project"
   },
   "CaseStudy": {
     "selected": "Selected work",

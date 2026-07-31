@@ -32,7 +32,7 @@ function CapabilitiesGrid() {
           </div>
 
           <div className="mt-10 flex flex-col gap-5 sm:mt-auto sm:gap-8 sm:pt-16">
-            <h2 className="text-[1.75rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(1.875rem,3vw,3.5rem)] sm:leading-[1.04]">
+            <h2 className="text-[1.75rem] font-medium leading-[1.1] tracking-[-0.03em] sm:text-[clamp(1.875rem,2.4vw,3rem)] sm:leading-[1.04]">
               {capability.titleLines.map((line) => (
                 <span key={line} className="block whitespace-nowrap">
                   {line}

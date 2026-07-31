@@ -1,0 +1,155 @@
+"use client";
+
+import { useLenis } from "lenis/react";
+import { MenuIcon, XIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+
+import LanguageSwitcher from "@/components/language-switcher";
+import { Button } from "@/components/ui/button";
+import {
+  headerBrandClass,
+  headerCtaClass,
+  headerNavClass,
+  headerNavItemClass,
+} from "@/lib/header-styles";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
+
+function StickyHeader() {
+  const t = useTranslations("StickyHeader");
+  const hero = useTranslations("Hero");
+  const lenis = useLenis();
+  const [visible, setVisible] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    let frame;
+
+    const update = () => {
+      frame = undefined;
+      setVisible(window.scrollY > 140);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const goTo = (selector) => {
+    const target = document.querySelector(selector);
+    if (!target) return;
+
+    setMobileOpen(false);
+    smoothScrollTo(lenis, target);
+  };
+
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-[60] border-b border-white/15 bg-black/92 text-white shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-md transition-[transform,opacity] duration-500 ease-out ${
+        visible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-full opacity-0"
+      }`}
+      aria-hidden={!visible}
+      inert={!visible}
+    >
+      <div className="content-container flex h-16 items-center justify-between gap-3 px-4 sm:h-[4.5rem] sm:gap-5 sm:px-8 lg:px-12">
+        <button
+          type="button"
+          onClick={() => goTo("#top")}
+          className={`${headerBrandClass} cursor-pointer transition-opacity hover:opacity-65`}
+          aria-label={hero("homeLabel")}
+        >
+          Manyas <span className="align-super text-[0.65em]">®</span>
+        </button>
+
+        <div className="ml-auto flex min-w-0 items-center justify-end gap-3 sm:gap-8">
+          <nav className={headerNavClass} aria-label={t("label")}>
+            <button
+              type="button"
+              onClick={() => goTo("#selected-work")}
+              className={`${headerNavItemClass} cursor-pointer transition-opacity hover:opacity-60`}
+            >
+              {t("work")}
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo("#team")}
+              className={`${headerNavItemClass} cursor-pointer transition-opacity hover:opacity-60`}
+            >
+              {t("team")}
+            </button>
+          </nav>
+
+          <div className="flex min-w-0 items-center gap-2 sm:gap-5">
+            <LanguageSwitcher className="text-white" />
+            <button
+              type="button"
+              onClick={() => goTo("#contacto")}
+              className={`${headerCtaClass} hidden cursor-pointer sm:inline-flex`}
+            >
+              {t("cta")}
+            </button>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon-lg"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-expanded={mobileOpen}
+              aria-controls="sticky-mobile-menu"
+              aria-label={t("label")}
+              className="rounded-none border-white/25 bg-transparent text-white hover:bg-white hover:text-black sm:hidden"
+            >
+              {mobileOpen ? <XIcon /> : <MenuIcon />}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <nav
+        id="sticky-mobile-menu"
+        aria-label={t("label")}
+        className={`absolute inset-x-0 top-full border-b border-white/15 bg-black px-4 transition-[transform,opacity,visibility] duration-300 sm:hidden ${
+          mobileOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="content-container flex flex-col py-2">
+          <button
+            type="button"
+            onClick={() => goTo("#selected-work")}
+            className={`${headerNavItemClass} cursor-pointer border-b border-white/15 py-4 text-left`}
+          >
+            {t("work")}
+          </button>
+          <button
+            type="button"
+            onClick={() => goTo("#team")}
+            className={`${headerNavItemClass} cursor-pointer border-b border-white/15 py-4 text-left`}
+          >
+            {t("team")}
+          </button>
+          <button
+            type="button"
+            onClick={() => goTo("#contacto")}
+            className={`${headerNavItemClass} cursor-pointer py-4 text-left`}
+          >
+            {t("cta")}
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
+export default StickyHeader;
