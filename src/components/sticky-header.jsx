@@ -9,7 +9,6 @@ import LanguageSwitcher from "@/components/language-switcher";
 import { Button } from "@/components/ui/button";
 import {
   headerBrandClass,
-  headerCtaClass,
   headerNavClass,
   headerNavItemClass,
 } from "@/lib/header-styles";
@@ -92,13 +91,6 @@ function StickyHeader() {
 
           <div className="flex min-w-0 items-center gap-2 sm:gap-5">
             <LanguageSwitcher className="text-white" />
-            <button
-              type="button"
-              onClick={() => goTo("#contacto")}
-              className={`${headerCtaClass} hidden cursor-pointer sm:inline-flex`}
-            >
-              {t("cta")}
-            </button>
             <Button
               type="button"
               variant="outline"
