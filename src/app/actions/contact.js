@@ -5,8 +5,8 @@ import { Resend } from "resend";
 import { createContactSchema } from "@/lib/contact-schema";
 import { countriesByCode } from "@/lib/countries";
 
-const recipient = "pierodavilaaguirre22@gmail.com";
-const mockDelivery = process.env.CONTACT_FORM_MOCK !== "false";
+const recipient = process.env.CONTACT_FORM_RECIPIENT ?? "hola@manyas.dev";
+const mockDelivery = process.env.CONTACT_FORM_MOCK === "true";
 
 export async function sendContactInquiry(_previousState, formData) {
   const t = await getTranslations("Contact");
@@ -51,26 +51,40 @@ export async function sendContactInquiry(_previousState, formData) {
   const countryName = countriesByCode.get(country)?.name ?? country;
   const safeProject = project.replace(/[\r\n]+/g, " ");
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const { error } = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "Manyas <onboarding@resend.dev>",
-    to: recipient,
-    replyTo: email,
-    subject: `New inquiry · ${safeProject}`,
-    text: [
-      "New project inquiry",
-      "",
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Country: ${countryName} (${country})`,
-      `Company / project: ${project}`,
-      "",
-      "Brief",
-      brief,
-    ].join("\n"),
-  });
+  try {
+    const { error } = await resend.emails.send({
+      from:
+        process.env.RESEND_FROM_EMAIL ?? "Manyas Inquiry <inquiry@manyas.dev>",
+      to: recipient,
+      replyTo: email,
+      subject: `[Manyas web] Nueva consulta · ${safeProject}`,
+      tags: [
+        { name: "source", value: "manyas-contact-form" },
+        { name: "type", value: "project-inquiry" },
+      ],
+      text: [
+        "Nueva consulta de proyecto",
+        "",
+        `Nombre: ${name}`,
+        `Email: ${email}`,
+        `Teléfono: ${phone}`,
+        `País: ${countryName} (${country})`,
+        `Empresa / proyecto: ${project}`,
+        "",
+        "Brief",
+        brief,
+      ].join("\n"),
+    });
 
-  if (error) {
+    if (error) {
+      console.error("Resend contact delivery failed", error);
+      return {
+        success: false,
+        message: t("deliveryError"),
+        errors: {},
+      };
+    }
+  } catch (error) {
     console.error("Resend contact delivery failed", error);
     return {
       success: false,
