@@ -11,7 +11,9 @@ export const size = {
   height: 630,
 };
 
-export const contentType = "image/jpeg";
+export const contentType = "image/png";
+
+const sourceContentType = "image/jpeg";
 
 // Image generation
 export default async function Image({ params }) {
@@ -28,7 +30,7 @@ export default async function Image({ params }) {
     ),
   ]);
 
-  const src = `data:${contentType};base64,${imageData}`;
+  const src = `data:${sourceContentType};base64,${imageData}`;
   const buttonText = locale === "en" ? "Study Case" : "Caso de Estudio";
   const title = studyCase.title;
   const subtitle = studyCase.service;

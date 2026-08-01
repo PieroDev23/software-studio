@@ -10,7 +10,7 @@ export const size = {
   height: 630,
 };
 
-export const contentType = "image/jpeg";
+export const contentType = "image/png";
 
 // Image generation
 export default async function Image({ params }) {
