@@ -1,4 +1,3 @@
-import { DM_Mono, Inter_Tight } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import {
@@ -6,27 +5,8 @@ import {
   getTranslations,
   setRequestLocale,
 } from "next-intl/server";
-import "lenis/dist/lenis.css";
-import "../globals.css";
-
-import LanguageTransitionObserver from "@/components/language-transition-observer";
-import SmoothScrollProvider from "@/components/smooth-scroll-provider";
-import WebVitals from "@/components/web-vitals";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/lib/site-config";
-
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  display: "swap",
-});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -96,17 +76,10 @@ export default async function LocaleLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html
-      lang={locale}
-      className={`${interTight.variable} ${dmMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <LanguageTransitionObserver />
-          <WebVitals />
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <div lang={locale} className="contents">
+        {children}
+      </div>
+    </NextIntlClientProvider>
   );
 }

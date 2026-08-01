@@ -295,4 +295,4 @@ function getCaseStudy(slug, locale = "en") {
   return { ...study, ...caseStudiesEs[slug] };
 }
 
-export { caseStudies, caseStudySlugs, getCaseStudy };
+export { caseStudySlugs, getCaseStudy };

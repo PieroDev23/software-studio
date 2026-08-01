@@ -10,7 +10,7 @@ const countryNameOverrides = {
   FK: "Falkland Islands",
 };
 
-export function countryFlag(countryCode) {
+function countryFlag(countryCode) {
   return countryCode
     .toUpperCase()
     .split("")
@@ -18,7 +18,7 @@ export function countryFlag(countryCode) {
     .join("");
 }
 
-export const countries = getCountries()
+const countries = getCountries()
   .map((code) => ({
     code,
     name:

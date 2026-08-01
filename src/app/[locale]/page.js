@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import Beams from "@/components/Beams";
+import Beams from "@/components/beams";
 import CompanyGrid from "@/components/company-grid";
 import ContactSection from "@/components/contact-section";
 import EngagementSection from "@/components/engagement-section";
@@ -7,7 +7,6 @@ import ExpertiseSection from "@/components/expertise-section";
 import FaqSection from "@/components/faq-section";
 import JsonLd from "@/components/json-ld";
 import LanguageSwitcher from "@/components/language-switcher";
-import MetricsSection from "@/components/metrics-section";
 import MotionShell from "@/components/motion-shell";
 import PremiseSection from "@/components/premise-section";
 import StickyHeader from "@/components/sticky-header";
@@ -20,11 +19,6 @@ import {
   TypographyLead,
 } from "@/components/ui/typography";
 import WorkGrid from "@/components/work-grid";
-import {
-  headerBrandClass,
-  headerNavClass,
-  headerNavItemClass,
-} from "@/lib/header-styles";
 import { getHomeStructuredData } from "@/lib/structured-data";
 
 export default async function Home({ params }) {
@@ -69,7 +63,7 @@ export default async function Home({ params }) {
               className="flex items-center justify-between gap-3 sm:gap-6"
             >
               <a
-                className={`${headerBrandClass} text-foreground transition-opacity hover:opacity-70`}
+                className="inline-flex shrink-0 items-center whitespace-nowrap font-mono text-xs font-medium uppercase leading-none tracking-[0.18em] text-foreground transition-opacity hover:opacity-70 sm:text-sm"
                 href="#top"
                 aria-label={t("homeLabel")}
               >
@@ -80,16 +74,19 @@ export default async function Home({ params }) {
               </a>
 
               <div className="ml-auto flex items-center justify-end gap-4 sm:gap-6 lg:gap-8">
-                <nav className={headerNavClass} aria-label={nav("label")}>
+                <nav
+                  className="hidden items-center gap-8 md:flex"
+                  aria-label={nav("label")}
+                >
                   <a
                     href="#selected-work"
-                    className={`${headerNavItemClass} transition-opacity hover:opacity-60`}
+                    className="font-mono text-xs font-medium uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
                   >
                     {nav("work")}
                   </a>
                   <a
                     href="#team"
-                    className={`${headerNavItemClass} transition-opacity hover:opacity-60`}
+                    className="font-mono text-xs font-medium uppercase leading-none tracking-[0.14em] transition-opacity hover:opacity-60"
                   >
                     {nav("team")}
                   </a>
@@ -143,7 +140,6 @@ export default async function Home({ params }) {
 
         <CompanyGrid />
         <PremiseSection />
-        <MetricsSection />
         <WorkGrid />
         <ExpertiseSection />
         <TestimonialsCarousel />
