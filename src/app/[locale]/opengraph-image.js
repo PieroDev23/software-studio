@@ -1,8 +1,7 @@
-/** biome-ignore-all lint/performance/noImgElement: <explanation> */
+/** biome-ignore-all lint/performance/noImgElement: ImageResponse renders native img elements. */
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { LucideArrowBigDown } from "lucide-react";
 
 // Image metadata
 export const alt = "Manyas Software Studio Home";
@@ -49,8 +48,9 @@ export default async function Image({ params }) {
         style={{
           position: "absolute",
           width: "100%",
-          paddingLeft: "25px",
           height: "100%",
+          padding: "70px 120px",
+          boxSizing: "border-box",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -77,9 +77,9 @@ export default async function Image({ params }) {
           style={{
             fontFamily: "Inter Tight",
             fontWeight: 400,
-            maxWidth: "70%",
+            maxWidth: "650px",
             color: "white",
-            fontSize: "60px",
+            fontSize: "54px",
           }}
         >
           {locale === "en"
