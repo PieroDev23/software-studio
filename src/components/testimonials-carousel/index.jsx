@@ -25,7 +25,7 @@ function TestimonialsCarousel() {
     >
       <div className="content-container">
         <div className="flex items-start justify-between gap-6">
-          <TypographyEyebrow id="testimonials-title" className="max-w-[16rem]">
+          <TypographyEyebrow id="testimonials-title">
             {t("eyebrow")}
           </TypographyEyebrow>
           <p
@@ -48,7 +48,7 @@ function TestimonialsCarousel() {
             {testimonials.map((testimonial) => (
               <CarouselItem key={testimonial.quote} className="pl-0">
                 <blockquote className="max-w-[72rem]">
-                  <p className="line-clamp-3 text-pretty text-2xl font-medium tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
+                  <p className="line-clamp-3 text-pretty text-2xl leading-8 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11 lg:text-5xl lg:leading-15 xl:text-6xl xl:leading-20">
                     “{testimonial.quote}”
                   </p>
                 </blockquote>

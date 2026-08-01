@@ -18,7 +18,7 @@ export default function PrinciplesGrid() {
             {metric.label}
           </dt>
           <dd className="flex flex-col gap-4">
-            <span className="max-w-full text-4xl font-medium tracking-tight lg:text-5xl">
+            <span className="max-w-full text-4xl leading-11 font-medium tracking-[0.030rem] lg:text-5xl lg:leading-15">
               {metric.value}
             </span>
             <span className="max-w-64 text-base leading-6 text-inverse-muted">

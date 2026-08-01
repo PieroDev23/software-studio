@@ -20,8 +20,8 @@ function CaseStudyFooter({ nextStudy, translate }) {
             <span className="font-mono text-sm uppercase tracking-[0.14em] text-muted-foreground">
               {nextStudy.client} / {nextStudy.year}
             </span>
-            <span className="mt-6 flex items-end justify-between gap-6 text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-              <span className="max-w-[12ch]">{nextStudy.title}</span>
+            <span className="mt-6 flex items-end justify-between gap-6 text-4xl leading-11 font-medium tracking-[0.030rem] sm:text-5xl md:text-6xl md:leading-18 lg:text-7xl lg:leading-25 xl:text-8xl">
+              <span className="max-w-[20ch]">{nextStudy.title}</span>
               <span
                 className="shrink-0 transition-transform duration-300 group-hover:translate-x-2"
                 aria-hidden="true"

@@ -22,7 +22,7 @@ function ShiftSection({ study, translate }) {
         <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
           <p
             data-motion-heading
-            className="max-w-[18ch] text-3xl font-medium tracking-tight sm:text-5xl lg:col-span-9 lg:text-6xl xl:text-7xl"
+            className="text-3xl leading-11 font-medium tracking-[0.030rem] sm:text-5xl md:leading-15 lg:col-span-10 lg:text-6xl lg:leading-20 xl:text-7xl"
           >
             “{study.pullQuote}”
           </p>

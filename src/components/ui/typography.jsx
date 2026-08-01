@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 
 const displaySizes = {
-  hero: "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl",
-  statement: "text-4xl md:text-5xl lg:text-6xl xl:text-7xl",
+  hero: "text-4xl leading-11 sm:text-5xl md:text-6xl md:leading-18 lg:text-7xl lg:leading-25 xl:text-8xl",
+  statement:
+    "text-4xl leading-11 md:text-5xl md:leading-15 lg:text-6xl lg:leading-20 xl:text-7xl",
 };
 
 const displayTones = {
@@ -21,7 +22,7 @@ function TypographyDisplay({
     <Component
       data-slot="typography-display"
       className={cn(
-        "text-balance font-medium tracking-tight",
+        "text-balance font-medium tracking-[0.030rem]",
         displaySizes[size],
         displayTones[tone],
         className,
@@ -36,7 +37,7 @@ function TypographyCardTitle({ as: Component = "h3", className, ...props }) {
     <Component
       data-slot="typography-card-title"
       className={cn(
-        "text-3xl font-medium tracking-tight sm:text-4xl",
+        "text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11",
         className,
       )}
       {...props}

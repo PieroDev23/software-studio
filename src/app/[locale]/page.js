@@ -97,10 +97,7 @@ export default async function Home({ params }) {
 
             <section className="flex flex-1 items-center">
               <div className="flex max-w-6xl flex-col gap-6 sm:gap-10">
-                <TypographyEyebrow
-                  data-reveal
-                  className="max-w-[24rem] leading-6"
-                >
+                <TypographyEyebrow data-reveal>
                   {t("eyebrow")}
                 </TypographyEyebrow>
 

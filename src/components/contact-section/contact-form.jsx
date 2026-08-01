@@ -23,7 +23,9 @@ function ContactForm({ form, title, description, translate }) {
         <input type="hidden" name="phone" value={form.phoneValue} />
 
         <div className="mb-12 flex flex-col gap-5 lg:hidden">
-          <h2 className="text-4xl font-medium tracking-tight">{title}</h2>
+          <h2 className="text-4xl leading-11 font-medium tracking-[0.030rem]">
+            {title}
+          </h2>
           <p className="max-w-xl text-lg leading-7 text-inverse-muted">
             {description}
           </p>

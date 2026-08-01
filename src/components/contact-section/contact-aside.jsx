@@ -14,7 +14,7 @@ function ContactAside({ title, description }) {
       </div>
 
       <div className="flex w-full flex-col justify-between gap-12 sm:gap-16">
-        <h2 className="max-w-2xl text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl xl:text-8xl">
+        <h2 className="max-w-2xl text-4xl leading-11 font-medium tracking-[0.030rem] sm:text-5xl sm:leading-15 lg:text-6xl lg:leading-20 xl:text-8xl xl:leading-25">
           {title}
         </h2>
 

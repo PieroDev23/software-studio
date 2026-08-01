@@ -67,7 +67,7 @@ export default function WorkGrid() {
                 service={t("cards.atlas.service")}
               />
               <div className="case-card-preview-content relative z-10 flex min-w-0 max-w-full flex-col gap-6">
-                <h3 className="text-balance text-3xl font-medium tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
+                <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11 lg:text-5xl lg:leading-15 xl:text-6xl xl:leading-20">
                   <span className="block sm:whitespace-nowrap">
                     {t("cards.atlas.line1")}
                   </span>
@@ -107,7 +107,7 @@ export default function WorkGrid() {
               service={t("cards.northstar.service")}
             />
             <div className="relative z-10 flex min-w-0 max-w-2xl flex-col gap-5 2xl:gap-7">
-              <h3 className="w-full max-w-full text-3xl font-medium tracking-tight xl:text-5xl">
+              <h3 className="w-full max-w-full text-3xl leading-9 font-medium tracking-[0.030rem] xl:text-5xl xl:leading-15">
                 <span className="block whitespace-nowrap">
                   {t("cards.northstar.line1")}
                 </span>
@@ -146,7 +146,7 @@ export default function WorkGrid() {
               service={t("cards.prism.service")}
             />
             <div className="relative z-10 flex max-w-xl flex-col gap-5">
-              <h3 className="text-balance text-3xl font-medium tracking-tight xl:text-5xl">
+              <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] xl:text-5xl xl:leading-15">
                 <span className="block sm:whitespace-nowrap">
                   {t("cards.prism.line1")}
                 </span>

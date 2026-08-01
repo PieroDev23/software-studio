@@ -77,7 +77,7 @@ function CurtainOverlay({
           <div className="flex flex-col items-center overflow-visible py-[0.16em]">
             <p
               data-curtain-phrase
-              className="flex w-full items-center justify-center text-center text-4xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+              className="flex w-full items-center justify-center text-center text-4xl font-medium tracking-[0.030rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
             >
               <span className="inline-block min-w-0 max-w-full overflow-visible px-[0.08em] pb-[0.12em] text-center">
                 <span
@@ -116,7 +116,7 @@ function CurtainOverlay({
           data-curtain-content
           className="relative z-10 flex min-h-svh items-center justify-center overflow-hidden px-5 py-8"
         >
-          <p className="whitespace-pre-line text-center text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+          <p className="whitespace-pre-line text-center text-4xl font-medium tracking-[0.030rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             {transition.phrase}
           </p>
         </div>

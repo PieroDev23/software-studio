@@ -79,7 +79,7 @@ function TeamCard({ member, translated, edge, compact = false }) {
             <p className="mb-2 font-mono text-sm font-medium uppercase tracking-[0.12em] opacity-60 sm:mb-3">
               {edge}
             </p>
-            <p className="text-xl font-medium tracking-tight sm:text-2xl">
+            <p className="text-xl leading-7 font-medium tracking-[0.030rem] sm:text-2xl sm:leading-8">
               {translated.edge}
             </p>
             <p className="mt-3 max-w-md text-base leading-6 opacity-70">

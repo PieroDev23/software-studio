@@ -28,7 +28,7 @@ function MovesSection({ moves, translate }) {
             >
               <TypographyEyebrow>{move.number}</TypographyEyebrow>
               <div className="mt-auto pt-16">
-                <h3 className="max-w-[12ch] text-3xl font-medium tracking-tight sm:text-4xl">
+                <h3 className="max-w-[12ch] text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11">
                   {move.title}
                 </h3>
                 <p className="mt-6 max-w-sm text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">

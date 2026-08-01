@@ -40,7 +40,7 @@
   },
   "Premise": {
     "eyebrow": "La premisa",
-    "before": "El problema rara vez es construir. Es decidir",
+    "before": "El problema no es construir, es decidir",
     "highlight": "qué vale la pena construir."
   },
   "Metrics": {
@@ -69,7 +69,7 @@
     ]
   },
   "Work": {
-    "eyebrow": "Impacto / trabajo seleccionado",
+    "eyebrow": "Nuestro Impacto",
     "title": "El resultado importa más que la tecnología.",
     "view": "Ver caso de estudio",
     "viewAria": "Ver caso de estudio de {client}",
@@ -324,6 +324,7 @@
   },
   "CaseStudy": {
     "selected": "Trabajo seleccionado",
+    "back": "Volver a la home",
     "opening": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "returnHome": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "returnWork": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",

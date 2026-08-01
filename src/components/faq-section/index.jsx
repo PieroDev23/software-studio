@@ -38,7 +38,7 @@ export default function FaqSection() {
                   <span className="pt-1 font-mono text-xs tracking-[0.12em] text-muted-foreground sm:text-sm">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-xl font-medium tracking-tight sm:text-2xl">
+                  <span className="text-xl leading-7 font-medium tracking-[0.030rem] sm:text-2xl sm:leading-8">
                     {item.question}
                   </span>
                 </span>

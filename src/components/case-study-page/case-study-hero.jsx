@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import LanguageSwitcher from "@/components/language-switcher";
 import Silk from "@/components/silk";
 import { TerminalMeta } from "@/components/terminal-slash";
@@ -22,7 +23,7 @@ function CaseStudyHero({ study, translate }) {
       />
 
       <div className="content-container relative flex min-h-svh flex-col px-5 py-5 sm:px-8 sm:py-7 lg:px-12 lg:py-10">
-        <nav className="flex items-start justify-between gap-6 font-mono text-xs font-medium uppercase tracking-[0.16em] sm:text-sm">
+        <nav className="flex items-center justify-between gap-6 font-mono text-xs font-medium uppercase tracking-[0.16em] sm:text-sm">
           <TransitionLink
             href="/"
             transitionLabel={translate("returnHome")}
@@ -32,13 +33,6 @@ function CaseStudyHero({ study, translate }) {
           </TransitionLink>
           <div className="flex items-center gap-5">
             <LanguageSwitcher />
-            <TransitionLink
-              href="/#selected-work"
-              transitionLabel={translate("returnWork")}
-              className="text-right transition-opacity hover:opacity-60"
-            >
-              ← {translate("selected")}
-            </TransitionLink>
           </div>
         </nav>
 
@@ -48,12 +42,21 @@ function CaseStudyHero({ study, translate }) {
               text={`${study.client} / ${study.year} / ${study.service}`}
             />
           </TypographyEyebrow>
-          <TypographyDisplay className="mt-8 max-w-[11ch] text-current sm:mt-12">
+          <TypographyDisplay className="mt-8 max-w-[20ch] text-current sm:mt-12">
             {study.title}
           </TypographyDisplay>
           <TypographyLead className="mt-8 max-w-2xl text-current opacity-75">
             {study.description}
           </TypographyLead>
+
+          <TransitionLink
+            href="/#selected-work"
+            transitionLabel={translate("returnWork")}
+            className="mt-8 flex w-fit items-center gap-2 text-right transition-opacity hover:opacity-60"
+          >
+            <ArrowLeft size={20} strokeWidth={1.5} />
+            {translate("back")}
+          </TransitionLink>
         </div>
 
         <dl className="grid border-t border-current/20 sm:grid-cols-3">
