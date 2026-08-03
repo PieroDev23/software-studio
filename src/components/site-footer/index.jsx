@@ -29,6 +29,13 @@ const assistants = [
   },
 ];
 
+function getAssistantHref(href, prompt) {
+  const url = new URL(href);
+  url.searchParams.set("q", prompt);
+
+  return url.toString();
+}
+
 function AssistantIcon({ icon, image }) {
   if (image) {
     return (
@@ -122,7 +129,7 @@ function SiteFooter() {
               {assistants.map((assistant) => (
                 <a
                   key={assistant.name}
-                  href={assistant.href}
+                  href={getAssistantHref(assistant.href, translate("prompt"))}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex size-9 items-center justify-center text-muted-foreground transition-all hover:scale-110 hover:text-foreground"
