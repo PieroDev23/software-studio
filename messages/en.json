@@ -291,6 +291,22 @@
       "briefLong": "Keep the brief under 2,000 characters."
     }
   },
+  "Footer": {
+    "description": "Strategy, design and engineering for digital products worth building.",
+    "navigation": "Footer navigation",
+    "explore": "Explore",
+    "work": "Work",
+    "team": "Team",
+    "contact": "Contact",
+    "contactTitle": "Let's talk",
+    "location": "Lima, Peru / Global",
+    "aiEyebrow": "AI search",
+    "aiTitle": "Find us in the AI you already use.",
+    "aiDescription": "Ask your preferred assistant about Manyas and discover our digital product work.",
+    "askIn": "Ask about Manyas in",
+    "promptLabel": "Search",
+    "prompt": "Manyas Software Studio, Lima"
+  },
   "Loader": {
     "loading": "Loading Manyas",
     "think": "Think clearly.",

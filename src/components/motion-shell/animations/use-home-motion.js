@@ -1,9 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef } from "react";
 
-gsap.registerPlugin(useGSAP, SplitText);
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
   const heroTimelineRef = useRef(null);
@@ -86,7 +87,6 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
             heroSplit.words,
             {
               yPercent: 115,
-              autoAlpha: 0,
               duration: 0.85,
               stagger: 0.045,
               ease: "power3.out",
@@ -122,14 +122,13 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
         const highlights = gsap.utils.toArray(
           heading.querySelectorAll("[data-highlight], .text-impact-gradient"),
         );
-        gsap.set(split.words, { yPercent: 115, autoAlpha: 0 });
+        gsap.set(split.words, { yPercent: 115 });
         gsap.set(highlights, { "--highlight-progress": "0%" });
 
         headingAnimations.set(heading, () => {
           const timeline = gsap.timeline();
           timeline.to(split.words, {
             yPercent: 0,
-            autoAlpha: 1,
             duration: 0.85,
             ease: "power3.out",
             stagger: 0.045,
@@ -152,7 +151,11 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
 
       const reveals = gsap.utils
         .toArray(root.querySelectorAll("[data-reveal]"))
-        .filter((element) => !element.closest("[data-hero]"));
+        .filter(
+          (element) =>
+            !element.closest("[data-hero]") &&
+            !element.querySelector("h1, h2, h3, [data-motion-heading]"),
+        );
 
       for (const element of reveals) {
         gsap.set(element, { y: 36, autoAlpha: 0 });
@@ -168,8 +171,130 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
         revealObserver.observe(element);
       }
 
+      const parallaxMedia = gsap.matchMedia();
+
+      parallaxMedia.add("(min-width: 768px)", () => {
+        const heroContent = root.querySelector("[data-parallax-hero-content]");
+
+        if (heroContent && hero) {
+          gsap.to(heroContent, {
+            y: -140,
+            ease: "none",
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.3,
+            },
+          });
+        }
+
+        const workContent = gsap.utils.toArray(
+          root.querySelectorAll("[data-parallax-work-content]"),
+        );
+
+        for (const content of workContent) {
+          const card = content.closest(".case-card");
+          if (!card) continue;
+          const getTravel = () =>
+            gsap.utils.clamp(18, 36, card.offsetHeight * 0.06);
+
+          gsap.fromTo(
+            content,
+            { y: () => getTravel() },
+            {
+              y: () => -getTravel(),
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "clamp(top bottom)",
+                end: "clamp(bottom top)",
+                scrub: 0.65,
+                invalidateOnRefresh: true,
+              },
+            },
+          );
+        }
+
+        const teamInitials = gsap.utils.toArray(
+          root.querySelectorAll("[data-parallax-team-initials]"),
+        );
+
+        for (const initials of teamInitials) {
+          const card = initials.closest(".team-card");
+          if (!card) continue;
+
+          gsap.fromTo(
+            initials,
+            { yPercent: -6 },
+            {
+              yPercent: 6,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "clamp(top bottom)",
+                end: "clamp(bottom top)",
+                scrub: 0.45,
+              },
+            },
+          );
+        }
+
+        const teamGeometry = gsap.utils.toArray(
+          root.querySelectorAll("[data-parallax-team-geometry]"),
+        );
+
+        for (const geometry of teamGeometry) {
+          const card = geometry.closest(".team-card");
+          if (!card) continue;
+
+          gsap.fromTo(
+            geometry,
+            { xPercent: -50, yPercent: -10 },
+            {
+              xPercent: -50,
+              yPercent: 10,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "clamp(top bottom)",
+                end: "clamp(bottom top)",
+                scrub: 0.5,
+              },
+            },
+          );
+        }
+
+        ScrollTrigger.refresh();
+      });
+
+      parallaxMedia.add("(min-width: 1024px)", () => {
+        const contact = root.querySelector("[data-parallax-contact]");
+        const aside = root.querySelector("[data-parallax-contact-aside]");
+
+        if (!contact || !aside) return;
+
+        gsap.fromTo(
+          aside,
+          { y: 70 },
+          {
+            y: -70,
+            ease: "none",
+            scrollTrigger: {
+              trigger: contact,
+              start: "clamp(top bottom)",
+              end: "clamp(bottom top)",
+              scrub: 0.45,
+            },
+          },
+        );
+
+        ScrollTrigger.refresh();
+      });
+
       return () => {
         heroTimelineRef.current = null;
+        parallaxMedia.revert();
         headingObserver.disconnect();
         revealObserver.disconnect();
         splits.forEach((split) => {

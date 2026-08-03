@@ -9,6 +9,7 @@ import JsonLd from "@/components/json-ld";
 import LanguageSwitcher from "@/components/language-switcher";
 import MotionShell from "@/components/motion-shell";
 import PremiseSection from "@/components/premise-section";
+import SiteFooter from "@/components/site-footer";
 import StickyHeader from "@/components/sticky-header";
 import TeamSection from "@/components/team-section";
 import { CtaLink } from "@/components/ui/cta-link";
@@ -95,7 +96,10 @@ export default async function Home({ params }) {
             </header>
 
             <section className="flex flex-1 items-center">
-              <div className="flex max-w-6xl flex-col gap-6 sm:gap-10">
+              <div
+                data-parallax-hero-content
+                className="flex max-w-6xl flex-col gap-6 sm:gap-10"
+              >
                 <TypographyEyebrow data-reveal>
                   {t("eyebrow")}
                 </TypographyEyebrow>
@@ -143,6 +147,7 @@ export default async function Home({ params }) {
         <FaqSection />
         <ContactSection />
       </main>
+      <SiteFooter />
     </MotionShell>
   );
 }

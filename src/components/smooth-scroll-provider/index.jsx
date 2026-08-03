@@ -1,6 +1,15 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReactLenis, useLenis } from "lenis/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+function ScrollTriggerSync() {
+  useLenis(ScrollTrigger.update);
+  return null;
+}
 
 export default function SmoothScrollProvider({ children }) {
   return (
@@ -11,6 +20,7 @@ export default function SmoothScrollProvider({ children }) {
         stopInertiaOnNavigate: true,
       }}
     >
+      <ScrollTriggerSync />
       {children}
     </ReactLenis>
   );

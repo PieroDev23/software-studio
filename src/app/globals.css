@@ -455,21 +455,7 @@ html:has(.curtain-transition) {
   background: var(--case-prism);
 }
 
-.team-card::before {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  z-index: -1;
-  aspect-ratio: 1;
-  width: 72%;
-  border: clamp(2.5rem, 5vw, 5rem) solid currentColor;
-  content: "";
-  opacity: 0.13;
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.team-card::before,
-.team-card-initials,
+.team-card-media,
 .team-card-details {
   transition-duration: 500ms;
   transition-property: transform, opacity;
@@ -477,13 +463,8 @@ html:has(.curtain-transition) {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .team-card:hover::before {
-    opacity: 0.2;
-    transform: translateX(-50%) rotate(49deg) scale(1.06);
-  }
-
-  .team-card:hover .team-card-initials {
-    transform: translateY(-0.5rem);
+  .team-card:hover .team-card-media {
+    transform: scale(1.035);
   }
 
   .team-card:hover .team-card-details {
@@ -491,9 +472,15 @@ html:has(.curtain-transition) {
   }
 }
 
+@media (hover: none) {
+  .team-card-image-scrim,
+  .team-card-photo-meta {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .team-card::before,
-  .team-card-initials,
+  .team-card-media,
   .team-card-details {
     transition-duration: 0.01ms;
   }

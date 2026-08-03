@@ -1,8 +1,9 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
-gsap.registerPlugin(useGSAP, SplitText);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 export function useCaseStudyMotion(contentRef, transitionReady) {
   useGSAP(
@@ -49,11 +50,10 @@ export function useCaseStudyMotion(contentRef, transitionReady) {
         });
         splits.push(split);
 
-        gsap.set(split.words, { yPercent: 115, autoAlpha: 0 });
+        gsap.set(split.words, { yPercent: 115 });
         observedAnimations.set(heading, () => {
           gsap.to(split.words, {
             yPercent: 0,
-            autoAlpha: 1,
             duration: 0.85,
             ease: "power3.out",
             stagger: 0.045,
@@ -64,7 +64,11 @@ export function useCaseStudyMotion(contentRef, transitionReady) {
 
       const revealElements = gsap.utils
         .toArray(root.querySelectorAll("[data-reveal]"))
-        .filter((element) => !element.closest("h1, h2, h3"));
+        .filter(
+          (element) =>
+            !element.closest("h1, h2, h3, [data-motion-heading]") &&
+            !element.querySelector("h1, h2, h3, [data-motion-heading]"),
+        );
 
       for (const element of revealElements) {
         gsap.set(element, { y: 36, autoAlpha: 0 });
@@ -80,7 +84,68 @@ export function useCaseStudyMotion(contentRef, transitionReady) {
         observer.observe(element);
       }
 
+      const parallaxMedia = gsap.matchMedia();
+
+      parallaxMedia.add("(min-width: 768px)", () => {
+        const hero = root.querySelector("[data-case-study-hero]");
+        const content = root.querySelector("[data-parallax-case-content]");
+
+        if (hero && content) {
+          gsap.to(content, {
+            y: -140,
+            ease: "none",
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.3,
+            },
+          });
+        }
+
+        const shift = root.querySelector("[data-parallax-shift]");
+        const quote = root.querySelector("[data-parallax-shift-quote]");
+        const meta = root.querySelector("[data-parallax-shift-meta]");
+
+        if (shift && quote) {
+          gsap.fromTo(
+            quote,
+            { y: 70 },
+            {
+              y: -70,
+              ease: "none",
+              scrollTrigger: {
+                trigger: shift,
+                start: "clamp(top bottom)",
+                end: "clamp(bottom top)",
+                scrub: 0.45,
+              },
+            },
+          );
+        }
+
+        if (shift && meta) {
+          gsap.fromTo(
+            meta,
+            { y: 35 },
+            {
+              y: -35,
+              ease: "none",
+              scrollTrigger: {
+                trigger: shift,
+                start: "clamp(top bottom)",
+                end: "clamp(bottom top)",
+                scrub: 0.55,
+              },
+            },
+          );
+        }
+
+        ScrollTrigger.refresh();
+      });
+
       return () => {
+        parallaxMedia.revert();
         observer.disconnect();
         splits.forEach((split) => {
           split.revert();

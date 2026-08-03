@@ -66,7 +66,10 @@ export default function WorkGrid() {
                 year="2025"
                 service={t("cards.atlas.service")}
               />
-              <div className="case-card-preview-content relative z-10 flex min-w-0 max-w-full flex-col gap-6">
+              <div
+                data-parallax-work-content
+                className="case-card-preview-content relative z-10 flex min-w-0 max-w-full flex-col gap-6"
+              >
                 <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11 lg:text-5xl lg:leading-15 xl:text-6xl xl:leading-20">
                   <span className="block sm:whitespace-nowrap">
                     {t("cards.atlas.line1")}
@@ -107,7 +110,10 @@ export default function WorkGrid() {
               year="2025"
               service={t("cards.northstar.service")}
             />
-            <div className="relative z-10 flex min-w-0 max-w-2xl flex-col gap-5 2xl:gap-7">
+            <div
+              data-parallax-work-content
+              className="relative z-10 flex min-w-0 max-w-2xl flex-col gap-5 2xl:gap-7"
+            >
               <h3 className="w-full max-w-full text-3xl leading-9 font-medium tracking-[0.030rem] xl:text-5xl xl:leading-15">
                 <span className="block whitespace-nowrap">
                   {t("cards.northstar.line1")}
@@ -147,7 +153,10 @@ export default function WorkGrid() {
               year="2026"
               service={t("cards.prism.service")}
             />
-            <div className="relative z-10 flex max-w-xl flex-col gap-5">
+            <div
+              data-parallax-work-content
+              className="relative z-10 flex max-w-xl flex-col gap-5"
+            >
               <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] xl:text-5xl xl:leading-15">
                 <span className="block sm:whitespace-nowrap">
                   {t("cards.prism.line1")}
@@ -165,6 +174,7 @@ export default function WorkGrid() {
             </div>
           </TransitionLink>
 
+          {/* Temporarily hidden: FILO and MVLL.
           <TransitionLink
             data-reveal
             href="/work/filo"
@@ -187,7 +197,10 @@ export default function WorkGrid() {
               year="2025"
               service={t("cards.filo.service")}
             />
-            <div className="relative z-10 flex max-w-xl flex-col gap-5">
+            <div
+              data-parallax-work-content
+              className="relative z-10 flex max-w-xl flex-col gap-5"
+            >
               <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11 xl:text-5xl xl:leading-15">
                 {t("cards.filo.title")}
               </h3>
@@ -222,7 +235,10 @@ export default function WorkGrid() {
               year="2026"
               service={t("cards.woyao.service")}
             />
-            <div className="relative z-10 flex max-w-xl flex-col gap-5">
+            <div
+              data-parallax-work-content
+              className="relative z-10 flex max-w-xl flex-col gap-5"
+            >
               <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11 xl:text-5xl xl:leading-15">
                 {t("cards.woyao.title")}
               </h3>
@@ -234,6 +250,7 @@ export default function WorkGrid() {
               </span>
             </div>
           </TransitionLink>
+          */}
         </div>
       </div>
     </section>

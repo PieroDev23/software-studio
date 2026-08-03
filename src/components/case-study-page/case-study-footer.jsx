@@ -4,7 +4,10 @@ import { TypographyEyebrow } from "@/components/ui/typography";
 
 function CaseStudyFooter({ nextStudy, translate }) {
   return (
-    <footer className="section-frame bg-background text-foreground">
+    <section
+      className="section-frame bg-background text-foreground"
+      aria-label={translate("next")}
+    >
       <div className="content-container grid gap-10 lg:grid-cols-12 lg:gap-8">
         <TypographyEyebrow className="lg:col-span-2">
           {translate("next")}
@@ -35,7 +38,7 @@ function CaseStudyFooter({ nextStudy, translate }) {
           </CtaLink>
         </div>
       </div>
-    </footer>
+    </section>
   );
 }
 

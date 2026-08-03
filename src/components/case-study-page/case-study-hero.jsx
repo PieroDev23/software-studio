@@ -12,6 +12,7 @@ import {
 function CaseStudyHero({ study, translate }) {
   return (
     <header
+      data-case-study-hero
       className={`relative isolate flex min-h-svh overflow-hidden ${study.theme}`}
     >
       <div className="absolute inset-0 opacity-45" aria-hidden="true">
@@ -39,7 +40,10 @@ function CaseStudyHero({ study, translate }) {
           </div>
         </nav>
 
-        <div className="flex flex-1 flex-col justify-end pb-12 pt-28 sm:pb-16 lg:pb-20">
+        <div
+          data-parallax-case-content
+          className="flex flex-1 flex-col justify-end pb-12 pt-28 sm:pb-16 lg:pb-20"
+        >
           <TypographyEyebrow className="text-current opacity-70">
             <TerminalMeta
               text={`${study.client} / ${study.year} / ${study.service}`}

@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 
+import SiteFooter from "@/components/site-footer";
 import { getCaseStudy } from "@/lib/case-studies";
 
 import { CaseStudyFooter } from "./case-study-footer";
@@ -15,17 +16,20 @@ function CaseStudyPage({ study, locale }) {
   const nextStudy = getCaseStudy(study.next, locale);
 
   return (
-    <main className="bg-background text-foreground">
-      <article>
-        <CaseStudyHero study={study} translate={translate} />
-        <PremiseSection study={study} label={translate("premise")} />
-        <ChallengeSection study={study} label={translate("challenge")} />
-        <ShiftSection study={study} translate={translate} />
-        <MovesSection moves={study.moves} translate={translate} />
-        <OutcomeSection study={study} label={translate("outcome")} />
-      </article>
-      <CaseStudyFooter nextStudy={nextStudy} translate={translate} />
-    </main>
+    <>
+      <main className="bg-background text-foreground">
+        <article>
+          <CaseStudyHero study={study} translate={translate} />
+          <PremiseSection study={study} label={translate("premise")} />
+          <ChallengeSection study={study} label={translate("challenge")} />
+          <ShiftSection study={study} translate={translate} />
+          <MovesSection moves={study.moves} translate={translate} />
+          <OutcomeSection study={study} label={translate("outcome")} />
+        </article>
+        <CaseStudyFooter nextStudy={nextStudy} translate={translate} />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
 

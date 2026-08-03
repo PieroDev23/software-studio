@@ -14,7 +14,7 @@ function ContactSection() {
   const description = translate("description");
 
   return (
-    <section id="contacto" className="bg-inverse">
+    <section id="contacto" data-parallax-contact className="bg-inverse">
       <div className="grid overflow-hidden lg:min-h-svh lg:grid-cols-2">
         <ContactAside title={title} description={description} />
         <ContactForm
