@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import PrinciplesGrid from "@/components/principles-grid";
 import {
   TypographyDisplay,
   TypographyEyebrow,
@@ -29,8 +28,6 @@ export default function PremiseSection() {
             <span className="text-impact-gradient">{t("highlight")}</span>
           </TypographyDisplay>
         </div>
-
-        <PrinciplesGrid />
       </div>
     </section>
   );

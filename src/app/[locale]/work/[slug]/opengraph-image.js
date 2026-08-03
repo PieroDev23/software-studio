@@ -25,7 +25,10 @@ export default async function Image({ params }) {
     readFile(join(process.cwd(), "assets/fonts/InterTight-SemiBold.ttf")),
     readFile(join(process.cwd(), "assets/fonts/DMMono-Regular.ttf")),
     readFile(
-      join(process.cwd(), `assets/images/og-${studyCase.slug}.jpg`),
+      join(
+        process.cwd(),
+        `assets/images/${studyCase.ogImage ?? `og-${studyCase.slug}.jpg`}`,
+      ),
       "base64",
     ),
   ]);

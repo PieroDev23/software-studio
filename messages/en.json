@@ -73,62 +73,63 @@
     "title": "The outcome matters more than the technology.",
     "view": "View case study",
     "viewAria": "View {client} case study",
-    "opening": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
     "cards": {
       "atlas": {
         "service": "Creator Platform",
+        "loader": "PCHUJOY\nFrom creator to platform.",
         "line1": "From one creator to",
         "line2": "an entire platform.",
         "description": "A scalable subscription platform designed to power creator businesses beyond a single audience."
       },
       "northstar": {
         "service": "Digital Experience",
+        "loader": "SAMAY\nAn experience worth remembering.",
         "line1": "Experiences people",
         "line2": "remember.",
         "description": "Interactive experiences that transform participation into memorable moments."
       },
       "prism": {
         "service": "Preventive Health Platform",
+        "loader": "AXO LONGEVITY\nIntelligence for better clinical decisions.",
         "line1": "AI built around real",
         "line2": "clinical workflows.",
         "description": "Biomarkers, laboratories and operations connected in one intelligent platform."
+      },
+      "filo": {
+        "service": "Live voting system",
+        "loader": "FILO\nThe public made the decision.",
+        "title": "The public chose its favorite duo.",
+        "description": "A mobile experience for voting live and deciding the winner of Filo Foodies."
+      },
+      "woyao": {
+        "service": "Virtual library",
+        "loader": "WO YAO\nA library open to the world.",
+        "title": "A regional library, open to the world.",
+        "description": "Development of the Mario Vargas Llosa Virtual Library to digitize its collection and make it accessible from any device."
       }
     }
   },
   "Capabilities": {
+    "eyebrow": "How we help",
+    "title": "Three disciplines. One team accountable for the outcome.",
     "items": [
       {
         "number": "01",
         "label": "Product",
-        "titleLines": ["Before we build,", "we understand."],
-        "services": [
-          "Product definition",
-          "Research and context",
-          "Scope decisions",
-          "Direction before execution"
-        ]
+        "titleLines": ["From uncertainty", "to clear direction."],
+        "description": "We align user needs, business priorities and real constraints to define what to build and why."
       },
       {
         "number": "02",
         "label": "Design",
-        "titleLines": ["Every interface", "expresses judgment."],
-        "services": [
-          "Product experience",
-          "Interfaces that reduce complexity",
-          "Rapid prototyping",
-          "Design systems"
-        ]
+        "titleLines": ["Complexity becomes", "clear and easy to use."],
+        "description": "We turn that direction into experiences people understand and the team can test before building."
       },
       {
         "number": "03",
         "label": "Engineering",
-        "titleLines": ["Software ready", "to evolve."],
-        "services": [
-          "Architecture ready to grow",
-          "Production ready development",
-          "AI where it creates real leverage",
-          "Systems built to endure"
-        ]
+        "titleLines": ["Software built", "to grow and change."],
+        "description": "We take the product to production on a solid foundation, ready for new users, integrations and change."
       }
     ]
   },
@@ -173,7 +174,7 @@
         "quote": "They turned difficult decisions into clear direction and a product we could ship.",
         "author": "Marcus Chen",
         "role": "Founder",
-        "company": "SAMAY"
+        "company": "SAMAY BCP"
       },
       {
         "quote": "They challenged our strategy and stayed close enough to help us ship it.",
@@ -209,26 +210,26 @@
     ]
   },
   "Engagement": {
-    "eyebrow": "How we engage",
-    "title": "The best code starts before the editor.",
+    "eyebrow": "Working with Manyas",
+    "title": "We step in where a decision needs to move forward.",
     "items": [
       {
         "number": "01",
-        "label": "Understand",
-        "titleLines": ["Understand before", "you build."],
-        "description": "We find the real problem and the decision capable of changing the product."
+        "label": "Starting point",
+        "titleLines": ["We begin with", "the decision."],
+        "description": "We define what is at stake, the real constraints and the most meaningful way to begin."
       },
       {
         "number": "02",
-        "label": "Design",
-        "titleLines": ["Reduce complexity.", "Create clarity."],
-        "description": "We turn direction into an experience the team can understand and use."
+        "label": "Team",
+        "titleLines": ["We work with you,", "without layers."],
+        "description": "The senior people defining the direction stay close to the work and to your team."
       },
       {
         "number": "03",
-        "label": "Build",
-        "titleLines": ["Make it last.", "Make it grow."],
-        "description": "We take the product to production with engineering designed to evolve."
+        "label": "Scope",
+        "titleLines": ["We stay through", "the outcome."],
+        "description": "We can solve one critical phase or carry the product from direction through production."
       }
     ]
   },
@@ -241,10 +242,6 @@
         "answer": "Consequential digital products: new ventures, complex platforms and critical product decisions where senior judgment changes the outcome."
       },
       {
-        "question": "When should we bring you in?",
-        "answer": "When the opportunity is real but the path is not. We are most useful before direction hardens and when a product has lost momentum."
-      },
-      {
         "question": "Do you replace an internal team?",
         "answer": "No. We work with founders and product teams, bringing the senior strategy, design and engineering needed to move the hardest work forward."
       },
@@ -255,10 +252,6 @@
       {
         "question": "How long do engagements last?",
         "answer": "Long enough to create a real outcome. Some begin as a focused strategic phase; others continue through design, build and release."
-      },
-      {
-        "question": "Can you work with teams outside Peru?",
-        "answer": "Yes. We are based in Lima and work globally, with deliberate overlap, direct communication and senior partners in every conversation."
       }
     ]
   },
@@ -307,7 +300,7 @@
       "en": "Another language.\nSame intent.",
       "es": "Otro idioma.\nMisma intención."
     },
-    "studio": "Senior product studio.",
+    "studio": "Software Studio",
     "location": "Lima / Worldwide",
     "disciplines": "Strategy / Design / Engineering"
   },
@@ -325,9 +318,6 @@
   "CaseStudy": {
     "selected": "Selected work",
     "back": "Back to Home",
-    "opening": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
-    "returnHome": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
-    "returnWork": "Great ideas\ndeserve to exist.||Where others see limits,\nwe see possibility.||Make it\nmatter.||Clarity\ncreates momentum.||Every leap forward\nstarts with intent.",
     "premise": "The premise",
     "challenge": "The challenge",
     "shift": "The shift",

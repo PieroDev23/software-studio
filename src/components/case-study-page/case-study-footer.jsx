@@ -12,9 +12,8 @@ function CaseStudyFooter({ nextStudy, translate }) {
         <div className="lg:col-span-10">
           <TransitionLink
             href={`/work/${nextStudy.slug}`}
-            transitionLabel={translate("opening", {
-              client: nextStudy.client,
-            })}
+            transitionLabel={nextStudy.loaderCopy}
+            transitionVariant="case-study"
             className="group block border-t border-border pt-8 sm:pt-12"
           >
             <span className="font-mono text-sm uppercase tracking-[0.14em] text-muted-foreground">

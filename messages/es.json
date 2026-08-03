@@ -73,62 +73,63 @@
     "title": "El resultado importa más que la tecnología.",
     "view": "Ver caso de estudio",
     "viewAria": "Ver caso de estudio de {client}",
-    "opening": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "cards": {
       "atlas": {
         "service": "Plataforma para creadores",
+        "loader": "PCHUJOY\nDe creador a plataforma.",
         "line1": "De un creador a",
         "line2": "una plataforma.",
         "description": "Una plataforma de suscripción escalable para negocios de creadores más allá de una sola audiencia."
       },
       "northstar": {
         "service": "Experiencia digital",
+        "loader": "SAMAY\nUna experiencia para recordar.",
         "line1": "Experiencias que",
         "line2": "se recuerdan.",
         "description": "Experiencias interactivas que convierten participación en momentos memorables."
       },
       "prism": {
         "service": "Plataforma de salud preventiva",
+        "loader": "AXO LONGEVITY\nInteligencia para mejores decisiones clínicas.",
         "line1": "IA integrada en flujos",
         "line2": "clínicos reales.",
         "description": "Biomarcadores, laboratorios y operaciones conectados en una plataforma inteligente."
+      },
+      "filo": {
+        "service": "Sistema de votación en vivo",
+        "loader": "FILO\nEl público tomó la decisión.",
+        "title": "El público eligió a su dupla favorita.",
+        "description": "Una experiencia móvil para votar en vivo y decidir al ganador de Filo Foodies."
+      },
+      "woyao": {
+        "service": "Biblioteca virtual",
+        "loader": "WO YAO\nUna biblioteca abierta al mundo.",
+        "title": "Una biblioteca regional, abierta al mundo.",
+        "description": "Desarrollo de la Biblioteca Mario Vargas Llosa Virtual para digitalizar su acervo y hacerlo accesible desde cualquier dispositivo."
       }
     }
   },
   "Capabilities": {
+    "eyebrow": "Cómo ayudamos",
+    "title": "Tres disciplinas. Un solo equipo responsable del resultado.",
     "items": [
       {
         "number": "01",
         "label": "Producto",
-        "titleLines": ["Antes de construir,", "entendemos."],
-        "services": [
-          "Definición de producto",
-          "Investigación y contexto",
-          "Decisiones de alcance",
-          "Dirección antes que ejecución"
-        ]
+        "titleLines": ["De la incertidumbre", "a una dirección clara."],
+        "description": "Alineamos las necesidades de los usuarios, las prioridades del negocio y las restricciones reales para definir qué construir y por qué."
       },
       {
         "number": "02",
         "label": "Diseño",
-        "titleLines": ["Cada interfaz", "expresa criterio."],
-        "services": [
-          "Experiencia de producto",
-          "Interfaces que reducen complejidad",
-          "Prototipado rápido",
-          "Sistemas de diseño"
-        ]
+        "titleLines": ["Lo complejo se vuelve", "claro y fácil de usar."],
+        "description": "Convertimos esa dirección en experiencias que las personas entienden y que el equipo puede probar antes de construir."
       },
       {
         "number": "03",
         "label": "Ingeniería",
-        "titleLines": ["Software preparado", "para evolucionar."],
-        "services": [
-          "Arquitectura preparada para crecer",
-          "Desarrollo listo para producción",
-          "IA cuando crea una ventaja real",
-          "Sistemas hechos para durar"
-        ]
+        "titleLines": ["Software preparado", "para crecer y cambiar."],
+        "description": "Llevamos el producto a producción con una base sólida, preparada para nuevos usuarios, integraciones y cambios."
       }
     ]
   },
@@ -173,7 +174,7 @@
         "quote": "Convirtieron decisiones difíciles en una dirección clara y un producto que pudimos lanzar.",
         "author": "Marcus Chen",
         "role": "Fundador",
-        "company": "SAMAY"
+        "company": "SAMAY BCP"
       },
       {
         "quote": "Desafiaron nuestra estrategia y se mantuvieron lo bastante cerca para ayudarnos a lanzar.",
@@ -209,26 +210,26 @@
     ]
   },
   "Engagement": {
-    "eyebrow": "Cómo trabajamos",
-    "title": "El mejor código empieza antes del editor.",
+    "eyebrow": "Trabajar con Manyas",
+    "title": "Nos incorporamos donde una decisión necesita avanzar.",
     "items": [
       {
         "number": "01",
-        "label": "Entender",
-        "titleLines": ["Entender antes", "de construir."],
-        "description": "Encontramos el problema real y la decisión capaz de cambiar el producto."
+        "label": "Comienzo",
+        "titleLines": ["Empezamos por", "la decisión."],
+        "description": "Definimos qué está en juego, las restricciones reales y la forma más significativa de comenzar."
       },
       {
         "number": "02",
-        "label": "Diseñar",
-        "titleLines": ["Reducir complejidad.", "Crear claridad."],
-        "description": "Convertimos la dirección en una experiencia que el equipo puede comprender y usar."
+        "label": "Equipo",
+        "titleLines": ["Trabajamos contigo,", "sin intermediarios."],
+        "description": "Los perfiles senior que definen la dirección permanecen cerca del trabajo y de tu equipo."
       },
       {
         "number": "03",
-        "label": "Construir",
-        "titleLines": ["Hacerlo durar.", "Hacerlo crecer."],
-        "description": "Llevamos el producto a producción con ingeniería preparada para evolucionar."
+        "label": "Alcance",
+        "titleLines": ["Llegamos hasta", "el resultado."],
+        "description": "Podemos resolver una fase crítica o acompañar el producto desde la dirección hasta producción."
       }
     ]
   },
@@ -241,10 +242,6 @@
         "answer": "Productos digitales decisivos: nuevos negocios, plataformas complejas y decisiones críticas donde el criterio senior cambia el resultado."
       },
       {
-        "question": "¿Cuándo deberíamos incorporarlos?",
-        "answer": "Cuando la oportunidad es real pero el camino no. Somos más útiles antes de que la dirección se endurezca o cuando un producto perdió impulso."
-      },
-      {
         "question": "¿Reemplazan a un equipo interno?",
         "answer": "No. Trabajamos con fundadores y equipos de producto, sumando la estrategia, el diseño y la ingeniería senior necesarios para mover el trabajo más difícil."
       },
@@ -255,10 +252,6 @@
       {
         "question": "¿Cuánto duran los proyectos?",
         "answer": "Lo suficiente para producir un resultado real. Algunos comienzan como una fase estratégica enfocada; otros continúan hasta diseño, construcción y lanzamiento."
-      },
-      {
-        "question": "¿Trabajan con equipos fuera de Perú?",
-        "answer": "Sí. Estamos en Lima y trabajamos globalmente, con horarios superpuestos, comunicación directa y socios senior en cada conversación."
       }
     ]
   },
@@ -307,7 +300,7 @@
       "en": "Another language.\nSame intent.",
       "es": "Otro idioma.\nMisma intención."
     },
-    "studio": "Estudio senior de producto.",
+    "studio": "Software Studio",
     "location": "Lima / Global",
     "disciplines": "Estrategia / Diseño / Ingeniería"
   },
@@ -325,9 +318,6 @@
   "CaseStudy": {
     "selected": "Trabajo seleccionado",
     "back": "Volver a la home",
-    "opening": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
-    "returnHome": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
-    "returnWork": "Las grandes ideas\nmerecen existir.||Donde otros ven límites,\nnosotros vemos posibilidades.||Hagamos que\nimporte.||La claridad\ncrea impulso.||Todo avance\nempieza con intención.",
     "premise": "La premisa",
     "challenge": "El desafío",
     "shift": "El cambio",

@@ -19,7 +19,9 @@ function createNavigationAnimation({
   );
   const grid = root.querySelector("[data-curtain-grid]");
   const content = root.querySelector("[data-curtain-content]");
-  const text = content.querySelector("p");
+  const text = gsap.utils.toArray(
+    content.querySelectorAll("[data-curtain-copy]"),
+  );
   let exitStarted = false;
 
   const playExit = contextSafe(() => {

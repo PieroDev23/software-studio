@@ -32,6 +32,11 @@ function CurtainOverlay({
   }, [destinationReady]);
 
   const isIntro = transition.type === "intro";
+  const isCaseStudy = transition.variant === "case-study";
+  const [caseStudyClient, ...caseStudyCopyLines] = isCaseStudy
+    ? transition.phrase.split("\n")
+    : [];
+  const caseStudyCopy = caseStudyCopyLines.join("\n");
 
   return (
     <output
@@ -69,7 +74,10 @@ function CurtainOverlay({
         >
           <div className="flex items-start justify-between gap-6 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm">
             <p data-curtain-meta>
-              Manyas <span className="align-super text-xs">®</span>
+              Manyas
+              <span className="relative -top-[0.35em] ml-1 text-[0.65em] leading-none">
+                ®
+              </span>
             </p>
             <p data-curtain-meta>{copy.location}</p>
           </div>
@@ -116,9 +124,29 @@ function CurtainOverlay({
           data-curtain-content
           className="relative z-10 flex min-h-svh items-center justify-center overflow-hidden px-5 py-8"
         >
-          <p className="whitespace-pre-line text-center text-4xl font-medium tracking-[0.030rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-            {transition.phrase}
-          </p>
+          {isCaseStudy ? (
+            <div className="flex max-w-6xl flex-col items-center text-center">
+              <p
+                data-curtain-copy
+                className="font-mono text-base font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-lg"
+              >
+                {caseStudyClient}
+              </p>
+              <p
+                data-curtain-copy
+                className="mt-6 whitespace-pre-line text-4xl font-medium tracking-[0.030rem] sm:mt-8 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+              >
+                {caseStudyCopy}
+              </p>
+            </div>
+          ) : (
+            <p
+              data-curtain-copy
+              className="whitespace-pre-line text-center text-4xl font-medium tracking-[0.030rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+            >
+              {transition.phrase}
+            </p>
+          )}
         </div>
       )}
     </output>

@@ -5,16 +5,14 @@ import { useState } from "react";
 import { useCurtainTransition } from "@/components/curtain-transition";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
-import {
-  getTargetPath,
-  pickTransitionPhrase,
-} from "./lib/transition-link-utils";
+import { getTargetPath } from "./lib/transition-link-utils";
 
 function TransitionLink({
   children,
   href,
   onClick,
   transitionLabel,
+  transitionVariant,
   ...props
 }) {
   const pathname = usePathname();
@@ -48,7 +46,8 @@ function TransitionLink({
 
     const started = startTransition({
       targetKey: `path:${targetPath}`,
-      phrase: pickTransitionPhrase(transitionLabel),
+      phrase: transitionLabel?.trim() || "MANYAS",
+      variant: transitionVariant,
       onCovered: () => {
         router.push(href);
       },

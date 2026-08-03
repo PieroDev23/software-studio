@@ -2,6 +2,7 @@ const caseStudies = {
   pchujoy: {
     slug: "pchujoy",
     client: "PCHUJOY",
+    loaderCopy: "PCHUJOY\nFrom creator to platform.",
     year: "2025",
     service: "Creator Platform",
     title: "From one creator to an entire platform.",
@@ -55,16 +56,17 @@ const caseStudies = {
     next: "samay",
   },
   samay: {
-    slug: "samay",
-    client: "SAMAY",
-    year: "2025",
+    slug: "samay-bcp",
+    client: "SAMAY BCP",
+    loaderCopy: "SAMAY\nAn experience worth remembering.",
+    year: "2026",
     service: "Digital Experience",
     title: "Engagement should not feel like marketing.",
     description:
       "An interactive experience that transformed participation into something people could enjoy and remember.",
-    theme: "bg-primary text-primary-foreground",
+    theme: "case-study-samay-theme text-foreground",
     silk: {
-      color: "#242429",
+      color: "#002A8D",
       speed: 3,
       scale: 1,
       noiseIntensity: 0.3,
@@ -107,14 +109,15 @@ const caseStudies = {
   "axo-longevity": {
     slug: "axo-longevity",
     client: "AXO Longevity",
+    loaderCopy: "AXO LONGEVITY\nIntelligence for better clinical decisions.",
     year: "2026",
     service: "Preventive Health Platform",
     title: "AI is only useful when it fits into real clinical workflows.",
     description:
       "Biomarkers, laboratories, medical workflows and operations connected in one intelligent platform.",
-    theme: "bg-inverse text-inverse-foreground",
+    theme: "case-study-axo-theme text-inverse-foreground",
     silk: {
-      color: "#FFFFFF",
+      color: "#BEEE31",
       speed: 4,
       scale: 1,
       noiseIntensity: 0.25,
@@ -153,12 +156,126 @@ const caseStudies = {
       "AXO turns fragmented preventive care into a connected system where information reaches the right professional in the right context.",
     pullQuote: "AI became part of the workflow instead of another feature.",
     shift: { before: "Disconnected systems", after: "One clinical workflow" },
+    next: "filo",
+  },
+  filo: {
+    slug: "filo",
+    client: "FILO",
+    loaderCopy: "FILO\nThe public made the decision.",
+    year: "2025",
+    service: "Live Voting Experience",
+    title: "The audience became the jury.",
+    description:
+      "We designed and built the live voting system for Foodies Food Festival, connecting four creators, four restaurants and the public in one mobile experience.",
+    theme: "case-study-filo-theme text-foreground",
+    ogImage: "og-cover.jpg",
+    silk: {
+      color: "#777777",
+      speed: 3,
+      scale: 1,
+      noiseIntensity: 0.22,
+      rotation: 0.15,
+    },
+    facts: [
+      ["Year", "2025"],
+      ["Event", "Foodies Food Festival"],
+      ["Contribution", "Product / Design / Engineering"],
+    ],
+    premise: "A live competition only works when the audience can take part.",
+    premiseDescription:
+      "Filo Foodies paired four creators with four restaurants and invited attendees to choose the winning duo during the festival.",
+    challengeTitle:
+      "Voting had to feel effortless in the middle of a live festival.",
+    challenge: [
+      "Attendees needed to understand the four competing duos, choose one and submit a vote from their phones without stepping away from the event.",
+      "The experience needed to keep every option clear while giving the organizers one consistent way to collect the audience decision.",
+    ],
+    moves: [
+      {
+        number: "01",
+        title: "Four duos. One clear choice.",
+        body: "Laura Spoya with Siete Sopas, Phillip Chu Joy with Bao, El Cholo Mena with Fumanchú and Vicente Visla with Flama Pizzería appeared in one comparable voting flow.",
+      },
+      {
+        number: "02",
+        title: "A mobile-first event flow.",
+        body: "The path from opening the experience to confirming a vote stayed short, direct and easy to use during the festival.",
+      },
+      {
+        number: "03",
+        title: "One source for the audience decision.",
+        body: "The voting system gave Filo a structured way to collect the public choice and determine the winning team.",
+      },
+    ],
+    outcomeTitle: "A voting system that turned attendance into participation.",
+    outcome:
+      "The public did more than watch the Foodies competition: it chose the winner. Laura Spoya's team received the audience vote at the festival.",
+    pullQuote: "The public did not only watch the competition. It decided it.",
+    shift: { before: "An audience", after: "The jury" },
+    next: "wo-yao",
+  },
+  "wo-yao": {
+    slug: "wo-yao",
+    client: "WO YAO",
+    loaderCopy: "WO YAO\nA library open to the world.",
+    year: "2026",
+    service: "Virtual Library Platform",
+    title: "A regional library, open to the world.",
+    description:
+      "We are developing the digital platform for the Mario Vargas Llosa Virtual Library, making its collection accessible from any device.",
+    theme: "case-study-woyao-theme text-foreground",
+    ogImage: "og-cover.jpg",
+    silk: {
+      color: "#6D172B",
+      speed: 2.5,
+      scale: 1,
+      noiseIntensity: 0.2,
+      rotation: -0.2,
+    },
+    facts: [
+      ["Status", "In development"],
+      ["Scope", "Digital library"],
+      ["Contribution", "Product / Design / Engineering"],
+    ],
+    premise: "Cultural heritage should not be limited by distance.",
+    premiseDescription:
+      "The initiative seeks to digitize the Mario Vargas Llosa Regional Library collection and make it available nationally and internationally.",
+    challengeTitle:
+      "Turning a physical collection into a digital public service.",
+    challenge: [
+      "Digitizing the books is only one part of the challenge. Readers also need a clear way to discover and access the collection from different devices and locations.",
+      "The broader initiative connects service modernization, content digitization, security and digital applications within one coherent platform.",
+    ],
+    moves: [
+      {
+        number: "01",
+        title: "The collection, structured for discovery.",
+        body: "The platform is being designed to turn a large physical catalogue into information readers can navigate and understand digitally.",
+      },
+      {
+        number: "02",
+        title: "Access beyond the building.",
+        body: "The experience brings the library to computers and mobile devices so geography no longer defines who can consult it.",
+      },
+      {
+        number: "03",
+        title: "A foundation for a lasting public service.",
+        body: "Product, design and engineering come together around a platform prepared to evolve as the digital collection grows.",
+      },
+    ],
+    outcomeTitle:
+      "A platform in development to bring Arequipa's literary heritage to readers everywhere.",
+    outcome:
+      "The project is currently in development. Its goal is to make thousands of books available through a secure digital service with national and international reach.",
+    pullQuote: "From a regional collection to a library without borders.",
+    shift: { before: "Physical access", after: "Global digital access" },
     next: "pchujoy",
   },
 };
 
 const caseStudiesEs = {
   pchujoy: {
+    loaderCopy: "PCHUJOY\nDe creador a plataforma.",
     service: "Plataforma para creadores",
     title: "De un creador a una plataforma completa.",
     description:
@@ -206,6 +323,7 @@ const caseStudiesEs = {
     },
   },
   samay: {
+    loaderCopy: "SAMAY\nUna experiencia para recordar.",
     service: "Experiencia digital",
     title: "El engagement no debería sentirse como marketing.",
     description:
@@ -246,6 +364,7 @@ const caseStudiesEs = {
     shift: { before: "Una campaña", after: "Una experiencia" },
   },
   "axo-longevity": {
+    loaderCopy: "AXO LONGEVITY\nInteligencia para mejores decisiones clínicas.",
     service: "Plataforma de salud preventiva",
     title: "La IA solo es útil cuando encaja en flujos clínicos reales.",
     description:
@@ -284,6 +403,96 @@ const caseStudiesEs = {
     pullQuote:
       "La IA se convirtió en parte del flujo, no en otra funcionalidad.",
     shift: { before: "Sistemas desconectados", after: "Un flujo clínico" },
+  },
+  filo: {
+    loaderCopy: "FILO\nEl público tomó la decisión.",
+    service: "Experiencia de votación en vivo",
+    title: "El público se convirtió en el jurado.",
+    description:
+      "Diseñamos y construimos el sistema de votación en vivo para Foodies Food Festival, conectando a cuatro creadores, cuatro restaurantes y el público en una experiencia móvil.",
+    facts: [
+      ["Año", "2025"],
+      ["Evento", "Foodies Food Festival"],
+      ["Contribución", "Producto / Diseño / Ingeniería"],
+    ],
+    premise:
+      "Una competencia en vivo solo funciona cuando el público puede participar.",
+    premiseDescription:
+      "Filo Foodies reunió a cuatro creadores con cuatro restaurantes e invitó a los asistentes a elegir la dupla ganadora durante el festival.",
+    challengeTitle:
+      "Votar tenía que sentirse natural en medio de un festival en vivo.",
+    challenge: [
+      "Los asistentes debían comprender las cuatro duplas, elegir una y enviar su voto desde el celular sin desconectarse del evento.",
+      "La experiencia debía mantener cada opción clara y ofrecer a los organizadores una forma consistente de recoger la decisión del público.",
+    ],
+    moves: [
+      {
+        number: "01",
+        title: "Cuatro duplas. Una elección clara.",
+        body: "Laura Spoya con Siete Sopas, Phillip Chu Joy con Bao, El Cholo Mena con Fumanchú y Vicente Visla con Flama Pizzería aparecían en un mismo flujo comparable.",
+      },
+      {
+        number: "02",
+        title: "Un flujo pensado para el celular.",
+        body: "El recorrido desde abrir la experiencia hasta confirmar el voto se mantuvo corto, directo y fácil de usar durante el festival.",
+      },
+      {
+        number: "03",
+        title: "Una fuente para la decisión del público.",
+        body: "El sistema dio a Filo una forma estructurada de recoger la elección de los asistentes y determinar al equipo ganador.",
+      },
+    ],
+    outcomeTitle:
+      "Un sistema de votación que convirtió asistencia en participación.",
+    outcome:
+      "El público hizo más que observar la competencia Foodies: eligió al ganador. El equipo de Laura Spoya recibió el voto de los asistentes durante el festival.",
+    pullQuote: "El público no solo vio la competencia. La decidió.",
+    shift: { before: "Una audiencia", after: "El jurado" },
+  },
+  "wo-yao": {
+    loaderCopy: "WO YAO\nUna biblioteca abierta al mundo.",
+    service: "Plataforma de biblioteca virtual",
+    title: "Una biblioteca regional, abierta al mundo.",
+    description:
+      "Estamos desarrollando la plataforma digital de la Biblioteca Mario Vargas Llosa Virtual para hacer accesible su colección desde cualquier dispositivo.",
+    facts: [
+      ["Estado", "En desarrollo"],
+      ["Alcance", "Biblioteca digital"],
+      ["Contribución", "Producto / Diseño / Ingeniería"],
+    ],
+    premise:
+      "El patrimonio cultural no debería estar limitado por la distancia.",
+    premiseDescription:
+      "La iniciativa busca digitalizar la colección de la Biblioteca Regional Mario Vargas Llosa y ponerla al alcance de lectores nacionales e internacionales.",
+    challengeTitle:
+      "Convertir una colección física en un servicio público digital.",
+    challenge: [
+      "Digitalizar los libros es solo una parte del reto. Los lectores también necesitan una forma clara de descubrir y consultar la colección desde distintos dispositivos y lugares.",
+      "La iniciativa conecta modernización de servicios, digitalización de contenidos, seguridad y aplicativos dentro de una plataforma coherente.",
+    ],
+    moves: [
+      {
+        number: "01",
+        title: "La colección, organizada para descubrirla.",
+        body: "La plataforma se diseña para convertir un amplio catálogo físico en información que los lectores puedan recorrer y comprender digitalmente.",
+      },
+      {
+        number: "02",
+        title: "Acceso más allá del edificio.",
+        body: "La experiencia lleva la biblioteca a computadoras y dispositivos móviles para que la geografía deje de definir quién puede consultarla.",
+      },
+      {
+        number: "03",
+        title: "Una base para un servicio público duradero.",
+        body: "Producto, diseño e ingeniería se articulan alrededor de una plataforma preparada para evolucionar mientras crece la colección digital.",
+      },
+    ],
+    outcomeTitle:
+      "Una plataforma en desarrollo para acercar el patrimonio literario de Arequipa a lectores de todo el mundo.",
+    outcome:
+      "El proyecto se encuentra en desarrollo. Su objetivo es poner miles de libros a disposición del público mediante un servicio digital seguro, con alcance nacional e internacional.",
+    pullQuote: "De una colección regional a una biblioteca sin fronteras.",
+    shift: { before: "Acceso físico", after: "Acceso digital global" },
   },
 };
 

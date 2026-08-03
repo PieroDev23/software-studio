@@ -26,10 +26,13 @@ function CaseStudyHero({ study, translate }) {
         <nav className="flex items-center justify-between gap-6 font-mono text-xs font-medium uppercase tracking-[0.16em] sm:text-sm">
           <TransitionLink
             href="/"
-            transitionLabel={translate("returnHome")}
+            transitionLabel="MANYAS"
             className="transition-opacity hover:opacity-60"
           >
-            Manyas <span className="align-super text-xs">®</span>
+            Manyas
+            <span className="relative -top-[0.35em] ml-1 text-[0.65em] leading-none">
+              ®
+            </span>
           </TransitionLink>
           <div className="flex items-center gap-5">
             <LanguageSwitcher />
@@ -51,7 +54,7 @@ function CaseStudyHero({ study, translate }) {
 
           <TransitionLink
             href="/#selected-work"
-            transitionLabel={translate("returnWork")}
+            transitionLabel="MANYAS"
             className="mt-8 flex w-fit items-center gap-2 text-right transition-opacity hover:opacity-60"
           >
             <ArrowLeft size={20} strokeWidth={1.5} />

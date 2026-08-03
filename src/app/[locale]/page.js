@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import Beams from "@/components/beams";
+import CapabilitiesSection from "@/components/capabilities-section";
 import CompanyGrid from "@/components/company-grid";
 import ContactSection from "@/components/contact-section";
 import EngagementSection from "@/components/engagement-section";
-import ExpertiseSection from "@/components/expertise-section";
 import FaqSection from "@/components/faq-section";
 import JsonLd from "@/components/json-ld";
 import LanguageSwitcher from "@/components/language-switcher";
@@ -11,7 +11,6 @@ import MotionShell from "@/components/motion-shell";
 import PremiseSection from "@/components/premise-section";
 import StickyHeader from "@/components/sticky-header";
 import TeamSection from "@/components/team-section";
-import TestimonialsCarousel from "@/components/testimonials-carousel";
 import { CtaLink } from "@/components/ui/cta-link";
 import {
   TypographyDisplay,
@@ -136,10 +135,9 @@ export default async function Home({ params }) {
         </section>
 
         <CompanyGrid />
-        <PremiseSection />
         <WorkGrid />
-        <ExpertiseSection />
-        <TestimonialsCarousel />
+        <PremiseSection />
+        <CapabilitiesSection />
         <TeamSection />
         <EngagementSection />
         <FaqSection />

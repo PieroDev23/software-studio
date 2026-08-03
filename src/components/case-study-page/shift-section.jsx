@@ -29,7 +29,7 @@ function ShiftSection({ study, translate }) {
 
           <dl
             data-reveal
-            className="grid border-t border-current/25 pt-5 font-mono text-sm uppercase leading-5 tracking-[0.1em] lg:col-span-3"
+            className="grid border-t border-current/25  font-mono text-sm uppercase leading-5 tracking-[0.1em] lg:col-span-3"
           >
             <div className="grid grid-cols-[4.5rem_1fr] gap-4 border-b border-current/20 py-4">
               <dt className="opacity-50">{translate("before")}</dt>

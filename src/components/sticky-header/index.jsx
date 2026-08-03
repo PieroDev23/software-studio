@@ -34,7 +34,10 @@ function StickyHeader() {
           className="inline-flex shrink-0 cursor-pointer items-center whitespace-nowrap font-mono text-xs font-medium uppercase leading-none tracking-[0.18em] transition-opacity hover:opacity-65 sm:text-sm"
           aria-label={hero("homeLabel")}
         >
-          Manyas <span className="align-super text-[0.65em]">®</span>
+          Manyas
+          <span className="relative -top-[0.35em] ml-1 text-[0.65em] leading-none">
+            ®
+          </span>
         </button>
 
         <div className="ml-auto flex min-w-0 items-center justify-end gap-3 sm:gap-8">

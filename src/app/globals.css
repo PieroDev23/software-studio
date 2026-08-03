@@ -19,10 +19,12 @@
   --inverse-hover: #ebe9ef;
   --brand-violet: #5227ff;
   --case-atlas: var(--brand-violet);
-  --case-prism: #ffffff;
+  --case-prism: #beee31;
   --case-pink-start: #e197dd;
   --case-pink-end: #7042ff;
-  --case-ink: #171719;
+  --case-ink: #002a8d;
+  --case-filo: #050505;
+  --case-woyao: #6d172b;
   --capability-purple: var(--brand-violet);
   --team-light: #ebe8ef;
   --team-dark: #111112;
@@ -423,6 +425,34 @@ html:has(.curtain-transition) {
 .case-card-prism {
   background: var(--case-prism);
   color: var(--inverse-foreground);
+}
+
+.case-card-filo {
+  background: var(--case-filo);
+}
+
+.case-card-filo .case-card-silk {
+  opacity: 0.38;
+}
+
+.case-card-woyao {
+  background: var(--case-woyao);
+}
+
+.case-study-filo-theme {
+  background: var(--case-filo);
+}
+
+.case-study-woyao-theme {
+  background: var(--case-woyao);
+}
+
+.case-study-samay-theme {
+  background: var(--case-ink);
+}
+
+.case-study-axo-theme {
+  background: var(--case-prism);
 }
 
 .team-card::before {
