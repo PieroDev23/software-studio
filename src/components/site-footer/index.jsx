@@ -5,33 +5,49 @@ import { siClaude, siDeepseek, siGooglegemini } from "simple-icons";
 import { TypographyEyebrow } from "@/components/ui/typography";
 import { Link } from "@/i18n/navigation";
 import openAiIcon from "../../../assets/images/openai-svgrepo-com.svg";
+import AssistantLink from "./assistant-link";
 
 const assistants = [
   {
     name: "OpenAI",
     href: "https://chatgpt.com/",
+    promptParam: "q",
     image: openAiIcon,
   },
   {
     name: "Claude",
-    href: "https://claude.ai/new",
+    href: "claude://claude.ai/new",
+    promptParam: "q",
+    opensInApp: true,
     icon: siClaude,
   },
   {
     name: "Gemini",
     href: "https://gemini.google.com/app",
+    promptParam: "prompt_text",
+    query: {
+      prompt_action: "prefill",
+    },
     icon: siGooglegemini,
   },
   {
     name: "DeepSeek",
     href: "https://chat.deepseek.com/",
+    copyPrompt: true,
     icon: siDeepseek,
   },
 ];
 
-function getAssistantHref(href, prompt) {
-  const url = new URL(href);
-  url.searchParams.set("q", prompt);
+function getAssistantHref(assistant, prompt) {
+  const url = new URL(assistant.href);
+
+  if (assistant.promptParam) {
+    url.searchParams.set(assistant.promptParam, prompt);
+  }
+
+  for (const [name, value] of Object.entries(assistant.query ?? {})) {
+    url.searchParams.set(name, value);
+  }
 
   return url.toString();
 }
@@ -127,13 +143,20 @@ function SiteFooter() {
 
             <div className="mt-7 flex items-center gap-4">
               {assistants.map((assistant) => (
-                <a
+                <AssistantLink
                   key={assistant.name}
-                  href={getAssistantHref(assistant.href, translate("prompt"))}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={getAssistantHref(assistant, translate("prompt"))}
+                  target={assistant.opensInApp ? undefined : "_blank"}
+                  rel={assistant.opensInApp ? undefined : "noreferrer"}
+                  promptToCopy={
+                    assistant.copyPrompt ? translate("prompt") : undefined
+                  }
                   className="inline-flex size-9 items-center justify-center text-muted-foreground transition-all hover:scale-110 hover:text-foreground"
-                  title={assistant.name}
+                  title={
+                    assistant.copyPrompt
+                      ? `${translate("copyPromptAndOpen")} ${assistant.name}`
+                      : assistant.name
+                  }
                 >
                   <span className="size-6 [&_svg]:size-full" aria-hidden="true">
                     <AssistantIcon
@@ -142,9 +165,12 @@ function SiteFooter() {
                     />
                   </span>
                   <span className="sr-only">
-                    {translate("askIn")} {assistant.name}
+                    {assistant.copyPrompt
+                      ? translate("copyPromptAndOpen")
+                      : translate("askIn")}{" "}
+                    {assistant.name}
                   </span>
-                </a>
+                </AssistantLink>
               ))}
             </div>
           </div>
