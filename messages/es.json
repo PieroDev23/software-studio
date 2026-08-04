@@ -35,7 +35,6 @@
   },
   "Companies": {
     "eyebrow": "Equipos que decidieron construir con criterio",
-    "selected": "Experiencia seleccionada",
     "client": "Cliente {number}"
   },
   "Premise": {
@@ -101,11 +100,11 @@
         "title": "El público eligió a su dupla favorita.",
         "description": "Una experiencia móvil para votar en vivo y decidir al ganador de Filo Foodies."
       },
-      "woyao": {
-        "service": "Biblioteca virtual",
-        "loader": "WO YAO\nUna biblioteca abierta al mundo.",
-        "title": "Una biblioteca regional, abierta al mundo.",
-        "description": "Desarrollo de la Biblioteca Mario Vargas Llosa Virtual para digitalizar su acervo y hacerlo accesible desde cualquier dispositivo."
+      "ultimate": {
+        "service": "Experiencia de premiación",
+        "loader": "ULTIMATE AGENCIA\nUna comunidad subió al escenario.",
+        "title": "La comunidad peruana de streaming tuvo su propia premiación.",
+        "description": "La experiencia digital de la primera edición de Luminy Awards, creada junto a Ultimate Agencia."
       }
     }
   },
@@ -191,21 +190,24 @@
     "members": [
       {
         "name": "Piero Davila",
-        "discipline": "Cofundador",
+        "discipline": "Cofundador & SSE",
+        "title": "Instinto creativo",
         "edge": "Visión de producto y dirección creativa.",
-        "bio": "Convierte ideas ambiguas en productos claros, útiles y con una experiencia que marca la diferencia."
+        "quote": "Si una idea no se puede explicar con claridad, todavía no está lista para construirse."
       },
       {
         "name": "Josue Villasante",
-        "discipline": "Cofundador",
+        "discipline": "Cofundador & SSE",
+        "title": "Rapidez de ejecución",
         "edge": "Sistemas preparados para crecer.",
-        "bio": "Convierte complejidad técnica en fundamentos sólidos, confiables y preparados para la escala."
+        "quote": "La velocidad importa cuando no compromete lo que viene después."
       },
       {
         "name": "Sebastian Muñoz",
-        "discipline": "Cofundador",
+        "discipline": "Cofundador & SSE",
+        "title": "Agudeza estratégica",
         "edge": "Liderazgo con criterio.",
-        "bio": "Alinea personas, producto y negocio para tomar mejores decisiones y llevarlas hasta el resultado."
+        "quote": "Las mejores decisiones hacen evidente qué mover y qué dejar fuera."
       }
     ]
   },

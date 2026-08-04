@@ -212,63 +212,64 @@ const caseStudies = {
       "The public did more than watch the Foodies competition: it chose the winner. Laura Spoya's team received the audience vote at the festival.",
     pullQuote: "The public did not only watch the competition. It decided it.",
     shift: { before: "An audience", after: "The jury" },
-    next: "wo-yao",
+    next: "ultimate-agencia",
   },
-  "wo-yao": {
-    slug: "wo-yao",
-    client: "WO YAO",
-    loaderCopy: "WO YAO\nA library open to the world.",
-    year: "2026",
-    service: "Virtual Library Platform",
-    title: "A regional library, open to the world.",
+  "ultimate-agencia": {
+    slug: "ultimate-agencia",
+    client: "ULTIMATE AGENCIA",
+    loaderCopy: "ULTIMATE AGENCIA\nA community took the stage.",
+    year: "2023",
+    service: "Awards Experience",
+    title: "Peru's streaming community got an awards show of its own.",
     description:
-      "We are developing the digital platform for the Mario Vargas Llosa Virtual Library, making its collection accessible from any device.",
-    theme: "case-study-woyao-theme text-foreground",
+      "We partnered with Ultimate Agencia to create the digital experience for the inaugural Luminy Awards, bringing creators, categories and community participation into one coherent platform.",
+    theme: "case-study-ultimate-theme text-foreground",
     ogImage: "og-cover.jpg",
     silk: {
-      color: "#6D172B",
-      speed: 2.5,
+      color: "#635BFF",
+      speed: 3.5,
       scale: 1,
-      noiseIntensity: 0.2,
-      rotation: -0.2,
+      noiseIntensity: 0.28,
+      rotation: -0.25,
     },
     facts: [
-      ["Status", "In development"],
-      ["Scope", "Digital library"],
+      ["Year", "2023"],
+      ["Event", "Luminy Awards"],
       ["Contribution", "Product / Design / Engineering"],
     ],
-    premise: "Cultural heritage should not be limited by distance.",
+    premise:
+      "Digital communities deserve institutions built in their language.",
     premiseDescription:
-      "The initiative seeks to digitize the Mario Vargas Llosa Regional Library collection and make it available nationally and internationally.",
+      "Luminy Awards emerged from Ultimate Agencia, ElZeein and Peru's Twitch community to recognize the creators shaping the local streaming scene.",
     challengeTitle:
-      "Turning a physical collection into a digital public service.",
+      "Turning a fast-moving online community into a credible awards experience.",
     challenge: [
-      "Digitizing the books is only one part of the challenge. Readers also need a clear way to discover and access the collection from different devices and locations.",
-      "The broader initiative connects service modernization, content digitization, security and digital applications within one coherent platform.",
+      "The first edition needed to make creators and categories easy to discover while moving the community from recognition to participation.",
+      "The digital experience had to support a live event, carry the energy of streaming culture and keep the awards clear at every step.",
     ],
     moves: [
       {
         number: "01",
-        title: "The collection, structured for discovery.",
-        body: "The platform is being designed to turn a large physical catalogue into information readers can navigate and understand digitally.",
+        title: "A system for creators and categories.",
+        body: "Nominees, disciplines and award categories became one structure the community could quickly navigate and understand.",
       },
       {
         number: "02",
-        title: "Access beyond the building.",
-        body: "The experience brings the library to computers and mobile devices so geography no longer defines who can consult it.",
+        title: "Participation designed for the community.",
+        body: "The experience made it simple to move from discovering the nominees to taking part from any device.",
       },
       {
         number: "03",
-        title: "A foundation for a lasting public service.",
-        body: "Product, design and engineering come together around a platform prepared to evolve as the digital collection grows.",
+        title: "A digital layer for the live show.",
+        body: "The product connected the energy before the ceremony with the moment more than 130 members of the community gathered in person.",
       },
     ],
     outcomeTitle:
-      "A platform in development to bring Arequipa's literary heritage to readers everywhere.",
+      "An inaugural awards experience that gave Peru's streaming community a stage of its own.",
     outcome:
-      "The project is currently in development. Its goal is to make thousands of books available through a secure digital service with national and international reach.",
-    pullQuote: "From a regional collection to a library without borders.",
-    shift: { before: "Physical access", after: "Global digital access" },
+      "Luminy Awards brought together more than 130 streamers, vtubers, gamers and community members around 15 categories in its first edition.",
+    pullQuote: "A digital community became a live institution.",
+    shift: { before: "A growing community", after: "Its own awards show" },
     next: "pchujoy",
   },
 };
@@ -449,50 +450,53 @@ const caseStudiesEs = {
     pullQuote: "El público no solo vio la competencia. La decidió.",
     shift: { before: "Una audiencia", after: "El jurado" },
   },
-  "wo-yao": {
-    loaderCopy: "WO YAO\nUna biblioteca abierta al mundo.",
-    service: "Plataforma de biblioteca virtual",
-    title: "Una biblioteca regional, abierta al mundo.",
+  "ultimate-agencia": {
+    loaderCopy: "ULTIMATE AGENCIA\nUna comunidad subió al escenario.",
+    service: "Experiencia de premiación",
+    title: "La comunidad peruana de streaming tuvo su propia premiación.",
     description:
-      "Estamos desarrollando la plataforma digital de la Biblioteca Mario Vargas Llosa Virtual para hacer accesible su colección desde cualquier dispositivo.",
+      "Trabajamos con Ultimate Agencia para crear la experiencia digital de la primera edición de Luminy Awards, reuniendo creadores, categorías y participación de la comunidad en una plataforma coherente.",
     facts: [
-      ["Estado", "En desarrollo"],
-      ["Alcance", "Biblioteca digital"],
+      ["Año", "2023"],
+      ["Evento", "Luminy Awards"],
       ["Contribución", "Producto / Diseño / Ingeniería"],
     ],
     premise:
-      "El patrimonio cultural no debería estar limitado por la distancia.",
+      "Las comunidades digitales merecen instituciones construidas en su lenguaje.",
     premiseDescription:
-      "La iniciativa busca digitalizar la colección de la Biblioteca Regional Mario Vargas Llosa y ponerla al alcance de lectores nacionales e internacionales.",
+      "Luminy Awards nació de Ultimate Agencia, ElZeein y la comunidad de Twitch Perú para reconocer a los creadores que daban forma a la escena local de streaming.",
     challengeTitle:
-      "Convertir una colección física en un servicio público digital.",
+      "Convertir una comunidad digital en movimiento en una experiencia de premiación creíble.",
     challenge: [
-      "Digitalizar los libros es solo una parte del reto. Los lectores también necesitan una forma clara de descubrir y consultar la colección desde distintos dispositivos y lugares.",
-      "La iniciativa conecta modernización de servicios, digitalización de contenidos, seguridad y aplicativos dentro de una plataforma coherente.",
+      "La primera edición debía facilitar el descubrimiento de creadores y categorías mientras llevaba a la comunidad del reconocimiento a la participación.",
+      "La experiencia digital tenía que acompañar un evento en vivo, transmitir la energía de la cultura del streaming y mantener la premiación clara en cada paso.",
     ],
     moves: [
       {
         number: "01",
-        title: "La colección, organizada para descubrirla.",
-        body: "La plataforma se diseña para convertir un amplio catálogo físico en información que los lectores puedan recorrer y comprender digitalmente.",
+        title: "Un sistema para creadores y categorías.",
+        body: "Nominados, disciplinas y categorías se convirtieron en una estructura que la comunidad podía recorrer y comprender rápidamente.",
       },
       {
         number: "02",
-        title: "Acceso más allá del edificio.",
-        body: "La experiencia lleva la biblioteca a computadoras y dispositivos móviles para que la geografía deje de definir quién puede consultarla.",
+        title: "Participación diseñada para la comunidad.",
+        body: "La experiencia simplificó el paso de descubrir a los nominados a formar parte desde cualquier dispositivo.",
       },
       {
         number: "03",
-        title: "Una base para un servicio público duradero.",
-        body: "Producto, diseño e ingeniería se articulan alrededor de una plataforma preparada para evolucionar mientras crece la colección digital.",
+        title: "Una capa digital para el show en vivo.",
+        body: "El producto conectó la expectativa previa con el momento en que más de 130 integrantes de la comunidad se reunieron presencialmente.",
       },
     ],
     outcomeTitle:
-      "Una plataforma en desarrollo para acercar el patrimonio literario de Arequipa a lectores de todo el mundo.",
+      "Una primera edición que le dio a la comunidad peruana de streaming un escenario propio.",
     outcome:
-      "El proyecto se encuentra en desarrollo. Su objetivo es poner miles de libros a disposición del público mediante un servicio digital seguro, con alcance nacional e internacional.",
-    pullQuote: "De una colección regional a una biblioteca sin fronteras.",
-    shift: { before: "Acceso físico", after: "Acceso digital global" },
+      "Luminy Awards reunió a más de 130 streamers, vtubers, gamers y miembros de la comunidad alrededor de 15 categorías en su primera edición.",
+    pullQuote: "Una comunidad digital se convirtió en una institución en vivo.",
+    shift: {
+      before: "Una comunidad en crecimiento",
+      after: "Su propia premiación",
+    },
   },
 };
 

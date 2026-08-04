@@ -35,7 +35,6 @@
   },
   "Companies": {
     "eyebrow": "Teams that chose to build with judgment",
-    "selected": "Selected experience",
     "client": "Client {number}"
   },
   "Premise": {
@@ -101,11 +100,11 @@
         "title": "The public chose its favorite duo.",
         "description": "A mobile experience for voting live and deciding the winner of Filo Foodies."
       },
-      "woyao": {
-        "service": "Virtual library",
-        "loader": "WO YAO\nA library open to the world.",
-        "title": "A regional library, open to the world.",
-        "description": "Development of the Mario Vargas Llosa Virtual Library to digitize its collection and make it accessible from any device."
+      "ultimate": {
+        "service": "Awards experience",
+        "loader": "ULTIMATE AGENCIA\nA community took the stage.",
+        "title": "Peru's streaming community got an awards show of its own.",
+        "description": "The digital experience for the inaugural Luminy Awards, created with Ultimate Agencia."
       }
     }
   },
@@ -191,21 +190,24 @@
     "members": [
       {
         "name": "Piero Davila",
-        "discipline": "Co-founder",
+        "discipline": "Co-founder & SSE",
+        "title": "Creative instinct",
         "edge": "Product vision and creative direction.",
-        "bio": "Turns ambiguous ideas into clear, useful products with an experience that makes the difference."
+        "quote": "If an idea cannot be explained clearly, it is not ready to be built yet."
       },
       {
         "name": "Josue Villasante",
-        "discipline": "Co-founder",
+        "discipline": "Co-founder & SSE",
+        "title": "Execution speed",
         "edge": "Systems ready to grow.",
-        "bio": "Turns technical complexity into foundations that are solid, reliable and ready to scale."
+        "quote": "Speed matters when it does not compromise what comes next."
       },
       {
         "name": "Sebastian Muñoz",
-        "discipline": "Co-founder",
+        "discipline": "Co-founder & SSE",
+        "title": "Strategic insight",
         "edge": "Leadership with judgment.",
-        "bio": "Aligns people, product and business to make better decisions and carry them through to the outcome."
+        "quote": "The best decisions make it clear what to move and what to leave out."
       }
     ]
   },

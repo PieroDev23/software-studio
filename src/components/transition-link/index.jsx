@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useCurtainTransition } from "@/components/curtain-transition";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
-import { getTargetPath } from "./lib/transition-link-utils";
+import { getTargetHash, getTargetPath } from "./lib/transition-link-utils";
 
 function TransitionLink({
   children,
@@ -24,6 +24,7 @@ function TransitionLink({
     onClick?.(event);
 
     const targetPath = getTargetPath(href);
+    const targetHash = getTargetHash(href);
     const modifiedClick =
       event.button !== 0 ||
       event.metaKey ||
@@ -46,10 +47,11 @@ function TransitionLink({
 
     const started = startTransition({
       targetKey: `path:${targetPath}`,
+      scrollTarget: targetHash ?? 0,
       phrase: transitionLabel?.trim() || "MANYAS",
       variant: transitionVariant,
       onCovered: () => {
-        router.push(href);
+        router.push(href, { scroll: false });
       },
       onComplete: () => setIsPending(false),
     });

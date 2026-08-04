@@ -1,4 +1,7 @@
+import { useLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
+
+import { jumpScrollTo } from "@/lib/smooth-scroll";
 
 import { useCurtainAnimation } from "./animations/use-curtain-animation";
 import { CURTAIN_COLUMNS, CURTAIN_LAYERS } from "./lib/curtain-config";
@@ -14,6 +17,7 @@ function CurtainOverlay({
   const curtainRef = useRef(null);
   const wordRef = useRef(null);
   const exitRef = useRef(null);
+  const lenis = useLenis();
 
   useCurtainAnimation({
     curtainRef,
@@ -28,8 +32,19 @@ function CurtainOverlay({
   });
 
   useEffect(() => {
-    if (destinationReady) exitRef.current?.();
-  }, [destinationReady]);
+    if (!destinationReady) return;
+
+    if (transition.scrollTarget !== undefined) {
+      const target =
+        typeof transition.scrollTarget === "string"
+          ? (document.getElementById(transition.scrollTarget) ?? 0)
+          : transition.scrollTarget;
+
+      jumpScrollTo(lenis, target);
+    }
+
+    exitRef.current?.();
+  }, [destinationReady, lenis, transition.scrollTarget]);
 
   const isIntro = transition.type === "intro";
   const isCaseStudy = transition.variant === "case-study";

@@ -174,7 +174,6 @@ export default function WorkGrid() {
             </div>
           </TransitionLink>
 
-          {/* Temporarily hidden: FILO and MVLL.
           <TransitionLink
             data-reveal
             href="/work/filo"
@@ -215,42 +214,41 @@ export default function WorkGrid() {
 
           <TransitionLink
             data-reveal
-            href="/work/wo-yao"
-            transitionLabel={t("cards.woyao.loader")}
+            href="/work/ultimate-agencia"
+            transitionLabel={t("cards.ultimate.loader")}
             transitionVariant="case-study"
-            className="case-card case-card-woyao flex min-h-[30rem] cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:p-8 lg:col-span-6"
-            aria-label={t("viewAria", { client: "WO YAO" })}
+            className="case-card case-card-ultimate flex min-h-[30rem] cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:p-8 lg:col-span-6"
+            aria-label={t("viewAria", { client: "Ultimate Agencia" })}
           >
             <div className="case-card-silk" aria-hidden="true">
               <Silk
-                speed={2.5}
+                speed={3.5}
                 scale={1}
-                color="#6D172B"
-                noiseIntensity={0.2}
-                rotation={-0.2}
+                color="#635BFF"
+                noiseIntensity={0.28}
+                rotation={-0.25}
               />
             </div>
             <CardMeta
-              client="WO YAO"
-              year="2026"
-              service={t("cards.woyao.service")}
+              client="ULTIMATE AGENCIA"
+              year="2023"
+              service={t("cards.ultimate.service")}
             />
             <div
               data-parallax-work-content
               className="relative z-10 flex max-w-xl flex-col gap-5"
             >
               <h3 className="text-balance text-3xl leading-9 font-medium tracking-[0.030rem] sm:text-4xl sm:leading-11 xl:text-5xl xl:leading-15">
-                {t("cards.woyao.title")}
+                {t("cards.ultimate.title")}
               </h3>
               <p className="line-clamp-2 max-w-lg text-base leading-7 opacity-75 sm:text-lg">
-                {t("cards.woyao.description")}
+                {t("cards.ultimate.description")}
               </p>
               <span className="inline-flex w-fit items-center gap-4 border-b border-border pb-2 font-mono text-sm font-medium uppercase tracking-[0.12em]">
                 {t("view")} <span aria-hidden="true">↗</span>
               </span>
             </div>
           </TransitionLink>
-          */}
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ const companies = [
   { name: "Keynua" },
   { name: "Qempo" },
   { name: "Vitally" },
-  { name: "WoYao" },
+  { name: "Ultimate Agencia" },
 ];
 
 export default function CompanyGrid() {
@@ -43,15 +43,9 @@ export default function CompanyGrid() {
       aria-labelledby="companies-title"
     >
       <div className="content-container px-5 sm:px-8 lg:px-12">
-        <div className="flex items-end justify-between gap-6 px-1">
+        <div className="px-1">
           <TypographyEyebrow id="companies-title" tone="inverse">
             {t("eyebrow")}
-          </TypographyEyebrow>
-          <TypographyEyebrow
-            className="hidden text-right sm:block"
-            tone="inverse"
-          >
-            {t("selected")}
           </TypographyEyebrow>
         </div>
 
