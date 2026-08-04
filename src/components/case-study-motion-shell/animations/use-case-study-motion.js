@@ -1,9 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function useCaseStudyMotion(contentRef, transitionReady) {
   useGSAP(
@@ -23,7 +22,6 @@ export function useCaseStudyMotion(contentRef, transitionReady) {
       }
 
       const observedAnimations = new Map();
-      const splits = [];
       const observer = new IntersectionObserver(
         contextSafe((entries) => {
           for (const entry of entries) {
@@ -36,31 +34,6 @@ export function useCaseStudyMotion(contentRef, transitionReady) {
         }),
         { rootMargin: "0px 0px -10% 0px", threshold: 0.01 },
       );
-
-      const headings = gsap.utils.toArray(
-        root.querySelectorAll("h1, h2, h3, [data-motion-heading]"),
-      );
-
-      for (const heading of headings) {
-        const split = SplitText.create(heading, {
-          type: "words",
-          mask: "words",
-          wordsClass: "motion-word",
-          aria: "auto",
-        });
-        splits.push(split);
-
-        gsap.set(split.words, { yPercent: 115 });
-        observedAnimations.set(heading, () => {
-          gsap.to(split.words, {
-            yPercent: 0,
-            duration: 0.85,
-            ease: "power3.out",
-            stagger: 0.045,
-          });
-        });
-        observer.observe(heading);
-      }
 
       const revealElements = gsap.utils
         .toArray(root.querySelectorAll("[data-reveal]"))
@@ -147,9 +120,6 @@ export function useCaseStudyMotion(contentRef, transitionReady) {
       return () => {
         parallaxMedia.revert();
         observer.disconnect();
-        splits.forEach((split) => {
-          split.revert();
-        });
       };
     },
     {

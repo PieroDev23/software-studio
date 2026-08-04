@@ -81,16 +81,6 @@ html:has(.curtain-transition) {
   }
 }
 
-.motion-word {
-  display: inline-block;
-  will-change: transform, opacity;
-}
-
-.motion-word-mask {
-  margin-block: -0.1em -0.18em;
-  padding-block: 0.1em 0.18em;
-}
-
 [data-reveal] {
   will-change: transform, opacity;
 }
@@ -183,7 +173,6 @@ html:has(.curtain-transition) {
     animation: none;
   }
 
-  .motion-word,
   [data-reveal],
   [data-curtain-panel],
   [data-curtain-content],
