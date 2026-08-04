@@ -315,11 +315,11 @@
     "think": "Pensar con claridad.",
     "design": "Diseñar con intención.",
     "build": "Construir de verdad.",
+    "signoff": "Un placer conocerte.",
     "languageTransition": {
       "en": "Another language.\nSame intent.",
       "es": "Otro idioma.\nMisma intención."
     },
-    "studio": "Software Studio",
     "location": "Lima / Global",
     "disciplines": "Estrategia / Diseño / Ingeniería"
   },
@@ -344,6 +344,15 @@
     "after": "Después",
     "changed": "Qué cambió",
     "moves": "Los movimientos que hicieron la diferencia.",
+    "media": {
+      "section": "Imágenes del proyecto",
+      "detailsIntro": "Momentos cercanos que muestran cómo la idea se convirtió en una experiencia real.",
+      "placeholder": "Placeholder de imagen",
+      "challenge": "Las personas o el contexto detrás del desafío",
+      "interface": "Detalle de interfaz",
+      "context": "Experiencia en contexto",
+      "outcome": "El resultado final"
+    },
     "outcome": "El resultado",
     "next": "Siguiente caso",
     "cta": "Hablemos de tu proyecto"

@@ -26,12 +26,12 @@ export default async function Image({ params }) {
 
   const subtitle =
     locale === "en"
-      ? "Senior judgment for products that matter"
+      ? "Small team. Serious software."
       : "Criterio senior para productos que importan";
 
   const title =
     locale === "en"
-      ? "Senior judgment for products that matter"
+      ? "Small team. Serious software."
       : "Criterio senior para productos que importan";
 
   const buttonText =

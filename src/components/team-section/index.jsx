@@ -52,11 +52,9 @@ function TeamCard({ member, translated, edge, index, compact = false }) {
   const panelFirst = !compact && index !== 1;
 
   return (
-    <article
-      data-reveal
-      className="team-card flex h-full flex-col gap-3 sm:gap-5"
-    >
+    <article className="team-card flex h-full flex-col gap-3 sm:gap-5">
       <div
+        data-team-blind-reveal
         className={cn(
           "team-card-photo group/photo relative aspect-[4/5] overflow-hidden text-white",
           panelFirst && "lg:order-2",
@@ -64,7 +62,7 @@ function TeamCard({ member, translated, edge, index, compact = false }) {
       >
         <div
           data-parallax-team-initials
-          className="absolute inset-x-0 -inset-y-8"
+          className="absolute inset-x-0 -inset-y-16"
           aria-hidden="true"
         >
           <Image
@@ -84,12 +82,18 @@ function TeamCard({ member, translated, edge, index, compact = false }) {
           aria-hidden="true"
         />
 
-        <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5 font-mono text-xs font-medium uppercase tracking-[0.16em] sm:p-7">
+        <div
+          data-team-photo-top
+          className="absolute inset-x-0 top-0 flex items-center justify-between p-5 font-mono text-xs font-medium uppercase tracking-[0.16em] sm:p-7"
+        >
           <span>{translated.title}</span>
           <span>Manyas®</span>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-5 sm:p-7">
+        <div
+          data-team-photo-bottom
+          className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-5 sm:p-7"
+        >
           <div className="flex min-w-0 flex-col gap-2">
             <h3 className="text-3xl leading-none font-medium tracking-[0.02em] sm:text-4xl">
               {translated.name}
@@ -107,11 +111,22 @@ function TeamCard({ member, translated, edge, index, compact = false }) {
             aria-label={`${translated.name} — LinkedIn`}
             title="LinkedIn"
           >
-            <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="size-6" aria-hidden="true">
               <path d={linkedinIconPath} fill="currentColor" />
             </svg>
             <span className="sr-only">{translated.name} — LinkedIn</span>
           </a>
+        </div>
+
+        <div
+          data-team-blinds
+          className="invisible pointer-events-none absolute inset-0 z-30"
+          aria-hidden="true"
+        >
+          <span
+            data-team-blind-layer
+            className="absolute inset-0 z-10 bg-inverse"
+          />
         </div>
       </div>
 

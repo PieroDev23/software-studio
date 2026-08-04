@@ -1,9 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef } from "react";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
   const heroTimelineRef = useRef(null);
@@ -24,8 +25,9 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
         return;
       }
 
-      const highlightAnimations = new Map();
+      const headingAnimations = new Map();
       const revealAnimations = new Map();
+      const splits = [];
       const createObserver = (animations, rootMargin) =>
         new IntersectionObserver(
           contextSafe((entries, observer) => {
@@ -39,8 +41,8 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
           }),
           { rootMargin, threshold: 0.01 },
         );
-      const highlightObserver = createObserver(
-        highlightAnimations,
+      const headingObserver = createObserver(
+        headingAnimations,
         "0px 0px -12% 0px",
       );
       const revealObserver = createObserver(
@@ -55,6 +57,20 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
       const heroChrome = hero
         ? gsap.utils.toArray(hero.querySelectorAll("[data-hero-chrome]"))
         : [];
+      const heroHeading = hero?.querySelector(
+        "h1, h2, h3, [data-motion-heading]",
+      );
+      const heroSplit = heroHeading
+        ? SplitText.create(heroHeading, {
+            type: "words",
+            mask: "words",
+            wordsClass: "motion-word",
+            aria: "auto",
+          })
+        : null;
+
+      if (heroSplit) splits.push(heroSplit);
+
       const heroTimeline = gsap.timeline({ paused: true });
       heroTimelineRef.current = heroTimeline;
 
@@ -64,13 +80,18 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
             y: 14,
             autoAlpha: 0,
             duration: 0.55,
-            stagger: 0.12,
+            stagger: 0.18,
             ease: "power3.out",
           })
           .from(
             heroRevealElements[0],
             { y: 20, autoAlpha: 0, duration: 0.55, ease: "power3.out" },
             0.08,
+          )
+          .from(
+            heroSplit?.words ?? [],
+            { yPercent: 140, duration: 1.05, ease: "power2.out" },
+            0.15,
           )
           .from(
             heroRevealElements.slice(1),
@@ -81,7 +102,7 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
               stagger: 0.08,
               ease: "power3.out",
             },
-            0.18,
+            0.38,
           );
       }
 
@@ -93,18 +114,103 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
         const highlights = gsap.utils.toArray(
           heading.querySelectorAll("[data-highlight], .text-impact-gradient"),
         );
-        if (highlights.length === 0) continue;
-
-        gsap.set(highlights, { "--highlight-progress": "0%" });
-
-        highlightAnimations.set(heading, () => {
-          gsap.to(highlights, {
-            "--highlight-progress": "100%",
-            duration: 0.45,
-            ease: "power3.out",
-          });
+        const split = SplitText.create(heading, {
+          type: "words",
+          mask: "words",
+          wordsClass: "motion-word",
+          aria: "auto",
         });
-        highlightObserver.observe(heading);
+
+        splits.push(split);
+        gsap.set(split.words, { yPercent: 140 });
+        if (highlights.length > 0) {
+          gsap.set(highlights, { "--highlight-progress": "0%" });
+        }
+
+        headingAnimations.set(heading, () => {
+          const timeline = gsap.timeline();
+
+          timeline.to(split.words, {
+            yPercent: 0,
+            duration: 1.05,
+            ease: "power2.out",
+          });
+
+          if (highlights.length > 0) {
+            timeline.to(
+              highlights,
+              {
+                "--highlight-progress": "100%",
+                duration: 0.45,
+                ease: "power3.out",
+              },
+              ">-=0.32",
+            );
+          }
+        });
+        headingObserver.observe(heading);
+      }
+
+      const teamBlindCards = gsap.utils.toArray(
+        root.querySelectorAll("[data-team-blind-reveal]"),
+      );
+
+      for (const [cardIndex, card] of teamBlindCards.entries()) {
+        const blinds = card.querySelector("[data-team-blinds]");
+        const layers = gsap.utils.toArray(
+          card.querySelectorAll("[data-team-blind-layer]"),
+        );
+        const topText = card.querySelector("[data-team-photo-top]");
+        const bottomText = card.querySelector("[data-team-photo-bottom]");
+        if (!blinds || layers.length === 0 || !topText || !bottomText) continue;
+
+        gsap.set(blinds, { autoAlpha: 1 });
+        gsap.set(topText, { y: -18, autoAlpha: 0 });
+        gsap.set(bottomText, { y: 18, autoAlpha: 0 });
+        revealAnimations.set(card, () => {
+          const exitsUp = cardIndex % 2 === 0;
+          const firstText = exitsUp ? bottomText : topText;
+          const secondText = exitsUp ? topText : bottomText;
+
+          gsap
+            .timeline({
+              onComplete: () => {
+                gsap.set(blinds, { autoAlpha: 0 });
+              },
+            })
+            .to(
+              [...layers].reverse(),
+              {
+                yPercent: exitsUp ? -102 : 102,
+                duration: 0.8,
+                ease: "power2.inOut",
+              },
+              0,
+            )
+            .to(
+              firstText,
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.5,
+                ease: "power3.out",
+                clearProps: "transform,visibility,opacity",
+              },
+              0.18,
+            )
+            .to(
+              secondText,
+              {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.5,
+                ease: "power3.out",
+                clearProps: "transform,visibility,opacity",
+              },
+              0.28,
+            );
+        });
+        revealObserver.observe(card);
       }
 
       const reveals = gsap.utils
@@ -185,9 +291,9 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
 
           gsap.fromTo(
             initials,
-            { yPercent: -6 },
+            { yPercent: -10 },
             {
-              yPercent: 6,
+              yPercent: 10,
               ease: "none",
               scrollTrigger: {
                 trigger: card,
@@ -254,8 +360,9 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
       return () => {
         heroTimelineRef.current = null;
         parallaxMedia.revert();
-        highlightObserver.disconnect();
+        headingObserver.disconnect();
         revealObserver.disconnect();
+        for (const split of splits) split.revert();
       };
     },
     {

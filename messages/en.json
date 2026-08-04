@@ -25,7 +25,7 @@
   "Hero": {
     "homeLabel": "Manyas, home",
     "availability": "Select engagements only",
-    "eyebrow": "Senior judgment for products that matter",
+    "eyebrow": "Small team. Serious software.",
     "line1": "We build products",
     "line2": "that deserve",
     "line3": "to exist.",
@@ -315,11 +315,11 @@
     "think": "Think clearly.",
     "design": "Design deliberately.",
     "build": "Build properly.",
+    "signoff": "Pleasure to meet you.",
     "languageTransition": {
       "en": "Another language.\nSame intent.",
       "es": "Otro idioma.\nMisma intención."
     },
-    "studio": "Software Studio",
     "location": "Lima / Worldwide",
     "disciplines": "Strategy / Design / Engineering"
   },
@@ -344,6 +344,15 @@
     "after": "After",
     "changed": "What changed",
     "moves": "The moves that made the difference.",
+    "media": {
+      "section": "Project imagery",
+      "detailsIntro": "Closer moments that show how the idea became a real experience.",
+      "placeholder": "Image placeholder",
+      "challenge": "The people or context behind the challenge",
+      "interface": "Interface detail",
+      "context": "Experience in context",
+      "outcome": "The final outcome"
+    },
     "outcome": "The outcome",
     "next": "Next case",
     "cta": "Discuss a project"

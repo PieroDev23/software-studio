@@ -14,6 +14,7 @@ function useCurtainAnimation({
   onCovered,
   setContentBlocked,
   finishTransition,
+  resetScroll,
 }) {
   const destinationReadyRef = useRef(destinationReady);
   const animationConfig = useRef({
@@ -22,6 +23,7 @@ function useCurtainAnimation({
     onCovered,
     setContentBlocked,
     finishTransition,
+    resetScroll,
   }).current;
   destinationReadyRef.current = destinationReady;
 
@@ -41,10 +43,12 @@ function useCurtainAnimation({
           onCovered: coverDestination,
           setContentBlocked: blockContent,
           finishTransition: finish,
+          resetScroll: resetIntroScroll,
         } = animationConfig;
 
         if (context.conditions.reduceMotion) {
           if (activeTransition.type === "intro") {
+            resetIntroScroll();
             blockContent(false);
             finish();
             return;
@@ -70,6 +74,7 @@ function useCurtainAnimation({
             contextSafe,
             setContentBlocked: blockContent,
             finishTransition: finish,
+            resetScroll: resetIntroScroll,
           });
           return;
         }

@@ -1,5 +1,5 @@
 import { useLenis } from "lenis/react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 import { jumpScrollTo } from "@/lib/smooth-scroll";
 
@@ -18,6 +18,9 @@ function CurtainOverlay({
   const wordRef = useRef(null);
   const exitRef = useRef(null);
   const lenis = useLenis();
+  const resetScroll = useCallback(() => {
+    jumpScrollTo(lenis, 0);
+  }, [lenis]);
 
   useCurtainAnimation({
     curtainRef,
@@ -29,6 +32,7 @@ function CurtainOverlay({
     onCovered,
     setContentBlocked,
     finishTransition,
+    resetScroll,
   });
 
   useEffect(() => {
@@ -97,34 +101,23 @@ function CurtainOverlay({
             <p data-curtain-meta>{copy.location}</p>
           </div>
 
-          <div className="flex flex-col items-center overflow-visible py-[0.16em]">
-            <p
-              data-curtain-phrase
-              className="flex w-full items-center justify-center text-center text-4xl font-medium tracking-[0.030rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
-            >
-              <span className="inline-block min-w-0 max-w-full overflow-visible px-[0.08em] pb-[0.12em] text-center">
-                <span
-                  ref={wordRef}
-                  data-curtain-word
-                  className="curtain-spectrum curtain-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-normal px-[0.06em] pb-[0.18em] sm:whitespace-nowrap"
-                >
-                  <span data-curtain-word-text>{copy.think}</span>
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-5 sm:px-8 lg:px-12">
+            <div className="flex w-full flex-col items-center overflow-visible py-[0.16em]">
+              <p
+                data-curtain-phrase
+                className="flex w-full items-center justify-center text-center text-4xl font-medium tracking-[0.030rem] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+              >
+                <span className="inline-block min-w-0 max-w-full overflow-visible px-[0.08em] pb-[0.12em] text-center">
                   <span
-                    data-curtain-registered-mark
-                    className="curtain-registered-mark"
-                    hidden
+                    ref={wordRef}
+                    data-curtain-word
+                    className="curtain-spectrum curtain-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-normal px-[0.06em] pb-[0.18em] sm:whitespace-nowrap"
                   >
-                    ®
+                    <span data-curtain-word-text>{copy.think}</span>
                   </span>
                 </span>
-              </span>
-            </p>
-            <p
-              data-curtain-signoff
-              className="mt-5 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:text-sm"
-            >
-              {copy.studio}
-            </p>
+              </p>
+            </div>
           </div>
 
           <p

@@ -9,6 +9,7 @@ function createIntroTimeline({
   contextSafe,
   setContentBlocked,
   finishTransition,
+  resetScroll,
 }) {
   const panels = gsap.utils.toArray(
     root.querySelectorAll("[data-curtain-panel]"),
@@ -16,40 +17,31 @@ function createIntroTimeline({
   const grid = root.querySelector("[data-curtain-grid]");
   const content = root.querySelector("[data-curtain-content]");
   const wordText = wordElement.querySelector("[data-curtain-word-text]");
-  const registeredMark = wordElement.querySelector(
-    "[data-curtain-registered-mark]",
-  );
 
-  const swapWord = contextSafe((word, withRegisteredMark = false) => {
+  const swapWord = contextSafe((word) => {
     wordElement.classList.remove("curtain-think-highlight");
-    wordElement.classList.toggle("curtain-brand-word", withRegisteredMark);
     wordText.textContent = word;
-    registeredMark.hidden = !withRegisteredMark;
 
     gsap.set(wordElement, { backgroundPosition: "100% 50%" });
   });
 
-  const revealWord = contextSafe(
-    (withTracking = false, isBrandWord = false) => {
-      const finalLetterSpacing = isBrandWord ? "0.16em" : "-0.03em";
-
-      gsap.fromTo(
-        wordElement,
-        {
-          autoAlpha: 0,
-          scale: 1.015,
-          letterSpacing: withTracking ? "0.02em" : finalLetterSpacing,
-        },
-        {
-          autoAlpha: 1,
-          scale: 1,
-          letterSpacing: finalLetterSpacing,
-          duration: 0.45,
-          ease: "power3.out",
-        },
-      );
-    },
-  );
+  const revealWord = contextSafe((withTracking = false) => {
+    gsap.fromTo(
+      wordElement,
+      {
+        autoAlpha: 0,
+        scale: 1.015,
+        letterSpacing: withTracking ? "0.02em" : "-0.03em",
+      },
+      {
+        autoAlpha: 1,
+        scale: 1,
+        letterSpacing: "-0.03em",
+        duration: 0.45,
+        ease: "power3.out",
+      },
+    );
+  });
 
   const sweepSpectrum = contextSafe(() => {
     gsap.fromTo(
@@ -145,33 +137,28 @@ function createIntroTimeline({
       },
       "build+=1",
     )
-    .addLabel("signature", "build+=1.3")
+    .addLabel("signoff", "build+=1.3")
     .call(
       () => {
-        swapWord("Manyas", true);
-        revealWord(false, true);
+        swapWord(copy.signoff);
+        revealWord();
       },
       [],
-      "signature",
+      "signoff",
     )
-    .fromTo(
-      "[data-curtain-signoff]",
-      { autoAlpha: 0, y: 10 },
-      { autoAlpha: 1, y: 0, duration: 0.35 },
-      "signature+=0.2",
-    )
+    .addLabel("reveal", "signoff+=1.2")
+    .call(resetScroll, [], "reveal")
+    .call(setContentBlocked, [false], "reveal")
     .to(
       content,
       {
         y: -24,
         autoAlpha: 0,
-        duration: 0.35,
-        ease: "power2.in",
+        duration: PANEL_DURATION,
+        ease: "power3.inOut",
       },
-      "signature+=1.1",
+      "reveal",
     )
-    .addLabel("reveal")
-    .call(setContentBlocked, [false], "reveal")
     .to(grid, { autoAlpha: 0, duration: 0.25, ease: "power2.out" }, "reveal")
     .to(
       panels,
