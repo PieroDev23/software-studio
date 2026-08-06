@@ -5,6 +5,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -57,6 +58,26 @@ function CurtainTransition({ children }) {
   const finishTransition = useCallback(() => {
     transition?.onComplete?.();
     setTransition(null);
+  }, [transition]);
+
+  useEffect(() => {
+    if (!transition) return;
+
+    const cancelTransition = (event) => {
+      if (event.type === "pageshow" && !event.persisted) return;
+
+      transition.onComplete?.();
+      setContentBlocked(false);
+      setTransition(null);
+    };
+
+    window.addEventListener("popstate", cancelTransition);
+    window.addEventListener("pageshow", cancelTransition);
+
+    return () => {
+      window.removeEventListener("popstate", cancelTransition);
+      window.removeEventListener("pageshow", cancelTransition);
+    };
   }, [transition]);
 
   const destinationReady = Boolean(

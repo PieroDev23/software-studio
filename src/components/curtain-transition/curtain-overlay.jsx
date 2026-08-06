@@ -111,7 +111,7 @@ function CurtainOverlay({
                   <span
                     ref={wordRef}
                     data-curtain-word
-                    className="curtain-spectrum curtain-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-normal px-[0.06em] pb-[0.18em] sm:whitespace-nowrap"
+                    className="curtain-spectrum curtain-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-pre-line px-[0.06em] pb-[0.18em]"
                   >
                     <span data-curtain-word-text>{copy.think}</span>
                   </span>
