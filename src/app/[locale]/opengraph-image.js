@@ -26,13 +26,13 @@ export default async function Image({ params }) {
 
   const subtitle =
     locale === "en"
-      ? "Small team. Serious software."
-      : "Criterio senior para productos que importan";
+      ? "Small team. Big thinking."
+      : "Equipo pequeño. Gran visión.";
 
   const title =
     locale === "en"
-      ? "Small team. Serious software."
-      : "Criterio senior para productos que importan";
+      ? "Small team. Big thinking."
+      : "Equipo pequeño. Gran visión.";
 
   const buttonText =
     locale === "en" ? "MAKE THE RIGHT DECISION" : "HAZ LA DECISION CORRECTA";
