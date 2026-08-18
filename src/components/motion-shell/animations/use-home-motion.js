@@ -271,6 +271,142 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
 
       const parallaxMedia = gsap.matchMedia();
 
+      const setupEngagementMotion = ({
+        headerTravel,
+        numberTravel,
+        titleTravel,
+        descriptionTravel,
+      }) => {
+        const engagement = root.querySelector("[data-engagement-section]");
+        const engagementHeader = root.querySelector(
+          "[data-parallax-engagement-header]",
+        );
+
+        if (engagement && engagementHeader) {
+          gsap.fromTo(
+            engagementHeader,
+            { y: headerTravel },
+            {
+              y: -headerTravel,
+              ease: "none",
+              scrollTrigger: {
+                trigger: engagement,
+                start: "clamp(top bottom)",
+                end: "clamp(top top)",
+                scrub: 0.65,
+              },
+            },
+          );
+        }
+
+        const engagementTimeline = root.querySelector(
+          "[data-engagement-timeline]",
+        );
+        const engagementProgress = root.querySelector(
+          "[data-engagement-progress]",
+        );
+
+        if (engagementTimeline && engagementProgress) {
+          gsap.fromTo(
+            engagementProgress,
+            { scaleY: 0 },
+            {
+              scaleY: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: engagementTimeline,
+                start: "clamp(top center)",
+                end: "clamp(bottom center)",
+                scrub: 0.45,
+              },
+            },
+          );
+        }
+
+        const engagementRows = gsap.utils.toArray(
+          root.querySelectorAll("[data-engagement-row]"),
+        );
+
+        for (const row of engagementRows) {
+          const number = row.querySelector("[data-engagement-number]");
+          const title = row.querySelector("[data-engagement-title]");
+          const description = row.querySelector(
+            "[data-engagement-description]",
+          );
+          const pulseRing = row.querySelector("[data-engagement-pulse]");
+          const nodeDot = row.querySelector("[data-engagement-dot]");
+
+          if (!number || !title || !description) continue;
+
+          if (pulseRing && nodeDot) {
+            const pulseNode = () => {
+              gsap
+                .timeline()
+                .fromTo(
+                  pulseRing,
+                  { scale: 0.8, autoAlpha: 0.8 },
+                  {
+                    scale: 3.2,
+                    autoAlpha: 0,
+                    duration: 0.7,
+                    ease: "power2.out",
+                    overwrite: true,
+                  },
+                )
+                .fromTo(
+                  nodeDot,
+                  { scale: 1 },
+                  {
+                    scale: 1.8,
+                    duration: 0.18,
+                    repeat: 1,
+                    yoyo: true,
+                    ease: "power2.out",
+                    overwrite: true,
+                  },
+                  0,
+                );
+            };
+
+            ScrollTrigger.create({
+              trigger: row,
+              start: "clamp(center center)",
+              end: "clamp(bottom center)",
+              onEnter: pulseNode,
+              onEnterBack: pulseNode,
+            });
+          }
+
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: row,
+                start: "clamp(top bottom)",
+                end: "clamp(bottom top)",
+                scrub: 0.65,
+              },
+            })
+            .fromTo(
+              number,
+              { y: numberTravel },
+              { y: -numberTravel, ease: "none" },
+              0,
+            )
+            .fromTo(
+              title,
+              { y: titleTravel },
+              { y: -titleTravel, ease: "none" },
+              0,
+            )
+            .fromTo(
+              description,
+              { y: -descriptionTravel },
+              { y: descriptionTravel, ease: "none" },
+              0,
+            );
+        }
+      };
+
       parallaxMedia.add("(min-width: 768px)", () => {
         const heroContent = root.querySelector("[data-parallax-hero-content]");
 
@@ -313,6 +449,13 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
             },
           );
         }
+
+        setupEngagementMotion({
+          headerTravel: 36,
+          numberTravel: 28,
+          titleTravel: 14,
+          descriptionTravel: 10,
+        });
 
         const teamInitials = gsap.utils.toArray(
           root.querySelectorAll("[data-parallax-team-initials]"),
@@ -362,6 +505,17 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
             },
           );
         }
+
+        ScrollTrigger.refresh();
+      });
+
+      parallaxMedia.add("(max-width: 767px)", () => {
+        setupEngagementMotion({
+          headerTravel: 18,
+          numberTravel: 14,
+          titleTravel: 8,
+          descriptionTravel: 6,
+        });
 
         ScrollTrigger.refresh();
       });

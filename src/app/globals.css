@@ -240,14 +240,30 @@ html:has(.curtain-transition) {
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 8%,
-    black 92%,
+    black 4%,
+    black 96%,
     transparent
   );
 }
 
 .company-marquee-track {
-  animation: company-marquee 32s linear infinite;
+  animation: company-marquee 24s linear infinite;
+}
+
+@media (min-width: 40rem) {
+  .company-marquee {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  .company-marquee-track {
+    animation-duration: 32s;
+  }
 }
 
 .curtain-panel[data-layer="0"] {

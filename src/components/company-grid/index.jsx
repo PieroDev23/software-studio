@@ -25,7 +25,7 @@ export default function CompanyGrid() {
   const renderMarqueeCompanies = (repeated = false) => (
     <ul
       className={cn(
-        "flex shrink-0 gap-3 pr-3",
+        "flex shrink-0 gap-1.5 pr-1.5 sm:gap-3 sm:pr-3",
         repeated && "company-marquee-repeated",
       )}
       aria-hidden={repeated || undefined}
@@ -33,13 +33,13 @@ export default function CompanyGrid() {
       {companies.map((company) => (
         <li
           key={`${repeated ? "repeat" : "initial"}-${company.name}`}
-          className="flex h-24 min-w-52 shrink-0 items-center justify-center px-8 py-5"
+          className="flex h-16 min-w-36 shrink-0 items-center justify-center px-4 py-3 sm:h-24 sm:min-w-52 sm:px-8 sm:py-5"
         >
           <Image
             src={company.logo}
             alt={company.name}
-            className="h-10 w-auto max-w-36 object-contain"
-            sizes="144px"
+            className="h-7 w-auto max-w-28 object-contain sm:h-10 sm:max-w-36"
+            sizes="(max-width: 639px) 112px, 144px"
           />
         </li>
       ))}
@@ -48,7 +48,7 @@ export default function CompanyGrid() {
 
   return (
     <section
-      className="bg-inverse py-8 text-inverse-foreground sm:py-12"
+      className="bg-inverse py-6 text-inverse-foreground sm:py-12"
       aria-labelledby="companies-title"
     >
       <div className="content-container px-5 sm:px-8 lg:px-12">
@@ -58,7 +58,7 @@ export default function CompanyGrid() {
           </TypographyEyebrow>
         </div>
 
-        <div className="company-marquee mt-7 overflow-hidden">
+        <div className="company-marquee mt-4 overflow-hidden sm:mt-7">
           <div className="company-marquee-track flex w-max">
             {renderMarqueeCompanies()}
             {renderMarqueeCompanies(true)}

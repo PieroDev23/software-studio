@@ -16,7 +16,7 @@ import axoLogo from "../../../assets/images/logos_bn_png/negro/axo-longevity_neg
 
 function CardMeta({ client, logo, logoClassName = "h-5", year, service }) {
   return (
-    <div className="relative z-10 flex items-start justify-between gap-4 font-mono text-xs font-medium uppercase tracking-[0.1em] opacity-80 sm:text-sm sm:tracking-[0.12em]">
+    <div className="relative z-10 flex flex-col items-start justify-between gap-4 font-mono text-xs font-medium uppercase tracking-[0.1em] opacity-80 sm:flex-row sm:text-sm sm:tracking-[0.12em]">
       {logo ? (
         <div className="flex min-w-0 items-center gap-3">
           <Image
@@ -37,7 +37,9 @@ function CardMeta({ client, logo, logoClassName = "h-5", year, service }) {
           <TerminalMeta text={year ? `${client} / ${year}` : client} />
         </p>
       )}
-      <p className="max-w-[48%] text-right leading-[1.35]">{service}</p>
+      <p className="max-w-full text-left leading-[1.35] sm:max-w-[48%] sm:text-right">
+        {service}
+      </p>
     </div>
   );
 }
@@ -66,7 +68,7 @@ export default function WorkGrid() {
           </TypographyDisplay>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:mt-20 lg:grid-cols-12">
+        <div className="mt-12 grid gap-6 sm:mt-20 sm:gap-4 lg:grid-cols-12">
           <TransitionLink
             data-reveal
             href="/work/pchujoy"
@@ -75,7 +77,7 @@ export default function WorkGrid() {
             className="block cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground lg:col-span-7 lg:row-span-2"
             aria-label={t("viewAria", { client: "PCHUJOY" })}
           >
-            <article className="case-card case-card-atlas case-card-preview flex h-full min-h-[30rem] flex-col justify-between p-5 sm:min-h-[44rem] sm:p-8 lg:min-h-[54rem]">
+            <article className="case-card case-card-atlas case-card-preview flex h-full min-h-[32rem] flex-col justify-between p-6 sm:min-h-[44rem] sm:p-8 lg:min-h-[54rem]">
               <div className="case-card-silk" aria-hidden="true">
                 <Silk
                   speed={4}
@@ -119,7 +121,7 @@ export default function WorkGrid() {
             href="/work/samay"
             transitionLabel={t("cards.northstar.loader")}
             transitionVariant="case-study"
-            className="case-card case-card-northstar flex min-h-72 min-w-0 cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
+            className="case-card case-card-northstar flex min-h-80 min-w-0 cursor-pointer flex-col justify-between p-6 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
             aria-label={t("viewAria", { client: "SAMAY" })}
           >
             <div className="case-card-silk" aria-hidden="true">
@@ -163,7 +165,7 @@ export default function WorkGrid() {
             href="/work/axo-longevity"
             transitionLabel={t("cards.prism.loader")}
             transitionVariant="case-study"
-            className="case-card case-card-prism flex min-h-72 cursor-pointer flex-col justify-between p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
+            className="case-card case-card-prism flex min-h-80 cursor-pointer flex-col justify-between p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-96 sm:p-8 lg:col-span-5"
             aria-label={t("viewAria", { client: "AXO Longevity" })}
           >
             <div className="case-card-silk" aria-hidden="true">
@@ -208,7 +210,7 @@ export default function WorkGrid() {
             href="/work/filo"
             transitionLabel={t("cards.filo.loader")}
             transitionVariant="case-study"
-            className="case-card case-card-filo flex min-h-[30rem] cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:p-8 lg:col-span-6"
+            className="case-card case-card-filo flex min-h-[32rem] cursor-pointer flex-col justify-between p-6 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-[30rem] sm:p-8 lg:col-span-6"
             aria-label={t("viewAria", { client: "FILO" })}
           >
             <div className="case-card-silk" aria-hidden="true">
@@ -248,7 +250,7 @@ export default function WorkGrid() {
             href="/work/ultimate-agencia"
             transitionLabel={t("cards.ultimate.loader")}
             transitionVariant="case-study"
-            className="case-card case-card-ultimate flex min-h-[30rem] cursor-pointer flex-col justify-between p-5 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:p-8 lg:col-span-6"
+            className="case-card case-card-ultimate flex min-h-[32rem] cursor-pointer flex-col justify-between p-6 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-inverse-foreground sm:min-h-[30rem] sm:p-8 lg:col-span-6"
             aria-label={t("viewAria", { client: "Ultimate Agencia" })}
           >
             <div className="case-card-silk" aria-hidden="true">
