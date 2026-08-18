@@ -10,16 +10,22 @@ function ContactSection() {
   const translate = useTranslations("Contact");
   const locale = useLocale();
   const form = useContactForm(locale);
-  const title = translate("title");
+  const titleLead = translate("titleLead");
+  const titleCta = translate("titleCta");
   const description = translate("description");
 
   return (
     <section id="contacto" data-parallax-contact className="bg-inverse">
       <div className="grid overflow-hidden lg:min-h-svh lg:grid-cols-2">
-        <ContactAside title={title} description={description} />
+        <ContactAside
+          titleLead={titleLead}
+          titleCta={titleCta}
+          description={description}
+        />
         <ContactForm
           form={form}
-          title={title}
+          titleLead={titleLead}
+          titleCta={titleCta}
           description={description}
           translate={translate}
         />

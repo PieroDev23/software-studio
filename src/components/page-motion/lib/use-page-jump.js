@@ -1,13 +1,9 @@
-import { useLenis } from "lenis/react";
 import { useEffect, useState } from "react";
 
 import { smoothScrollTo } from "@/lib/smooth-scroll";
 
-const PAGE_JUMP_LERP = 0.06;
-
 function usePageJump() {
   const [isAtPageEnd, setIsAtPageEnd] = useState(false);
-  const lenis = useLenis();
 
   useEffect(() => {
     const updatePageEnd = () => {
@@ -29,7 +25,7 @@ function usePageJump() {
 
   const jumpToPageBoundary = () => {
     const target = isAtPageEnd ? 0 : document.documentElement.scrollHeight;
-    smoothScrollTo(lenis, target, { lerp: PAGE_JUMP_LERP });
+    smoothScrollTo(target);
   };
 
   return { isAtPageEnd, jumpToPageBoundary };

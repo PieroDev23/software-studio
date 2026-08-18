@@ -1,10 +1,23 @@
-import { useLenis } from "lenis/react";
+import Image from "next/image";
 import { useCallback, useEffect, useRef } from "react";
 
 import { jumpScrollTo } from "@/lib/smooth-scroll";
+import axoLogo from "../../../assets/images/logos_bn_png/blanco/axo-longevity_blanco.png";
+import bcpLogo from "../../../assets/images/logos_bn_png/blanco/bcp_blanco.png";
+import filoLogo from "../../../assets/images/logos_bn_png/blanco/filo_blanco.png";
+import pchujoyLogo from "../../../assets/images/logos_bn_png/blanco/pchujoy_blanco.png";
+import ultimateLogo from "../../../assets/images/logos_bn_png/blanco/ultimate_agencia_white.png";
 
 import { useCurtainAnimation } from "./animations/use-curtain-animation";
 import { CURTAIN_COLUMNS, CURTAIN_LAYERS } from "./lib/curtain-config";
+
+const caseStudyLogos = {
+  "AXO LONGEVITY": { src: axoLogo, className: "h-8 sm:h-10" },
+  FILO: { src: filoLogo, className: "h-12 sm:h-14" },
+  PCHUJOY: { src: pchujoyLogo, className: "h-9 sm:h-11" },
+  SAMAY: { src: bcpLogo, className: "h-8 sm:h-10" },
+  "ULTIMATE AGENCIA": { src: ultimateLogo, className: "h-8 sm:h-10" },
+};
 
 function CurtainOverlay({
   transition,
@@ -17,10 +30,9 @@ function CurtainOverlay({
   const curtainRef = useRef(null);
   const wordRef = useRef(null);
   const exitRef = useRef(null);
-  const lenis = useLenis();
   const resetScroll = useCallback(() => {
-    jumpScrollTo(lenis, 0);
-  }, [lenis]);
+    jumpScrollTo(0);
+  }, []);
 
   useCurtainAnimation({
     curtainRef,
@@ -38,17 +50,8 @@ function CurtainOverlay({
   useEffect(() => {
     if (!destinationReady) return;
 
-    if (transition.scrollTarget !== undefined) {
-      const target =
-        typeof transition.scrollTarget === "string"
-          ? (document.getElementById(transition.scrollTarget) ?? 0)
-          : transition.scrollTarget;
-
-      jumpScrollTo(lenis, target);
-    }
-
     exitRef.current?.();
-  }, [destinationReady, lenis, transition.scrollTarget]);
+  }, [destinationReady]);
 
   const isIntro = transition.type === "intro";
   const isCaseStudy = transition.variant === "case-study";
@@ -56,6 +59,7 @@ function CurtainOverlay({
     ? transition.phrase.split("\n")
     : [];
   const caseStudyCopy = caseStudyCopyLines.join("\n");
+  const caseStudyLogo = caseStudyLogos[caseStudyClient];
 
   return (
     <output
@@ -111,7 +115,7 @@ function CurtainOverlay({
                   <span
                     ref={wordRef}
                     data-curtain-word
-                    className="curtain-spectrum curtain-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-pre-line px-[0.06em] pb-[0.18em]"
+                    className="curtain-spectrum curtain-think-highlight -mb-[0.18em] inline-block max-w-full whitespace-pre-line px-[0.06em] pb-[0.18em] leading-[1.15]"
                   >
                     <span data-curtain-word-text>{copy.think}</span>
                   </span>
@@ -119,13 +123,6 @@ function CurtainOverlay({
               </p>
             </div>
           </div>
-
-          <p
-            data-curtain-meta
-            className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground"
-          >
-            {copy.disciplines}
-          </p>
         </div>
       ) : (
         <div
@@ -134,12 +131,20 @@ function CurtainOverlay({
         >
           {isCaseStudy ? (
             <div className="flex max-w-6xl flex-col items-center text-center">
-              <p
-                data-curtain-copy
-                className="font-mono text-base font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-lg"
-              >
-                {caseStudyClient}
-              </p>
+              <div data-curtain-copy>
+                {caseStudyLogo ? (
+                  <Image
+                    src={caseStudyLogo.src}
+                    alt={caseStudyClient}
+                    className={`${caseStudyLogo.className} w-auto max-w-64 object-contain`}
+                    sizes="256px"
+                  />
+                ) : (
+                  <p className="font-mono text-base font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-lg">
+                    {caseStudyClient}
+                  </p>
+                )}
+              </div>
               <p
                 data-curtain-copy
                 className="mt-6 whitespace-pre-line text-4xl font-medium tracking-[0.030rem] sm:mt-8 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"

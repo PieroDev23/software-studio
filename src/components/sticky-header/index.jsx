@@ -1,6 +1,5 @@
 "use client";
 
-import { useLenis } from "lenis/react";
 import { MenuIcon, XIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -12,9 +11,8 @@ import { useStickyHeader } from "./lib/use-sticky-header";
 function StickyHeader() {
   const t = useTranslations("StickyHeader");
   const hero = useTranslations("Hero");
-  const lenis = useLenis();
   const { visible, mobileOpen, navigateToSection, toggleMobileMenu } =
-    useStickyHeader(lenis);
+    useStickyHeader();
 
   return (
     <header

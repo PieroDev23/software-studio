@@ -11,6 +11,8 @@ import {
   useState,
 } from "react";
 
+import { jumpScrollTo } from "@/lib/smooth-scroll";
+
 import { CurtainOverlay } from "./curtain-overlay";
 import { getCurtainCopy, getRoute } from "./lib/curtain-copy";
 
@@ -32,6 +34,7 @@ function CurtainTransition({ children }) {
   const pathname = usePathname();
   const route = getRoute(pathname);
   const transitionId = useRef(0);
+  const completedScrollTarget = useRef(null);
   const initialTransition =
     route.pathname === "/" ? { id: 0, type: "intro" } : null;
   const [transition, setTransition] = useState(initialTransition);
@@ -56,8 +59,26 @@ function CurtainTransition({ children }) {
   );
 
   const finishTransition = useCallback(() => {
+    completedScrollTarget.current = transition?.scrollTarget ?? 0;
     transition?.onComplete?.();
     setTransition(null);
+  }, [transition]);
+
+  useEffect(() => {
+    if (transition || completedScrollTarget.current === null) return;
+
+    const scrollTarget = completedScrollTarget.current;
+    completedScrollTarget.current = null;
+    const frame = requestAnimationFrame(() => {
+      const target =
+        typeof scrollTarget === "string"
+          ? (document.getElementById(scrollTarget) ?? 0)
+          : scrollTarget;
+
+      jumpScrollTo(target);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [transition]);
 
   useEffect(() => {

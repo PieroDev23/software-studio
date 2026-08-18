@@ -2,7 +2,7 @@ import { TypographyEyebrow } from "@/components/ui/typography";
 
 import { ContactFields } from "./contact-fields";
 
-function ContactForm({ form, title, description, translate }) {
+function ContactForm({ form, titleLead, titleCta, description, translate }) {
   return (
     <div className="flex items-center bg-inverse px-5 py-14 text-inverse-foreground sm:min-h-svh sm:px-10 sm:py-16 lg:px-12 xl:px-16">
       <form
@@ -24,7 +24,10 @@ function ContactForm({ form, title, description, translate }) {
 
         <div className="mb-12 flex flex-col gap-5 lg:hidden">
           <h2 className="text-4xl leading-11 font-medium tracking-[0.030rem]">
-            {title}
+            <span className="block">{titleLead}</span>
+            <span data-contact-title-cta className="contact-title-cta">
+              {titleCta}
+            </span>
           </h2>
           <p className="max-w-xl text-lg leading-7 text-inverse-muted">
             {description}

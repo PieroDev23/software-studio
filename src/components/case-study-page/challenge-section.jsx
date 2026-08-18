@@ -1,10 +1,19 @@
 import { TypographyEyebrow } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
 import { StoryMediaFrame } from "./story-media-section";
 
 function ChallengeSection({ study, label, translate }) {
+  const hasChallengeMedia = Boolean(study.media?.challenge?.src);
+
   return (
     <section className="section-frame bg-inverse text-inverse-foreground">
-      <div className="content-container grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] lg:gap-16 xl:gap-24">
+      <div
+        className={cn(
+          "content-container",
+          hasChallengeMedia &&
+            "grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)] lg:gap-16 xl:gap-24",
+        )}
+      >
         <div>
           <TypographyEyebrow tone="inverse">{label}</TypographyEyebrow>
           <h2 className="mt-10 max-w-[20ch] text-4xl leading-11 font-medium tracking-[0.030rem] sm:mt-12 sm:text-5xl md:leading-15 lg:text-6xl lg:leading-20 xl:text-7xl">
@@ -16,16 +25,18 @@ function ChallengeSection({ study, label, translate }) {
             ))}
           </div>
         </div>
-        <StoryMediaFrame
-          study={study}
-          translate={translate}
-          id="challenge"
-          index={1}
-          tone="inverse"
-          aspect="aspect-[4/5]"
-          sizes="(max-width: 1024px) 100vw, 34vw"
-          className="w-full"
-        />
+        {hasChallengeMedia ? (
+          <StoryMediaFrame
+            study={study}
+            translate={translate}
+            id="challenge"
+            index={1}
+            tone="inverse"
+            aspect="aspect-[4/5]"
+            sizes="(max-width: 1024px) 100vw, 34vw"
+            className="w-full"
+          />
+        ) : null}
       </div>
     </section>
   );

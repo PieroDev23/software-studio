@@ -1,7 +1,5 @@
 "use client";
 
-import { useLenis } from "lenis/react";
-
 import { Link } from "@/i18n/navigation";
 import { smoothScrollTo } from "@/lib/smooth-scroll";
 import { cn } from "@/lib/utils";
@@ -19,7 +17,6 @@ function CtaLink({
   tone = "default",
   ...props
 }) {
-  const lenis = useLenis();
   const isPageAnchor = typeof href === "string" && href.startsWith("#");
   const Component = isPageAnchor ? "a" : Link;
 
@@ -38,7 +35,7 @@ function CtaLink({
 
     event.preventDefault();
 
-    smoothScrollTo(lenis, target);
+    smoothScrollTo(target);
   };
 
   return (

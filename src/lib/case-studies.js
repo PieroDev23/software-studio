@@ -1,5 +1,3 @@
-import phillipPhoto from "../../assets/images/phillip.webp";
-
 const caseStudies = {
   pchujoy: {
     slug: "pchujoy",
@@ -31,14 +29,6 @@ const caseStudies = {
     challenge: [
       "The challenge was not creating another giveaway platform. It was designing infrastructure capable of supporting subscriptions, recurring campaigns and future creators within the same ecosystem.",
     ],
-    media: {
-      challenge: {
-        src: phillipPhoto,
-        alt: "Phillip Chu Joy holding a video game in front of stacked PlayStation 5 consoles.",
-        caption: "Phillip Chu Joy",
-        className: "object-[58%_center]",
-      },
-    },
     moves: [
       {
         number: "01",
@@ -305,14 +295,6 @@ const caseStudiesEs = {
     challenge: [
       "El reto no era crear otra plataforma de sorteos. Era diseñar una infraestructura capaz de sostener suscripciones, campañas recurrentes y futuros creadores dentro del mismo ecosistema.",
     ],
-    media: {
-      challenge: {
-        src: phillipPhoto,
-        alt: "Phillip Chu Joy sosteniendo un videojuego frente a varias consolas PlayStation 5.",
-        caption: "Phillip Chu Joy",
-        className: "object-[58%_center]",
-      },
-    },
     moves: [
       {
         number: "01",

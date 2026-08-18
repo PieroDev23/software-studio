@@ -1,6 +1,6 @@
 import Silk from "@/components/silk";
 
-function ContactAside({ title, description }) {
+function ContactAside({ titleLead, titleCta, description }) {
   return (
     <div className="relative isolate hidden overflow-hidden bg-background text-foreground lg:flex lg:min-h-svh lg:p-12 xl:p-16">
       <div className="absolute inset-0 -z-10 opacity-60" aria-hidden="true">
@@ -18,7 +18,10 @@ function ContactAside({ title, description }) {
         className="flex w-full flex-col justify-between gap-12 sm:gap-16"
       >
         <h2 className="max-w-2xl text-4xl leading-11 font-medium tracking-[0.030rem] sm:text-5xl sm:leading-15 lg:text-6xl lg:leading-20 xl:text-8xl xl:leading-25">
-          {title}
+          <span className="block">{titleLead}</span>
+          <span data-contact-title-cta className="contact-title-cta">
+            {titleCta}
+          </span>
         </h2>
 
         <div data-reveal className="flex max-w-xl flex-col gap-8">

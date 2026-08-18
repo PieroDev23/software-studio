@@ -61,6 +61,7 @@ function useCurtainAnimation({
             blockContent(false);
             finish();
           });
+          resetIntroScroll();
           coverDestination();
           if (destinationReadyRef.current) exitRef.current();
           return;
@@ -86,6 +87,7 @@ function useCurtainAnimation({
           onCovered: coverDestination,
           setContentBlocked: blockContent,
           finishTransition: finish,
+          resetScroll: resetIntroScroll,
         });
         exitRef.current = animation.playExit;
       },

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
+
 import Silk from "@/components/silk";
 import { TerminalMeta } from "@/components/terminal-slash";
 import TransitionLink from "@/components/transition-link";
@@ -6,13 +8,35 @@ import {
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
+import bcpLogo from "../../../assets/images/logos_bn_png/blanco/bcp_blanco.png";
+import filoLogo from "../../../assets/images/logos_bn_png/blanco/filo_blanco.png";
+import pchujoyLogo from "../../../assets/images/logos_bn_png/blanco/pchujoy_blanco.png";
+import ultimateLogo from "../../../assets/images/logos_bn_png/blanco/ultimate_agencia_white.png";
+import axoLogo from "../../../assets/images/logos_bn_png/negro/axo-longevity_negro.png";
 
-function CardMeta({ client, year, service }) {
+function CardMeta({ client, logo, logoClassName = "h-5", year, service }) {
   return (
     <div className="relative z-10 flex items-start justify-between gap-4 font-mono text-xs font-medium uppercase tracking-[0.1em] opacity-80 sm:text-sm sm:tracking-[0.12em]">
-      <p>
-        <TerminalMeta text={year ? `${client} / ${year}` : client} />
-      </p>
+      {logo ? (
+        <div className="flex min-w-0 items-center gap-3">
+          <Image
+            src={logo}
+            alt={client}
+            className={`${logoClassName} w-auto max-w-32 object-contain sm:max-w-40`}
+            sizes="160px"
+          />
+          {year ? (
+            <>
+              <span aria-hidden="true">/</span>
+              <span>{year}</span>
+            </>
+          ) : null}
+        </div>
+      ) : (
+        <p>
+          <TerminalMeta text={year ? `${client} / ${year}` : client} />
+        </p>
+      )}
       <p className="max-w-[48%] text-right leading-[1.35]">{service}</p>
     </div>
   );
@@ -63,6 +87,8 @@ export default function WorkGrid() {
               </div>
               <CardMeta
                 client="PCHUJOY"
+                logo={pchujoyLogo}
+                logoClassName="h-7"
                 year="2025"
                 service={t("cards.atlas.service")}
               />
@@ -107,6 +133,7 @@ export default function WorkGrid() {
             </div>
             <CardMeta
               client="SAMAY BCP"
+              logo={bcpLogo}
               year="2025"
               service={t("cards.northstar.service")}
             />
@@ -150,6 +177,8 @@ export default function WorkGrid() {
             </div>
             <CardMeta
               client="AXO Longevity"
+              logo={axoLogo}
+              logoClassName="h-7"
               year="2026"
               service={t("cards.prism.service")}
             />
@@ -193,6 +222,8 @@ export default function WorkGrid() {
             </div>
             <CardMeta
               client="FILO"
+              logo={filoLogo}
+              logoClassName="h-7"
               year="2025"
               service={t("cards.filo.service")}
             />
@@ -231,6 +262,7 @@ export default function WorkGrid() {
             </div>
             <CardMeta
               client="ULTIMATE AGENCIA"
+              logo={ultimateLogo}
               year="2023"
               service={t("cards.ultimate.service")}
             />

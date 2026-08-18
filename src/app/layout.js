@@ -1,9 +1,7 @@
 import { DM_Mono, Inter_Tight } from "next/font/google";
-import "lenis/dist/lenis.css";
 import "./globals.css";
 
 import { CurtainTransition } from "@/components/curtain-transition";
-import SmoothScrollProvider from "@/components/smooth-scroll-provider";
 import WebVitals from "@/components/web-vitals";
 
 const interTight = Inter_Tight({
@@ -26,12 +24,10 @@ export default function RootLayout({ children }) {
       className={`${interTight.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <SmoothScrollProvider>
-          <CurtainTransition>
-            <WebVitals />
-            {children}
-          </CurtainTransition>
-        </SmoothScrollProvider>
+        <CurtainTransition>
+          <WebVitals />
+          {children}
+        </CurtainTransition>
       </body>
     </html>
   );

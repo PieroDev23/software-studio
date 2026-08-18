@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { smoothScrollTo } from "@/lib/smooth-scroll";
 
-function useStickyHeader(lenis) {
+function useStickyHeader() {
   const [visible, setVisible] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -33,7 +33,7 @@ function useStickyHeader(lenis) {
     if (!target) return;
 
     setMobileOpen(false);
-    smoothScrollTo(lenis, target);
+    smoothScrollTo(target);
   };
 
   const toggleMobileMenu = () => {

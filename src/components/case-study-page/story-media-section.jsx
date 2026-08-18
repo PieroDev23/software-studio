@@ -20,7 +20,9 @@ const mediaLayouts = {
   ],
 };
 
-function MediaFrame({ media, slot, index, study, tone, translate }) {
+function MediaFrame({ media, slot, index, tone, translate }) {
+  if (!media?.src) return null;
+
   const label = translate(`media.${slot.id}`);
   const caption = media?.caption ?? label;
   const inverse = tone === "inverse";
@@ -33,38 +35,13 @@ function MediaFrame({ media, slot, index, study, tone, translate }) {
           slot.aspect,
         )}
       >
-        {media?.src ? (
-          <Image
-            src={media.src}
-            alt={media.alt ?? ""}
-            fill
-            sizes={slot.sizes}
-            className={cn("object-cover", media.className)}
-          />
-        ) : (
-          <div
-            role="img"
-            aria-label={`${translate("media.placeholder")}: ${label}`}
-            className="absolute inset-0"
-          >
-            <div className="absolute inset-x-0 top-1/2 border-t border-current/10" />
-            <div className="absolute inset-y-0 left-1/2 border-l border-current/10" />
-            <div className="absolute inset-[10%] border border-current/10" />
-
-            <div className="absolute left-4 top-4 font-mono text-[0.65rem] uppercase tracking-[0.18em] opacity-45 sm:left-6 sm:top-6">
-              {String(index).padStart(2, "0")} / {study.client}
-            </div>
-            <div className="absolute right-4 top-4 font-mono text-[0.65rem] uppercase tracking-[0.18em] opacity-45 sm:right-6 sm:top-6">
-              {label}
-            </div>
-
-            <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] opacity-60 sm:text-sm">
-                {translate("media.placeholder")}
-              </span>
-            </div>
-          </div>
-        )}
+        <Image
+          src={media.src}
+          alt={media.alt ?? ""}
+          fill
+          sizes={slot.sizes}
+          className={cn("object-cover", media.className)}
+        />
       </div>
 
       <figcaption
@@ -97,7 +74,6 @@ function StoryMediaFrame({
       media={study.media?.[id]}
       slot={{ id, aspect, className, sizes }}
       index={index}
-      study={study}
       tone={tone}
       translate={translate}
     />
@@ -112,8 +88,11 @@ function StoryMediaSection({
 }) {
   const slots = mediaLayouts[layout];
   const media = study.media ?? {};
+  const populatedSlots = slots.filter((slot) => media[slot.id]?.src);
   const offsets = { details: 2 };
   const inverse = tone === "inverse";
+
+  if (populatedSlots.length === 0) return null;
 
   return (
     <section
@@ -146,13 +125,12 @@ function StoryMediaSection({
         </div>
 
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
-          {slots.map((slot, slotIndex) => (
+          {populatedSlots.map((slot, slotIndex) => (
             <MediaFrame
               key={slot.id}
               media={media[slot.id]}
               slot={slot}
               index={offsets[layout] + slotIndex}
-              study={study}
               tone={tone}
               translate={translate}
             />

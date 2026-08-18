@@ -7,15 +7,10 @@ function resolveTargetTop(target) {
   return window.scrollY;
 }
 
-export function smoothScrollTo(lenis, target, options) {
+export function smoothScrollTo(target) {
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
-
-  if (lenis && !reducedMotion) {
-    lenis.scrollTo(target, options);
-    return;
-  }
 
   window.scrollTo({
     top: resolveTargetTop(target),
@@ -23,13 +18,18 @@ export function smoothScrollTo(lenis, target, options) {
   });
 }
 
-export function jumpScrollTo(lenis, target = 0) {
+export function jumpScrollTo(target = 0) {
   const top = resolveTargetTop(target);
   const root = document.documentElement;
+  const body = document.body;
   const previousScrollBehavior = root.style.scrollBehavior;
+  const previousOverflow = root.style.overflow;
 
   root.style.scrollBehavior = "auto";
-  lenis?.scrollTo(top, { immediate: true, force: true });
+  root.style.overflow = "auto";
   window.scrollTo({ top, left: 0, behavior: "auto" });
+  root.scrollTop = top;
+  body.scrollTop = top;
+  root.style.overflow = previousOverflow;
   root.style.scrollBehavior = previousScrollBehavior;
 }

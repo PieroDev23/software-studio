@@ -1,16 +1,22 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
+
 import { TypographyEyebrow } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
+import axoLogo from "../../../assets/images/logos_bn_png/negro/axo-longevity_negro.png";
+import bcpLogo from "../../../assets/images/logos_bn_png/negro/bcp_negro.png";
+import filoLogo from "../../../assets/images/logos_bn_png/negro/filo_negro.png";
+import keynuaLogo from "../../../assets/images/logos_bn_png/negro/keynua_negro.png";
+import pchujoyLogo from "../../../assets/images/logos_bn_png/negro/pchujoy_negro.png";
+import qempoLogo from "../../../assets/images/logos_bn_png/negro/qempo_negro.png";
 
 const companies = [
-  { name: "PCHUJOY" },
-  { name: "AXO Longevity" },
-  { name: "Filo" },
-  { name: "BCP" },
-  { name: "Keynua" },
-  { name: "Qempo" },
-  { name: "Vitally" },
-  { name: "Ultimate Agencia" },
+  { name: "PCHUJOY", logo: pchujoyLogo },
+  { name: "AXO Longevity", logo: axoLogo },
+  { name: "Filo", logo: filoLogo },
+  { name: "BCP", logo: bcpLogo },
+  { name: "Keynua", logo: keynuaLogo },
+  { name: "Qempo", logo: qempoLogo },
 ];
 
 export default function CompanyGrid() {
@@ -27,11 +33,14 @@ export default function CompanyGrid() {
       {companies.map((company) => (
         <li
           key={`${repeated ? "repeat" : "initial"}-${company.name}`}
-          className="flex min-w-40 shrink-0 items-center justify-center px-6 py-5"
+          className="flex h-24 min-w-52 shrink-0 items-center justify-center px-8 py-5"
         >
-          <span className="whitespace-nowrap text-xl font-medium uppercase tracking-tighter">
-            {company.name}
-          </span>
+          <Image
+            src={company.logo}
+            alt={company.name}
+            className="h-10 w-auto max-w-36 object-contain"
+            sizes="144px"
+          />
         </li>
       ))}
     </ul>

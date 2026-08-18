@@ -120,11 +120,21 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
           wordsClass: "motion-word",
           aria: "auto",
         });
+        const contactTitleCtas = gsap.utils.toArray(
+          heading.querySelectorAll("[data-contact-title-cta]"),
+        );
 
         splits.push(split);
         gsap.set(split.words, { yPercent: 140 });
         if (highlights.length > 0) {
           gsap.set(highlights, { "--highlight-progress": "0%" });
+        }
+        if (contactTitleCtas.length > 0) {
+          gsap.set(contactTitleCtas, {
+            "--contact-reveal": "100%",
+            "--contact-shadow-offset": "0em",
+            "--contact-shadow-opacity": 0,
+          });
         }
 
         headingAnimations.set(heading, () => {
@@ -145,6 +155,29 @@ export function useHomeMotion(contentRef, transitionReady, contentBlocked) {
                 ease: "power3.out",
               },
               ">-=0.32",
+            );
+          }
+
+          if (contactTitleCtas.length > 0) {
+            timeline.to(
+              contactTitleCtas,
+              {
+                "--contact-reveal": "0%",
+                duration: 0.45,
+                ease: "power3.inOut",
+              },
+              "<0.35",
+            );
+            timeline.set(contactTitleCtas, { clipPath: "none" });
+            timeline.to(
+              contactTitleCtas,
+              {
+                "--contact-shadow-offset": "0.09em",
+                "--contact-shadow-opacity": 1,
+                duration: 0.3,
+                ease: "power3.out",
+              },
+              ">-=0.05",
             );
           }
         });

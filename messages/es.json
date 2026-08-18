@@ -258,7 +258,8 @@
     ]
   },
   "Contact": {
-    "title": "¿Todavía no sabes qué construir? Hablemos.",
+    "titleLead": "¿Todavía no sabes qué construir?",
+    "titleCta": "Hablemos.",
     "description": "Trae la ambición, la incertidumbre y la decisión difícil. Encontraremos qué merece existir.",
     "eyebrow": "Empecemos una conversación",
     "name": "Nombre",
@@ -320,8 +321,7 @@
       "en": "Another language.\nSame intent.",
       "es": "Otro idioma.\nMisma intención."
     },
-    "location": "Lima / Global",
-    "disciplines": "Estrategia / Diseño / Ingeniería"
+    "location": "Lima / Global"
   },
   "Navigation": {
     "page": "Navegación de página",

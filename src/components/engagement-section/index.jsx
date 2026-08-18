@@ -31,32 +31,37 @@ export default function EngagementSection() {
           </TypographyDisplay>
         </div>
 
-        <div className="mt-12 grid border-t border-inverse-border sm:mt-20 lg:grid-cols-3">
+        <ol className="mt-12 border-t border-inverse-border sm:mt-20">
           {stages.map((stage) => (
-            <article
+            <li
               data-reveal
               key={stage.number}
-              className="flex min-h-[22rem] flex-col border-b border-inverse-border px-0 py-8 sm:min-h-[26rem] sm:p-8 lg:border-r lg:last:border-r-0"
+              className="grid border-b border-inverse-border py-8 sm:py-12 lg:grid-cols-12 lg:gap-8 lg:py-16"
             >
-              <TypographyEyebrow tone="inverse">
+              <TypographyEyebrow
+                tone="inverse"
+                className="lg:col-span-2 lg:pt-1"
+              >
                 <TerminalMeta text={`${stage.number} / ${stage.label}`} />
               </TypographyEyebrow>
 
-              <div className="mt-auto pt-16">
-                <TypographyCardTitle>
-                  {stage.titleLines.map((line) => (
-                    <span key={line} className="block whitespace-nowrap">
-                      {line}
-                    </span>
-                  ))}
-                </TypographyCardTitle>
-                <p className="mt-6 max-w-sm text-base leading-6 text-inverse-muted sm:text-lg sm:leading-7">
-                  {stage.description}
-                </p>
-              </div>
-            </article>
+              <TypographyCardTitle
+                as="h3"
+                className="mt-8 max-w-xl lg:col-span-5 lg:mt-0"
+              >
+                {stage.titleLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </TypographyCardTitle>
+
+              <p className="mt-6 max-w-xl text-base leading-6 text-inverse-muted sm:text-lg sm:leading-7 lg:col-span-5 lg:mt-0 lg:pt-1">
+                {stage.description}
+              </p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

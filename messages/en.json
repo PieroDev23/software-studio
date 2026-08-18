@@ -258,7 +258,8 @@
     ]
   },
   "Contact": {
-    "title": "Still unsure what to build? Talk to us.",
+    "titleLead": "Still unsure what to build?",
+    "titleCta": "Talk to us.",
     "description": "Bring the ambition, the uncertainty and the hard decision. We will find what deserves to exist.",
     "eyebrow": "Start a conversation",
     "name": "Name",
@@ -320,8 +321,7 @@
       "en": "Another language.\nSame intent.",
       "es": "Otro idioma.\nMisma intención."
     },
-    "location": "Lima / Worldwide",
-    "disciplines": "Strategy / Design / Engineering"
+    "location": "Lima / Worldwide"
   },
   "Navigation": {
     "page": "Page navigation",

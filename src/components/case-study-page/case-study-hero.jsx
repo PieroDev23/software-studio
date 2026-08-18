@@ -1,15 +1,31 @@
 import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
+
 import LanguageSwitcher from "@/components/language-switcher";
 import Silk from "@/components/silk";
-import { TerminalMeta } from "@/components/terminal-slash";
 import TransitionLink from "@/components/transition-link";
 import {
   TypographyDisplay,
   TypographyEyebrow,
   TypographyLead,
 } from "@/components/ui/typography";
+import bcpLogo from "../../../assets/images/logos_bn_png/blanco/bcp_blanco.png";
+import filoLogo from "../../../assets/images/logos_bn_png/blanco/filo_blanco.png";
+import pchujoyLogo from "../../../assets/images/logos_bn_png/blanco/pchujoy_blanco.png";
+import ultimateLogo from "../../../assets/images/logos_bn_png/blanco/ultimate_agencia_white.png";
+import axoLogo from "../../../assets/images/logos_bn_png/negro/axo-longevity_negro.png";
+
+const caseStudyLogos = {
+  "axo-longevity": { src: axoLogo, className: "h-8 sm:h-10" },
+  filo: { src: filoLogo, className: "h-12 sm:h-14" },
+  pchujoy: { src: pchujoyLogo, className: "h-9 sm:h-11" },
+  "samay-bcp": { src: bcpLogo, className: "h-8 sm:h-10" },
+  "ultimate-agencia": { src: ultimateLogo, className: "h-8 sm:h-10" },
+};
 
 function CaseStudyHero({ study, translate }) {
+  const clientLogo = caseStudyLogos[study.slug];
+
   return (
     <header
       data-case-study-hero
@@ -44,17 +60,25 @@ function CaseStudyHero({ study, translate }) {
           data-parallax-case-content
           className="flex flex-1 flex-col justify-end pb-12 pt-28 sm:pb-16 lg:pb-20"
         >
-          <TypographyEyebrow className="text-current opacity-70">
-            <TerminalMeta
-              text={`${study.client} / ${study.year} / ${study.service}`}
-            />
-          </TypographyEyebrow>
-          <TypographyDisplay className="mt-8 max-w-[20ch] text-current sm:mt-12">
-            {study.title}
-          </TypographyDisplay>
-          <TypographyLead className="mt-8 max-w-2xl text-current opacity-75">
-            {study.description}
-          </TypographyLead>
+          <div className="flex max-w-6xl flex-col items-start gap-6 sm:gap-10">
+            {clientLogo ? (
+              <Image
+                src={clientLogo.src}
+                alt={study.client}
+                className={`${clientLogo.className} w-auto max-w-56 object-contain`}
+                sizes="224px"
+              />
+            ) : null}
+            <TypographyEyebrow className="text-current opacity-70">
+              {study.service}
+            </TypographyEyebrow>
+            <TypographyDisplay className="max-w-[20ch] text-current">
+              {study.title}
+            </TypographyDisplay>
+            <TypographyLead className="max-w-2xl text-current opacity-75">
+              {study.description}
+            </TypographyLead>
+          </div>
 
           <TransitionLink
             href="/#selected-work"

@@ -13,6 +13,7 @@ function createNavigationAnimation({
   onCovered,
   setContentBlocked,
   finishTransition,
+  resetScroll,
 }) {
   const panels = gsap.utils.toArray(
     root.querySelectorAll("[data-curtain-panel]"),
@@ -58,6 +59,7 @@ function createNavigationAnimation({
     .timeline({
       defaults: { ease: "power3.inOut" },
       onComplete: contextSafe(() => {
+        resetScroll();
         onCovered();
         if (destinationReadyRef.current) playExit();
       }),

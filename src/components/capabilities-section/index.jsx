@@ -1,10 +1,17 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
+
 import { TerminalMeta } from "@/components/terminal-slash";
 import {
   TypographyCardTitle,
   TypographyDisplay,
   TypographyEyebrow,
 } from "@/components/ui/typography";
+import designImage from "../../../assets/images/ilustraciones-home/diseno-cropped.png";
+import engineeringImage from "../../../assets/images/ilustraciones-home/ingenieria-cropped.png";
+import productImage from "../../../assets/images/ilustraciones-home/producto-cropped.png";
+
+const capabilityImages = [productImage, designImage, engineeringImage];
 
 export default function CapabilitiesSection() {
   const t = useTranslations("Capabilities");
@@ -31,11 +38,11 @@ export default function CapabilitiesSection() {
         </div>
 
         <div className="mt-12 grid w-full border-t border-border sm:mt-20 lg:grid-cols-3">
-          {capabilities.map((capability) => (
+          {capabilities.map((capability, index) => (
             <article
               data-reveal
               key={capability.number}
-              className="flex flex-col border-b border-border px-0 py-8 sm:min-h-[28rem] sm:p-8 lg:border-r lg:last:border-r-0"
+              className="flex min-w-0 flex-col border-b border-border px-0 py-8 sm:min-h-[28rem] sm:p-8 lg:border-r lg:last:border-r-0"
             >
               <TypographyEyebrow>
                 <TerminalMeta
@@ -43,10 +50,17 @@ export default function CapabilitiesSection() {
                 />
               </TypographyEyebrow>
 
-              <div className="mt-10 flex flex-col gap-5 sm:mt-auto sm:gap-8 sm:pt-16">
+              <Image
+                src={capabilityImages[index]}
+                alt=""
+                className="mt-6 h-64 w-full max-w-none object-contain sm:-mx-8 sm:h-80 sm:w-[calc(100%+4rem)] lg:h-72 xl:h-80"
+                sizes="(min-width: 1024px) 30vw, (min-width: 640px) 70vw, 100vw"
+              />
+
+              <div className="mt-6 flex flex-col gap-5 sm:gap-8">
                 <TypographyCardTitle as="h3">
                   {capability.titleLines.map((line) => (
-                    <span key={line} className="block whitespace-nowrap">
+                    <span key={line} className="block">
                       {line}
                     </span>
                   ))}
